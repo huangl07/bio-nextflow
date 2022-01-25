@@ -1,0 +1,296 @@
+9月-26 12:53:02.748 [main] DEBUG nextflow.cli.Launcher - $> nextflow run hello.nf --ref GCF_000002035.6_GRCz11_genomic.fna --gff GCF_000002035.6_GRCz11_genomic.gff -resume
+9月-26 12:53:02.920 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.3
+9月-26 12:53:02.954 [main] INFO  nextflow.cli.CmdRun - Launching `hello.nf` [focused_lovelace] - revision: 45430d500e
+9月-26 12:53:03.093 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/mnt/ilustre/users/dna/.nextflow/plugins
+9月-26 12:53:03.096 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+9月-26 12:53:03.100 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+9月-26 12:53:03.111 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+9月-26 12:53:03.113 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+9月-26 12:53:03.119 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+9月-26 12:53:03.136 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+9月-26 12:53:03.209 [main] DEBUG nextflow.Session - Session uuid: 909601a0-2870-414b-9be0-c870c4392719
+9月-26 12:53:03.210 [main] DEBUG nextflow.Session - Run name: focused_lovelace
+9月-26 12:53:03.212 [main] DEBUG nextflow.Session - Executor pool size: 64
+9月-26 12:53:03.272 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.3 build 5560
+  Created: 21-07-2021 15:09 UTC (23:09 CDT)
+  System: Linux 4.18.0-240.22.1.el8_3.x86_64
+  Runtime: Groovy 3.0.7 on Java HotSpot(TM) 64-Bit Server VM 11.0.11+9-LTS-194
+  Encoding: UTF-8 (UTF-8)
+  Process: 3949617@compute-5-95 [10.2.4.236]
+  CPUs: 64 - Mem: 125.2 GB (19.6 GB) - Swap: 4 GB (2.6 GB)
+9月-26 12:53:03.337 [main] DEBUG nextflow.Session - Work-dir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work [lustre]
+9月-26 12:53:03.365 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+9月-26 12:53:03.381 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+9月-26 12:53:03.627 [main] DEBUG nextflow.Session - Session start invoked
+9月-26 12:53:05.037 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+9月-26 12:53:05.048 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: uniprot_merge, fastaGenerate, UniProt, cog_merge, NR, GO, KEGG, go_merge, COG, kegg_merge, nr_merge
+9月-26 12:53:05.153 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+9月-26 12:53:05.153 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+9月-26 12:53:05.160 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+9月-26 12:53:05.167 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=64; memory=125.2 GB; capacity=64; pollInterval=100ms; dumpInterval=5m
+9月-26 12:53:05.430 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.430 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.439 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+9月-26 12:53:05.442 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+9月-26 12:53:05.447 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+9月-26 12:53:05.456 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.456 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.467 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.467 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.479 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.479 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.488 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.488 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.508 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.508 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.518 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.518 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.529 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.529 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.537 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.537 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.546 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-26 12:53:05.546 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-26 12:53:05.551 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+9月-26 12:53:05.551 [main] DEBUG nextflow.Session - Session await
+9月-26 12:53:05.594 [Actor Thread 3] INFO  nextflow.processor.TaskProcessor - [26/d8d69b] Cached process > fastaGenerate (fastaGenerate)
+9月-26 12:53:05.649 [Actor Thread 4] DEBUG nextflow.sort.BigSort - Sort completed -- entries: 1; slices: 1; internal sort time: 0.001 s; external sort time: 0.003 s; total time: 0.004 s
+9月-26 12:53:05.649 [Actor Thread 4] DEBUG nextflow.file.FileCollector - >> temp file exists? true
+9月-26 12:53:05.650 [Actor Thread 4] DEBUG nextflow.file.FileCollector - Retrivied cached collect-files from: /tmp/10051cfc7d2350f24862a30eb3b4b99f.collect-file -- cached files: [/mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/tmp/74/e8e18e37fc756e7754088ff30e9245/ref.final.fa]
+9月-26 12:53:05.657 [Actor Thread 1] DEBUG n.splitter.AbstractTextSplitter - Splitter `Fasta` collector path: nextflow.splitter.TextFileCollector$CachePath(/mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/6e/83a856c78ba28697f63cce5ae216d0/ref.final.fa, null)
+9月-26 12:53:05.665 [Actor Thread 1] DEBUG nextflow.splitter.AbstractSplitter - Operator `Fasta` reusing cached chunks at path: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/6e/83a856c78ba28697f63cce5ae216d0/ref.final.fa
+9月-26 12:53:05.669 [Actor Thread 4] DEBUG nextflow.file.FileCollector - Deleting file collector temp dir: /tmp/nxf-10467370986352341035
+9月-26 12:53:05.835 [Actor Thread 4] INFO  nextflow.processor.TaskProcessor - [13/3bcb6d] Cached process > COG (COG)
+9月-26 12:53:05.835 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [18/c1a639] Cached process > COG (COG)
+9月-26 12:53:05.835 [Actor Thread 118] INFO  nextflow.processor.TaskProcessor - [89/c569e6] Cached process > NR (NR)
+9月-26 12:53:05.835 [Actor Thread 45] INFO  nextflow.processor.TaskProcessor - [7e/6c144c] Cached process > UniProt (UniProt)
+9月-26 12:53:05.835 [Actor Thread 85] INFO  nextflow.processor.TaskProcessor - [fc/455daf] Cached process > COG (COG)
+9月-26 12:53:05.836 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [9a/58afe7] Cached process > UniProt (UniProt)
+9月-26 12:53:05.835 [Actor Thread 74] INFO  nextflow.processor.TaskProcessor - [21/7102eb] Cached process > NR (NR)
+9月-26 12:53:05.844 [Actor Thread 71] INFO  nextflow.processor.TaskProcessor - [b3/b98c23] Cached process > UniProt (UniProt)
+9月-26 12:53:05.835 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [f0/c81d52] Cached process > UniProt (UniProt)
+9月-26 12:53:05.835 [Actor Thread 97] INFO  nextflow.processor.TaskProcessor - [43/cab05a] Cached process > UniProt (UniProt)
+9月-26 12:53:05.835 [Actor Thread 79] INFO  nextflow.processor.TaskProcessor - [dd/3c2310] Cached process > NR (NR)
+9月-26 12:53:05.835 [Actor Thread 58] INFO  nextflow.processor.TaskProcessor - [6a/2e43c9] Cached process > NR (NR)
+9月-26 12:53:05.836 [Actor Thread 123] INFO  nextflow.processor.TaskProcessor - [57/fe41f3] Cached process > NR (NR)
+9月-26 12:53:05.836 [Actor Thread 70] INFO  nextflow.processor.TaskProcessor - [96/144def] Cached process > NR (NR)
+9月-26 12:53:05.845 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [e9/0d2f7b] Cached process > UniProt (UniProt)
+9月-26 12:53:05.836 [Actor Thread 107] INFO  nextflow.processor.TaskProcessor - [f5/9b241e] Cached process > NR (NR)
+9月-26 12:53:05.845 [Actor Thread 101] INFO  nextflow.processor.TaskProcessor - [f7/8461d1] Cached process > NR (NR)
+9月-26 12:53:05.846 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [44/943e2c] Cached process > NR (NR)
+9月-26 12:53:05.845 [Actor Thread 28] INFO  nextflow.processor.TaskProcessor - [14/7c51ec] Cached process > COG (COG)
+9月-26 12:53:05.845 [Actor Thread 109] INFO  nextflow.processor.TaskProcessor - [45/3f9e3b] Cached process > NR (NR)
+9月-26 12:53:05.845 [Actor Thread 92] INFO  nextflow.processor.TaskProcessor - [00/ac1436] Cached process > UniProt (UniProt)
+9月-26 12:53:05.845 [Actor Thread 68] INFO  nextflow.processor.TaskProcessor - [41/cd5f43] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 59] INFO  nextflow.processor.TaskProcessor - [d8/bd2c5b] Cached process > UniProt (UniProt)
+9月-26 12:53:05.847 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [f9/5af9e9] Cached process > NR (NR)
+9月-26 12:53:05.845 [Actor Thread 105] INFO  nextflow.processor.TaskProcessor - [39/216763] Cached process > NR (NR)
+9月-26 12:53:05.845 [Actor Thread 52] INFO  nextflow.processor.TaskProcessor - [42/35f6be] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 37] INFO  nextflow.processor.TaskProcessor - [f6/e278f0] Cached process > COG (COG)
+9月-26 12:53:05.845 [Actor Thread 90] INFO  nextflow.processor.TaskProcessor - [e9/2a0536] Cached process > UniProt (UniProt)
+9月-26 12:53:05.846 [Actor Thread 119] INFO  nextflow.processor.TaskProcessor - [9e/8e157c] Cached process > COG (COG)
+9月-26 12:53:05.846 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [cb/0be0e4] Cached process > UniProt (UniProt)
+9月-26 12:53:05.848 [Actor Thread 117] INFO  nextflow.processor.TaskProcessor - [98/f3eea4] Cached process > NR (NR)
+9月-26 12:53:05.853 [Actor Thread 32] INFO  nextflow.processor.TaskProcessor - [19/000e60] Cached process > UniProt (UniProt)
+9月-26 12:53:05.846 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [d7/0a1983] Cached process > UniProt (UniProt)
+9月-26 12:53:05.846 [Actor Thread 57] INFO  nextflow.processor.TaskProcessor - [41/50cd14] Cached process > COG (COG)
+9月-26 12:53:05.846 [Actor Thread 94] INFO  nextflow.processor.TaskProcessor - [ac/ede1d8] Cached process > COG (COG)
+9月-26 12:53:05.846 [Actor Thread 29] INFO  nextflow.processor.TaskProcessor - [31/c2e2f4] Cached process > UniProt (UniProt)
+9月-26 12:53:05.846 [Actor Thread 39] INFO  nextflow.processor.TaskProcessor - [a2/58fb57] Cached process > COG (COG)
+9月-26 12:53:05.846 [Actor Thread 91] INFO  nextflow.processor.TaskProcessor - [d9/008b29] Cached process > UniProt (UniProt)
+9月-26 12:53:05.846 [Actor Thread 113] INFO  nextflow.processor.TaskProcessor - [0c/f1fcf8] Cached process > NR (NR)
+9月-26 12:53:05.847 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [23/1866fc] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 55] INFO  nextflow.processor.TaskProcessor - [1b/567597] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 120] INFO  nextflow.processor.TaskProcessor - [e3/c4b61b] Cached process > NR (NR)
+9月-26 12:53:05.847 [Actor Thread 76] INFO  nextflow.processor.TaskProcessor - [21/cf7dda] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 86] INFO  nextflow.processor.TaskProcessor - [aa/001e2e] Cached process > NR (NR)
+9月-26 12:53:05.847 [Actor Thread 100] INFO  nextflow.processor.TaskProcessor - [a7/de79eb] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 62] INFO  nextflow.processor.TaskProcessor - [9a/0df661] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 112] INFO  nextflow.processor.TaskProcessor - [b8/72e71d] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 48] INFO  nextflow.processor.TaskProcessor - [db/c5d5f8] Cached process > NR (NR)
+9月-26 12:53:05.847 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [3a/c13e6d] Cached process > COG (COG)
+9月-26 12:53:05.847 [Actor Thread 99] INFO  nextflow.processor.TaskProcessor - [f5/5827e9] Cached process > NR (NR)
+9月-26 12:53:05.861 [Actor Thread 127] INFO  nextflow.processor.TaskProcessor - [bc/417ff0] Cached process > GO (GO)
+9月-26 12:53:05.862 [Actor Thread 118] INFO  nextflow.processor.TaskProcessor - [54/ab54b3] Cached process > GO (GO)
+9月-26 12:53:05.847 [Actor Thread 124] INFO  nextflow.processor.TaskProcessor - [1e/2b990c] Cached process > NR (NR)
+9月-26 12:53:05.847 [Actor Thread 83] INFO  nextflow.processor.TaskProcessor - [eb/ef4b8e] Cached process > UniProt (UniProt)
+9月-26 12:53:05.847 [Actor Thread 31] INFO  nextflow.processor.TaskProcessor - [1c/49e137] Cached process > UniProt (UniProt)
+9月-26 12:53:05.847 [Actor Thread 102] INFO  nextflow.processor.TaskProcessor - [ad/153303] Cached process > UniProt (UniProt)
+9月-26 12:53:05.847 [Actor Thread 116] INFO  nextflow.processor.TaskProcessor - [ed/eb32cb] Cached process > COG (COG)
+9月-26 12:53:05.848 [Actor Thread 65] INFO  nextflow.processor.TaskProcessor - [af/d82b18] Cached process > NR (NR)
+9月-26 12:53:05.848 [Actor Thread 95] INFO  nextflow.processor.TaskProcessor - [da/137dad] Cached process > NR (NR)
+9月-26 12:53:05.848 [Actor Thread 73] INFO  nextflow.processor.TaskProcessor - [28/c71821] Cached process > COG (COG)
+9月-26 12:53:05.848 [Actor Thread 111] INFO  nextflow.processor.TaskProcessor - [e0/746230] Cached process > NR (NR)
+9月-26 12:53:05.848 [Actor Thread 77] INFO  nextflow.processor.TaskProcessor - [8b/fc14d6] Cached process > UniProt (UniProt)
+9月-26 12:53:05.864 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [5d/dcdc2d] Cached process > GO (GO)
+9月-26 12:53:05.848 [Actor Thread 34] INFO  nextflow.processor.TaskProcessor - [fc/e56435] Cached process > COG (COG)
+9月-26 12:53:05.848 [Actor Thread 114] INFO  nextflow.processor.TaskProcessor - [aa/977f39] Cached process > NR (NR)
+9月-26 12:53:05.848 [Actor Thread 53] INFO  nextflow.processor.TaskProcessor - [ba/366c4a] Cached process > COG (COG)
+9月-26 12:53:05.848 [Actor Thread 44] INFO  nextflow.processor.TaskProcessor - [c9/6c829a] Cached process > NR (NR)
+9月-26 12:53:05.848 [Actor Thread 24] INFO  nextflow.processor.TaskProcessor - [a0/c55e6b] Cached process > UniProt (UniProt)
+9月-26 12:53:05.848 [Actor Thread 41] INFO  nextflow.processor.TaskProcessor - [0b/f44390] Cached process > NR (NR)
+9月-26 12:53:05.848 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [d6/d5e022] Cached process > UniProt (UniProt)
+9月-26 12:53:05.848 [Actor Thread 122] INFO  nextflow.processor.TaskProcessor - [b2/6f9a97] Cached process > NR (NR)
+9月-26 12:53:05.848 [Actor Thread 104] INFO  nextflow.processor.TaskProcessor - [35/ed787e] Cached process > UniProt (UniProt)
+9月-26 12:53:05.849 [Actor Thread 42] INFO  nextflow.processor.TaskProcessor - [59/87915c] Cached process > COG (COG)
+9月-26 12:53:05.849 [Actor Thread 40] INFO  nextflow.processor.TaskProcessor - [75/33f065] Cached process > UniProt (UniProt)
+9月-26 12:53:05.849 [Actor Thread 93] INFO  nextflow.processor.TaskProcessor - [d8/3427a7] Cached process > NR (NR)
+9月-26 12:53:05.849 [Actor Thread 80] INFO  nextflow.processor.TaskProcessor - [10/245c06] Cached process > UniProt (UniProt)
+9月-26 12:53:05.850 [Actor Thread 98] INFO  nextflow.processor.TaskProcessor - [63/add3e3] Cached process > COG (COG)
+9月-26 12:53:05.850 [Actor Thread 47] INFO  nextflow.processor.TaskProcessor - [28/ad5800] Cached process > COG (COG)
+9月-26 12:53:05.850 [Actor Thread 64] INFO  nextflow.processor.TaskProcessor - [59/9ef4c8] Cached process > UniProt (UniProt)
+9月-26 12:53:05.850 [Actor Thread 38] INFO  nextflow.processor.TaskProcessor - [80/34da2a] Cached process > UniProt (UniProt)
+9月-26 12:53:05.850 [Actor Thread 81] INFO  nextflow.processor.TaskProcessor - [e9/d57631] Cached process > COG (COG)
+9月-26 12:53:05.850 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [7d/6b551d] Cached process > UniProt (UniProt)
+9月-26 12:53:05.851 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [9d/2f0d11] Cached process > COG (COG)
+9月-26 12:53:05.851 [Actor Thread 87] INFO  nextflow.processor.TaskProcessor - [af/a4efc9] Cached process > UniProt (UniProt)
+9月-26 12:53:05.851 [Actor Thread 61] INFO  nextflow.processor.TaskProcessor - [74/4a4a75] Cached process > NR (NR)
+9月-26 12:53:05.851 [Actor Thread 82] INFO  nextflow.processor.TaskProcessor - [49/d0b22b] Cached process > NR (NR)
+9月-26 12:53:05.850 [Actor Thread 121] INFO  nextflow.processor.TaskProcessor - [db/d1fe47] Cached process > COG (COG)
+9月-26 12:53:05.852 [Actor Thread 106] INFO  nextflow.processor.TaskProcessor - [22/623439] Cached process > COG (COG)
+9月-26 12:53:05.852 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [c4/47719f] Cached process > UniProt (UniProt)
+9月-26 12:53:05.852 [Actor Thread 89] INFO  nextflow.processor.TaskProcessor - [d0/988e10] Cached process > UniProt (UniProt)
+9月-26 12:53:05.867 [Actor Thread 79] INFO  nextflow.processor.TaskProcessor - [96/95d66e] Cached process > GO (GO)
+9月-26 12:53:05.868 [Actor Thread 123] INFO  nextflow.processor.TaskProcessor - [dd/8047cb] Cached process > GO (GO)
+9月-26 12:53:05.868 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [3e/425644] Cached process > GO (GO)
+9月-26 12:53:05.868 [Actor Thread 58] INFO  nextflow.processor.TaskProcessor - [31/6e62d2] Cached process > GO (GO)
+9月-26 12:53:05.887 [Actor Thread 26] INFO  nextflow.processor.TaskProcessor - [26/5e1345] Cached process > GO (GO)
+9月-26 12:53:05.887 [Actor Thread 77] INFO  nextflow.processor.TaskProcessor - [1a/72a37b] Cached process > GO (GO)
+9月-26 12:53:05.887 [Actor Thread 112] INFO  nextflow.processor.TaskProcessor - [f6/61d6e1] Cached process > GO (GO)
+9月-26 12:53:05.889 [Actor Thread 68] INFO  nextflow.processor.TaskProcessor - [c0/b770d6] Cached process > GO (GO)
+9月-26 12:53:05.890 [Actor Thread 114] INFO  nextflow.processor.TaskProcessor - [2a/bb7646] Cached process > GO (GO)
+9月-26 12:53:05.891 [Actor Thread 53] INFO  nextflow.processor.TaskProcessor - [1e/ea8fd7] Cached process > GO (GO)
+9月-26 12:53:05.891 [Actor Thread 31] INFO  nextflow.processor.TaskProcessor - [59/1de0f0] Cached process > GO (GO)
+9月-26 12:53:05.891 [Actor Thread 32] INFO  nextflow.processor.TaskProcessor - [51/9128fb] Cached process > GO (GO)
+9月-26 12:53:05.891 [Actor Thread 81] INFO  nextflow.processor.TaskProcessor - [32/fc712c] Cached process > GO (GO)
+9月-26 12:53:05.892 [Actor Thread 104] INFO  nextflow.processor.TaskProcessor - [a8/cb04c3] Cached process > GO (GO)
+9月-26 12:53:05.892 [Actor Thread 59] INFO  nextflow.processor.TaskProcessor - [e5/083e37] Cached process > GO (GO)
+9月-26 12:53:05.893 [Actor Thread 23] INFO  nextflow.processor.TaskProcessor - [e0/769167] Cached process > GO (GO)
+9月-26 12:53:05.893 [Actor Thread 106] INFO  nextflow.processor.TaskProcessor - [eb/8b3368] Cached process > GO (GO)
+9月-26 12:53:05.894 [Actor Thread 35] INFO  nextflow.processor.TaskProcessor - [c7/ce4bf1] Cached process > GO (GO)
+9月-26 12:53:05.895 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [e3/32d93b] Cached process > GO (GO)
+9月-26 12:53:05.896 [Actor Thread 92] INFO  nextflow.processor.TaskProcessor - [c8/dfb0e9] Cached process > GO (GO)
+9月-26 12:53:05.897 [Actor Thread 121] INFO  nextflow.processor.TaskProcessor - [f5/682ec7] Cached process > GO (GO)
+9月-26 12:53:05.897 [Actor Thread 41] INFO  nextflow.processor.TaskProcessor - [be/7e49e6] Cached process > GO (GO)
+9月-26 12:53:05.897 [Actor Thread 40] INFO  nextflow.processor.TaskProcessor - [e7/e77887] Cached process > GO (GO)
+9月-26 12:53:05.898 [Actor Thread 47] INFO  nextflow.processor.TaskProcessor - [d7/d5e21e] Cached process > GO (GO)
+9月-26 12:53:05.900 [Actor Thread 91] INFO  nextflow.processor.TaskProcessor - [01/8e7261] Cached process > GO (GO)
+9月-26 12:53:05.900 [Actor Thread 93] INFO  nextflow.processor.TaskProcessor - [3f/29290d] Cached process > GO (GO)
+9月-26 12:53:05.927 [Actor Thread 87] INFO  nextflow.processor.TaskProcessor - [95/98b10f] Cached process > nr_merge (nr merge)
+9月-26 12:53:05.928 [Actor Thread 112] INFO  nextflow.processor.TaskProcessor - [c3/997bcc] Cached process > cog_merge (Report)
+9月-26 12:53:05.930 [Actor Thread 90] INFO  nextflow.processor.TaskProcessor - [ec/789aaf] Cached process > uniprot_merge (uniprot merge)
+9月-26 12:53:05.931 [Actor Thread 91] INFO  nextflow.processor.TaskProcessor - [dd/1de8f9] Cached process > go_merge (go merge)
+9月-26 12:53:06.009 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70813; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/56/8117d74047f482e47da3a097cbfb46
+9月-26 12:53:06.018 [Task submitter] INFO  nextflow.Session - [56/8117d7] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.046 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70814; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/ae/12108a565f88400e17b1cb1be700c3
+9月-26 12:53:06.047 [Task submitter] INFO  nextflow.Session - [ae/12108a] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.075 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70815; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/45/2569b33ae09b4fe8a925e8bc065acd
+9月-26 12:53:06.076 [Task submitter] INFO  nextflow.Session - [45/2569b3] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.101 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70816; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/f7/dc815b20b6a14d4267aed7e196d93f
+9月-26 12:53:06.102 [Task submitter] INFO  nextflow.Session - [f7/dc815b] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.125 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70817; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/e7/b1702c30dd95871b32b25c4651eafa
+9月-26 12:53:06.126 [Task submitter] INFO  nextflow.Session - [e7/b1702c] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.148 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70818; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/09/11606e57c911a330b6df38c9559217
+9月-26 12:53:06.148 [Task submitter] INFO  nextflow.Session - [09/11606e] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.172 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70819; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/e2/68e6a1c8a3ecee799146b6b51952b1
+9月-26 12:53:06.172 [Task submitter] INFO  nextflow.Session - [e2/68e6a1] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.196 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70820; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/d7/75949f5f22fb535de2057ba67dfbf0
+9月-26 12:53:06.197 [Task submitter] INFO  nextflow.Session - [d7/75949f] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.219 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70821; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/da/23fcf53ab6d7a94ab3a64663c81cd9
+9月-26 12:53:06.219 [Task submitter] INFO  nextflow.Session - [da/23fcf5] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.248 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70822; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/a7/d85ddae985c250f4ddcc52b706f3e5
+9月-26 12:53:06.249 [Task submitter] INFO  nextflow.Session - [a7/d85dda] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.275 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70823; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/79/6fd4fd6cc6f9eb7b182254fd996f5c
+9月-26 12:53:06.276 [Task submitter] INFO  nextflow.Session - [79/6fd4fd] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.299 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70824; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/97/a336a438675c06ae9a26d2c0d263f5
+9月-26 12:53:06.300 [Task submitter] INFO  nextflow.Session - [97/a336a4] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.320 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70825; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/75/881c966b47c818549d8e00bdc9928b
+9月-26 12:53:06.320 [Task submitter] INFO  nextflow.Session - [75/881c96] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.342 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70826; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/18/ac01921fe7b232df759ec21a336898
+9月-26 12:53:06.343 [Task submitter] INFO  nextflow.Session - [18/ac0192] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.366 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70827; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/a5/3051ecda214e1ef0959ec5294bc6f3
+9月-26 12:53:06.366 [Task submitter] INFO  nextflow.Session - [a5/3051ec] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.387 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70828; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/8d/fd00c9a9c5140a1a1ecc8806fb9485
+9月-26 12:53:06.388 [Task submitter] INFO  nextflow.Session - [8d/fd00c9] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.408 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70829; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/65/7cc7d1ef0e68a330d2b1093e4c56f1
+9月-26 12:53:06.409 [Task submitter] INFO  nextflow.Session - [65/7cc7d1] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.428 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70830; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/6a/38d0e87a6e33a70efb4674f1637ca9
+9月-26 12:53:06.429 [Task submitter] INFO  nextflow.Session - [6a/38d0e8] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.447 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70831; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/f5/c5d71d15f9a2a0c1a1fea5f78daa82
+9月-26 12:53:06.448 [Task submitter] INFO  nextflow.Session - [f5/c5d71d] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.466 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70832; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/6c/fbdbd7804c8ab7fcc87533eb89cb4d
+9月-26 12:53:06.467 [Task submitter] INFO  nextflow.Session - [6c/fbdbd7] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.486 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70833; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/d3/37c017745e256428b7a331abcadd3e
+9月-26 12:53:06.486 [Task submitter] INFO  nextflow.Session - [d3/37c017] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.505 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70834; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/aa/ea916595a24f4db90b48c5fcaaec21
+9月-26 12:53:06.505 [Task submitter] INFO  nextflow.Session - [aa/ea9165] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.524 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70835; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/44/7160ea329ae22733bbaf7d485884fd
+9月-26 12:53:06.524 [Task submitter] INFO  nextflow.Session - [44/7160ea] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.544 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70836; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/a8/7bbb60ccfaf19539e1ef9fbc6dddf4
+9月-26 12:53:06.544 [Task submitter] INFO  nextflow.Session - [a8/7bbb60] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.565 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70837; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/52/ca935c8d4f79eebaa6f7d0a6551b99
+9月-26 12:53:06.565 [Task submitter] INFO  nextflow.Session - [52/ca935c] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.584 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70838; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/d6/d001446ebe0fde6e6a23596c8e74e7
+9月-26 12:53:06.585 [Task submitter] INFO  nextflow.Session - [d6/d00144] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.604 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70839; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/11/fb9a51755840a51a9dd2097da0d84e
+9月-26 12:53:06.605 [Task submitter] INFO  nextflow.Session - [11/fb9a51] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.625 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70840; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/e8/fa603d0109f3a9b397395897f0973c
+9月-26 12:53:06.625 [Task submitter] INFO  nextflow.Session - [e8/fa603d] Submitted process > KEGG (KEGG)
+9月-26 12:53:06.645 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process KEGG (KEGG) > jobId: 70841; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/f8/920fbe7523e02ec31648ea9dc141c2
+9月-26 12:53:06.645 [Task submitter] INFO  nextflow.Session - [f8/920fbe] Submitted process > KEGG (KEGG)
+9月-26 12:54:55.455 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70816; id: 107; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/f7/dc815b20b6a14d4267aed7e196d93f started: 1632631995462; exited: 2021-09-26T04:54:52Z; ]
+9月-26 12:55:05.453 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70813; id: 64; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/56/8117d74047f482e47da3a097cbfb46 started: 1632631995452; exited: 2021-09-26T04:55:04Z; ]
+9月-26 12:55:10.452 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70814; id: 35; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/ae/12108a565f88400e17b1cb1be700c3 started: 1632631995457; exited: 2021-09-26T04:55:06Z; ]
+9月-26 12:55:10.464 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70815; id: 76; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/45/2569b33ae09b4fe8a925e8bc065acd started: 1632631995460; exited: 2021-09-26T04:55:10Z; ]
+9月-26 12:55:10.477 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70819; id: 9; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/e2/68e6a1c8a3ecee799146b6b51952b1 started: 1632631995468; exited: 2021-09-26T04:55:09Z; ]
+9月-26 12:55:15.453 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70817; id: 30; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/e7/b1702c30dd95871b32b25c4651eafa started: 1632631995464; exited: 2021-09-26T04:55:11Z; ]
+9月-26 12:55:15.473 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70818; id: 24; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/09/11606e57c911a330b6df38c9559217 started: 1632631995466; exited: 2021-09-26T04:55:13Z; ]
+9月-26 12:55:35.453 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70820; id: 52; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/d7/75949f5f22fb535de2057ba67dfbf0 started: 1632632025450; exited: 2021-09-26T04:55:30Z; ]
+9月-26 12:56:55.455 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70822; id: 67; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/a7/d85ddae985c250f4ddcc52b706f3e5 started: 1632632115502; exited: 2021-09-26T04:56:54Z; ]
+9月-26 12:56:55.468 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70824; id: 17; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/97/a336a438675c06ae9a26d2c0d263f5 started: 1632632115506; exited: 2021-09-26T04:56:53Z; ]
+9月-26 12:56:55.482 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70825; id: 85; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/75/881c966b47c818549d8e00bdc9928b started: 1632632115508; exited: 2021-09-26T04:56:55Z; ]
+9月-26 12:57:00.454 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70823; id: 56; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/79/6fd4fd6cc6f9eb7b182254fd996f5c started: 1632632115504; exited: 2021-09-26T04:56:57Z; ]
+9月-26 12:57:00.466 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70826; id: 21; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/18/ac01921fe7b232df759ec21a336898 started: 1632632115510; exited: 2021-09-26T04:56:56Z; ]
+9月-26 12:57:20.470 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70828; id: 69; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/8d/fd00c9a9c5140a1a1ecc8806fb9485 started: 1632632145452; exited: 2021-09-26T04:57:20Z; ]
+9月-26 12:57:35.455 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70827; id: 15; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/a5/3051ecda214e1ef0959ec5294bc6f3 started: 1632632145450; exited: 2021-09-26T04:57:33Z; ]
+9月-26 12:58:05.317 [Task monitor] DEBUG n.processor.TaskPollingMonitor - No more task to compute -- The following nodes are still active:
+[process] kegg_merge
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: keggs
+  port 1: (cntrl) -     ; channel: $
+
+9月-26 12:58:05.458 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70821; id: 43; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/da/23fcf53ab6d7a94ab3a64663c81cd9 started: 1632632115499; exited: 2021-09-26T04:58:01Z; ]
+9月-26 12:58:10.456 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 13 -- submitted tasks are shown below
+~> TaskHandler[jobId: 70829; id: 18; name: KEGG (KEGG); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/65/7cc7d1ef0e68a330d2b1093e4c56f1 started: 1632632235452; exited: -; ]
+~> TaskHandler[jobId: 70830; id: 46; name: KEGG (KEGG); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/6a/38d0e87a6e33a70efb4674f1637ca9 started: 1632632235453; exited: -; ]
+~> TaskHandler[jobId: 70831; id: 100; name: KEGG (KEGG); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/f5/c5d71d15f9a2a0c1a1fea5f78daa82 started: 1632632235454; exited: -; ]
+~> TaskHandler[jobId: 70832; id: 105; name: KEGG (KEGG); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/6c/fbdbd7804c8ab7fcc87533eb89cb4d started: 1632632235455; exited: -; ]
+~> TaskHandler[jobId: 70833; id: 47; name: KEGG (KEGG); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/d3/37c017745e256428b7a331abcadd3e started: 1632632235456; exited: -; ]
+~> TaskHandler[jobId: 70834; id: 92; name: KEGG (KEGG); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/aa/ea916595a24f4db90b48c5fcaaec21 started: 1632632265455; exited: -; ]
+~> TaskHandler[jobId: 70835; id: 55; name: KEGG (KEGG); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/44/7160ea329ae22733bbaf7d485884fd started: 1632632265458; exited: -; ]
+~> TaskHandler[jobId: 70836; id: 49; name: KEGG (KEGG); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/a8/7bbb60ccfaf19539e1ef9fbc6dddf4 started: -; exited: -; ]
+~> TaskHandler[jobId: 70837; id: 61; name: KEGG (KEGG); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/52/ca935c8d4f79eebaa6f7d0a6551b99 started: -; exited: -; ]
+~> TaskHandler[jobId: 70838; id: 39; name: KEGG (KEGG); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/d6/d001446ebe0fde6e6a23596c8e74e7 started: -; exited: -; ]
+.. remaining tasks omitted.
+9月-26 12:59:00.462 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70829; id: 18; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/65/7cc7d1ef0e68a330d2b1093e4c56f1 started: 1632632235452; exited: 2021-09-26T04:58:56Z; ]
+9月-26 12:59:05.463 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70830; id: 46; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/6a/38d0e87a6e33a70efb4674f1637ca9 started: 1632632235453; exited: 2021-09-26T04:59:02Z; ]
+9月-26 12:59:05.475 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70831; id: 100; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/f5/c5d71d15f9a2a0c1a1fea5f78daa82 started: 1632632235454; exited: 2021-09-26T04:59:00Z; ]
+9月-26 12:59:05.485 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70832; id: 105; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/6c/fbdbd7804c8ab7fcc87533eb89cb4d started: 1632632235455; exited: 2021-09-26T04:59:04Z; ]
+9月-26 12:59:05.497 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70833; id: 47; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/d3/37c017745e256428b7a331abcadd3e started: 1632632235456; exited: 2021-09-26T04:59:01Z; ]
+9月-26 12:59:30.464 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70834; id: 92; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/aa/ea916595a24f4db90b48c5fcaaec21 started: 1632632265455; exited: 2021-09-26T04:59:27Z; ]
+9月-26 12:59:35.464 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70835; id: 55; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/44/7160ea329ae22733bbaf7d485884fd started: 1632632265458; exited: 2021-09-26T04:59:33Z; ]
+9月-26 13:00:05.466 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70836; id: 49; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/a8/7bbb60ccfaf19539e1ef9fbc6dddf4 started: 1632632295458; exited: 2021-09-26T05:00:03Z; ]
+9月-26 13:01:00.465 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70837; id: 61; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/52/ca935c8d4f79eebaa6f7d0a6551b99 started: 1632632355461; exited: 2021-09-26T05:00:58Z; ]
+9月-26 13:01:00.477 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70840; id: 58; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/e8/fa603d0109f3a9b397395897f0973c started: 1632632355464; exited: 2021-09-26T05:01:00Z; ]
+9月-26 13:01:00.488 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70841; id: 38; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/f8/920fbe7523e02ec31648ea9dc141c2 started: 1632632355465; exited: 2021-09-26T05:01:00Z; ]
+9月-26 13:01:05.465 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70838; id: 39; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/d6/d001446ebe0fde6e6a23596c8e74e7 started: 1632632355462; exited: 2021-09-26T05:01:02Z; ]
+9月-26 13:01:05.477 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 70839; id: 99; name: KEGG (KEGG); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/11/fb9a51755840a51a9dd2097da0d84e started: 1632632355463; exited: 2021-09-26T05:01:01Z; ]
+9月-26 13:01:05.526 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process kegg_merge (kegg merge) > jobId: 71027; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/08/bbc451fee2540651ba7b1ae9158b5b
+9月-26 13:01:05.526 [Task submitter] INFO  nextflow.Session - [08/bbc451] Submitted process > kegg_merge (kegg merge)
+9月-26 13:02:10.466 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 71027; id: 151; name: kegg_merge (kegg merge); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Annotation/work/08/bbc451fee2540651ba7b1ae9158b5b started: 1632632475463; exited: 2021-09-26T05:02:07Z; ]
+9月-26 13:02:10.470 [main] DEBUG nextflow.Session - Session await > all process finished
+9月-26 13:02:10.553 [main] DEBUG nextflow.Session - Session await > all barriers passed
+9月-26 13:02:10.715 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=30; failedCount=0; ignoredCount=0; cachedCount=121; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=14h 12m 54s; failedDuration=0ms; cachedDuration=11d 19h 5m 43s;loadCpus=0; loadMemory=0; peakRunning=8; peakCpus=128; peakMemory=800 GB; ]
+9月-26 13:02:10.860 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+9月-26 13:02:10.912 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

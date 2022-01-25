@@ -1,0 +1,9 @@
+N E X T F L O W  ~  version 21.04.3
+Launching `hello.nf` [desperate_cori] - revision: 13c340980f
+N E X T F L O W  ~  version 21.04.3
+Launching `hello.nf` [stupefied_roentgen] - revision: e4d141aecc
+[-        ] process > fastaGenerate -
+No such variable: uniprot_blast
+
+ -- Check script 'hello.nf' at line: 80 or see '.nextflow.log' file for more details
+

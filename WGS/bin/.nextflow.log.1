@@ -1,0 +1,116 @@
+8月-23 17:09:58.599 [main] DEBUG nextflow.cli.Launcher - $> nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+8月-23 17:09:58.779 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.3
+8月-23 17:09:58.845 [main] INFO  nextflow.cli.CmdRun - Launching `blast.nf` [sad_wing] - revision: 1b85722b59
+8月-23 17:09:58.963 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/mnt/ilustre/users/dna/.nextflow/plugins
+8月-23 17:09:58.966 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+8月-23 17:09:58.969 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+8月-23 17:09:58.978 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+8月-23 17:09:58.979 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+8月-23 17:09:58.983 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+8月-23 17:09:58.997 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+8月-23 17:09:59.059 [main] DEBUG nextflow.Session - Session uuid: 9f0d1b90-fe35-423b-a5e1-eb96d67a4e27
+8月-23 17:09:59.059 [main] DEBUG nextflow.Session - Run name: sad_wing
+8月-23 17:09:59.061 [main] DEBUG nextflow.Session - Executor pool size: 64
+8月-23 17:09:59.154 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.3 build 5560
+  Created: 21-07-2021 15:09 UTC (23:09 CDT)
+  System: Linux 4.18.0-240.22.1.el8_3.x86_64
+  Runtime: Groovy 3.0.7 on Java HotSpot(TM) 64-Bit Server VM 11.0.11+9-LTS-194
+  Encoding: UTF-8 (UTF-8)
+  Process: 1841437@compute-5-95 [10.2.4.236]
+  CPUs: 64 - Mem: 125.2 GB (39.1 GB) - Swap: 4 GB (3.4 GB)
+8月-23 17:09:59.187 [main] DEBUG nextflow.Session - Work-dir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work [lustre]
+8月-23 17:09:59.188 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/bin
+8月-23 17:09:59.204 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+8月-23 17:09:59.219 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+8月-23 17:09:59.390 [main] DEBUG nextflow.Session - Session start invoked
+8月-23 17:10:00.242 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+8月-23 17:10:00.251 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: extract, blast
+8月-23 17:10:00.388 [Actor Thread 1] DEBUG n.splitter.AbstractTextSplitter - Splitter `Fasta` collector path: nextflow.splitter.TextFileCollector$CachePath(/mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/4f/7acba938c44492a46cd532aa7224f6/sub.0.fa, null)
+8月-23 17:10:00.456 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+8月-23 17:10:00.457 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+8月-23 17:10:00.468 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+8月-23 17:10:00.475 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+8月-23 17:10:00.479 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+8月-23 17:10:00.611 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+8月-23 17:10:00.611 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+8月-23 17:10:00.615 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+8月-23 17:10:00.618 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=64; memory=125.2 GB; capacity=64; pollInterval=100ms; dumpInterval=5m
+8月-23 17:10:00.673 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+8月-23 17:10:00.673 [main] DEBUG nextflow.Session - Session await
+8月-23 17:10:00.821 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (6) > jobId: 37181; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/ee/517924d428732d77f9706ff4fe76da
+8月-23 17:10:00.825 [Task submitter] INFO  nextflow.Session - [ee/517924] Submitted process > blast (6)
+8月-23 17:10:00.871 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (9) > jobId: 37182; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/7f/ed99be92ab6c2d4ad2e5ee933d6169
+8月-23 17:10:00.872 [Task submitter] INFO  nextflow.Session - [7f/ed99be] Submitted process > blast (9)
+8月-23 17:10:00.896 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (7) > jobId: 37183; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/42/655ad156d7923145d7b1f623f92db3
+8月-23 17:10:00.896 [Task submitter] INFO  nextflow.Session - [42/655ad1] Submitted process > blast (7)
+8月-23 17:10:00.924 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (2) > jobId: 37184; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/ae/4de2bdbaeb8cdd4820f2dc878081fb
+8月-23 17:10:00.924 [Task submitter] INFO  nextflow.Session - [ae/4de2bd] Submitted process > blast (2)
+8月-23 17:10:00.951 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (12) > jobId: 37185; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/e8/cf1a42d1f1101a99e69aa0a6208aa2
+8月-23 17:10:00.952 [Task submitter] INFO  nextflow.Session - [e8/cf1a42] Submitted process > blast (12)
+8月-23 17:10:00.979 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (4) > jobId: 37186; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/78/4d1c0c60b3326f47268fe87f8a1de8
+8月-23 17:10:00.980 [Task submitter] INFO  nextflow.Session - [78/4d1c0c] Submitted process > blast (4)
+8月-23 17:10:01.008 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (1) > jobId: 37187; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/fd/877921495cf0af94608df17d61c816
+8月-23 17:10:01.009 [Task submitter] INFO  nextflow.Session - [fd/877921] Submitted process > blast (1)
+8月-23 17:10:01.035 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (3) > jobId: 37188; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/4c/6d558ba7c2c92df541ac59162af547
+8月-23 17:10:01.035 [Task submitter] INFO  nextflow.Session - [4c/6d558b] Submitted process > blast (3)
+8月-23 17:10:01.058 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (5) > jobId: 37189; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/68/5cbace872e5c0ce37f9a38935b0b73
+8月-23 17:10:01.059 [Task submitter] INFO  nextflow.Session - [68/5cbace] Submitted process > blast (5)
+8月-23 17:10:01.082 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (10) > jobId: 37190; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/9f/9754933dd211be9eff18e44bd2fb6c
+8月-23 17:10:01.083 [Task submitter] INFO  nextflow.Session - [9f/975493] Submitted process > blast (10)
+8月-23 17:10:01.113 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (8) > jobId: 37191; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/99/a3914bc82bc0572423e9a917159f63
+8月-23 17:10:01.114 [Task submitter] INFO  nextflow.Session - [99/a3914b] Submitted process > blast (8)
+8月-23 17:10:01.140 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (11) > jobId: 37192; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/d6/4280023673de8cb06fcc590b6440e9
+8月-23 17:10:01.141 [Task submitter] INFO  nextflow.Session - [d6/428002] Submitted process > blast (11)
+8月-23 17:10:01.165 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process blast (13) > jobId: 37193; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/a2/cc42c6a495dab63570c9ac1740232c
+8月-23 17:10:01.166 [Task submitter] INFO  nextflow.Session - [a2/cc42c6] Submitted process > blast (13)
+8月-23 17:10:05.490 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37181; id: 6; name: blast (6); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/ee/517924d428732d77f9706ff4fe76da started: 1629709805483; exited: 2021-08-23T09:10:04Z; ]
+8月-23 17:10:05.519 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'blast (6)'
+
+Caused by:
+  Process `blast (6)` terminated with an error exit status (2)
+
+Command executed:
+
+  blastn -db bin/genome_chr.fa -query query.fa -outfmt 6 > blast_result
+  cat blast_result | head -n 10 | cut -f 2 > top_hits
+
+Command exit status:
+  2
+
+Command output:
+  (empty)
+
+Command error:
+  /bin/bash: warning: setlocale: LC_ALL: cannot change locale (zh_CN.UTF8)
+  BLAST Database error: No alias or index file found for nucleotide database [bin/genome_chr.fa] in search path [/mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/ee/517924d428732d77f9706ff4fe76da::]
+
+Work dir:
+  /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/ee/517924d428732d77f9706ff4fe76da
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+8月-23 17:10:05.526 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `blast (6)` terminated with an error exit status (2)
+8月-23 17:10:05.545 [Task monitor] DEBUG nextflow.Session - The following nodes are still active:
+[process] extract
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: top_hits
+  port 1: (value) bound ; channel: db
+  port 2: (cntrl) -     ; channel: $
+
+8月-23 17:10:05.548 [main] DEBUG nextflow.Session - Session await > all process finished
+8月-23 17:10:05.548 [main] DEBUG nextflow.Session - Session await > all barriers passed
+8月-23 17:10:05.552 [Actor Thread 15] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+8月-23 17:10:05.554 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37182; id: 9; name: blast (9); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/7f/ed99be92ab6c2d4ad2e5ee933d6169 started: 1629709805549; exited: 2021-08-23T09:10:03Z; ]
+8月-23 17:10:05.555 [main] WARN  n.processor.TaskPollingMonitor - Killing pending tasks (11)
+8月-23 17:10:05.561 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37183; id: 7; name: blast (7); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/42/655ad156d7923145d7b1f623f92db3 started: 1629709805557; exited: 2021-08-23T09:10:02Z; ]
+8月-23 17:10:05.567 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37184; id: 2; name: blast (2); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/ae/4de2bdbaeb8cdd4820f2dc878081fb started: 1629709805562; exited: 2021-08-23T09:10:02Z; ]
+8月-23 17:10:05.572 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37185; id: 12; name: blast (12); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/e8/cf1a42d1f1101a99e69aa0a6208aa2 started: 1629709805568; exited: 2021-08-23T09:10:05Z; ]
+8月-23 17:10:05.578 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37186; id: 4; name: blast (4); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/78/4d1c0c60b3326f47268fe87f8a1de8 started: 1629709805574; exited: 2021-08-23T09:10:04Z; ]
+8月-23 17:10:05.582 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=7; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=6; runningCount=-10; retriesCount=0; abortedCount=10; succeedDuration=0ms; failedDuration=32ms; cachedDuration=0ms;loadCpus=-10; loadMemory=0; peakRunning=1; peakCpus=1; peakMemory=0; ]
+8月-23 17:10:05.584 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37187; id: 1; name: blast (1); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/fd/877921495cf0af94608df17d61c816 started: 1629709805579; exited: 2021-08-23T09:10:04Z; ]
+8月-23 17:10:05.616 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37189; id: 5; name: blast (5); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/68/5cbace872e5c0ce37f9a38935b0b73 started: 1629709805609; exited: 2021-08-23T09:10:04Z; ]
+8月-23 17:10:05.622 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37190; id: 10; name: blast (10); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/9f/9754933dd211be9eff18e44bd2fb6c started: 1629709805617; exited: 2021-08-23T09:10:04Z; ]
+8月-23 17:10:05.629 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37192; id: 11; name: blast (11); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/d6/4280023673de8cb06fcc590b6440e9 started: 1629709805624; exited: 2021-08-23T09:10:05Z; ]
+8月-23 17:10:05.633 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 37193; id: 13; name: blast (13); status: COMPLETED; exit: 2; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/WGS/bin/work/a2/cc42c6a495dab63570c9ac1740232c started: 1629709805630; exited: 2021-08-23T09:10:05Z; ]
+8月-23 17:10:05.743 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+8月-23 17:10:05.757 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

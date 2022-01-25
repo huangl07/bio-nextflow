@@ -1,0 +1,175 @@
+10月-12 15:33:24.254 [main] DEBUG nextflow.cli.Launcher - $> nextflow run Ampliseq.nf --fqlist fastq1.list --out demo -resume --meta meta.list
+10月-12 15:33:24.427 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.3
+10月-12 15:33:24.461 [main] INFO  nextflow.cli.CmdRun - Launching `Ampliseq.nf` [tiny_swirles] - revision: cc40e8e523
+10月-12 15:33:24.578 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/mnt/ilustre/users/dna/.nextflow/plugins
+10月-12 15:33:24.580 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+10月-12 15:33:24.583 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+10月-12 15:33:24.593 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+10月-12 15:33:24.594 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+10月-12 15:33:24.599 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+10月-12 15:33:24.613 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+10月-12 15:33:24.674 [main] DEBUG nextflow.Session - Session uuid: 89ee96c2-4d8d-475a-b515-4b68408c2150
+10月-12 15:33:24.675 [main] DEBUG nextflow.Session - Run name: tiny_swirles
+10月-12 15:33:24.677 [main] DEBUG nextflow.Session - Executor pool size: 64
+10月-12 15:33:24.726 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.3 build 5560
+  Created: 21-07-2021 15:09 UTC (23:09 CDT)
+  System: Linux 4.18.0-240.22.1.el8_3.x86_64
+  Runtime: Groovy 3.0.7 on Java HotSpot(TM) 64-Bit Server VM 11.0.11+9-LTS-194
+  Encoding: UTF-8 (UTF-8)
+  Process: 764374@compute-5-95 [10.2.4.236]
+  CPUs: 64 - Mem: 125.2 GB (7 GB) - Swap: 4 GB (1.8 GB)
+10月-12 15:33:24.785 [main] DEBUG nextflow.Session - Work-dir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Ampliseq/work [lustre]
+10月-12 15:33:24.810 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+10月-12 15:33:24.826 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+10月-12 15:33:25.036 [main] DEBUG nextflow.Session - Session start invoked
+10月-12 15:33:26.544 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+10月-12 15:33:26.554 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: Hierarchical, PCOA, classify, importfq, Dist, adonis, Alpha, DeNoise, Tree, Abundance, Rarecurve
+10月-12 15:33:26.667 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+10月-12 15:33:26.667 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+10月-12 15:33:26.680 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+10月-12 15:33:26.688 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+10月-12 15:33:26.695 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+10月-12 15:33:26.846 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+10月-12 15:33:26.846 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+10月-12 15:33:26.862 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+10月-12 15:33:26.862 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+10月-12 15:33:26.871 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+10月-12 15:33:26.872 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+10月-12 15:33:26.883 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+10月-12 15:33:26.883 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+10月-12 15:33:26.886 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+10月-12 15:33:26.891 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=64; memory=125.2 GB; capacity=64; pollInterval=100ms; dumpInterval=5m
+10月-12 15:33:26.908 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+10月-12 15:33:26.909 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+10月-12 15:33:26.921 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+10月-12 15:33:26.921 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+10月-12 15:33:26.932 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+10月-12 15:33:26.932 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+10月-12 15:33:26.942 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+10月-12 15:33:26.942 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+10月-12 15:33:26.950 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+10月-12 15:33:26.950 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+10月-12 15:33:26.958 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: local
+10月-12 15:33:26.958 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+10月-12 15:33:26.962 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+10月-12 15:33:26.963 [main] DEBUG nextflow.Session - Session await
+10月-12 15:33:26.969 [Actor Thread 4] DEBUG nextflow.conda.CondaCache - Conda found local env for environment=/mnt/ilustre/users/dna/miniconda3/envs/qiime2-2021.8; path=/mnt/ilustre/users/dna/miniconda3/envs/qiime2-2021.8
+10月-12 15:33:27.109 [Actor Thread 2] INFO  nextflow.processor.TaskProcessor - [4d/5d0d71] Cached process > importfq
+10月-12 15:33:27.177 [Actor Thread 6] INFO  nextflow.processor.TaskProcessor - [50/5256a6] Cached process > DeNoise
+10月-12 15:33:27.196 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [c4/378239] Cached process > Tree
+10月-12 15:33:27.200 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [7d/0d978c] Cached process > classify
+10月-12 15:33:27.291 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+10月-12 15:33:27.296 [Task submitter] INFO  nextflow.Session - [e2/479685] Submitted process > Alpha
+10月-12 15:33:27.315 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+10月-12 15:33:27.315 [Task submitter] INFO  nextflow.Session - [8e/46ac35] Submitted process > Hierarchical
+10月-12 15:33:27.325 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+10月-12 15:33:27.326 [Task submitter] INFO  nextflow.Session - [16/1b842d] Submitted process > Abundance
+10月-12 15:33:27.335 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+10月-12 15:33:27.336 [Task submitter] INFO  nextflow.Session - [0b/af9ac2] Submitted process > PCOA
+10月-12 15:33:27.344 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+10月-12 15:33:27.345 [Task submitter] INFO  nextflow.Session - [5e/431da2] Submitted process > adonis
+10月-12 15:33:27.353 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+10月-12 15:33:27.354 [Task submitter] INFO  nextflow.Session - [07/4877a1] Submitted process > Dist
+10月-12 15:33:27.361 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+10月-12 15:33:27.362 [Task submitter] INFO  nextflow.Session - [16/187cab] Submitted process > Rarecurve
+10月-12 15:33:57.788 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 7; name: Hierarchical; status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Ampliseq/work/8e/46ac35bbbaf1451dcc088dc5b1ae05]
+10月-12 15:33:57.845 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'Hierarchical'
+
+Caused by:
+  Process `Hierarchical` terminated with an error exit status (1)
+
+Command executed:
+
+  #!/usr/bin/env Rscript
+  library(MicrobiotaProcess)
+  library(phyloseq)
+  library(tidyverse)
+  library(RColorBrewer)
+  otu <- "table.qza"
+  rep <- "rep-seqs.qza"
+  tree <- "rooted-tree.qza"
+  tax <- "taxonomy.qza"
+  sample <- "meta.list"
+  ps <- mp_import_qiime2(otuqza=otu, taxaqza=tax,refseqqza=rep,mapfilename=sample,treeqza=tree)
+  ps %<>% mp_rrarefy()
+  ps %<>% mp_cal_clust(
+       .abundance = RareAbundance, 
+       distmethod = "bray",
+       hclustmethod = "average", # (UPGAE)
+       action = "add" # action is used to control which result will be returned
+     )
+  phyla.tb <- ps %>% 
+          mp_extract_abundance(taxa.class=Phylum, topn=30)
+  phyla.tb %<>% tidyr::unnest(cols=RareAbundanceBySample) %>% dplyr::rename(Phyla="label")
+  p1 <- p + 
+    geom_fruit(
+       data=phyla.tb,
+       geom=geom_col,
+       mapping = aes(x = RelRareAbundanceBySample, 
+                     y = Sample, 
+                     fill = Phyla
+               ),
+       orientation = "y",
+       offset = 0.4,
+       pwidth = 3, 
+       axis.params = list(axis = "x", 
+                          title = "The relative abundance of phyla (%)",
+                          title.size = 4,
+                          text.size = 2, 
+                          vjust = 1),
+       grid.params = list()
+    )
+  ggsave(file="Hierarchical.pdf",p1)
+
+Command exit status:
+  1
+
+Command output:
+  WARNING: ignoring environment value of R_HOME
+
+Command error:
+  
+  载入程辑包：‘MicrobiotaProcess’
+  
+  The following object is masked from ‘package:stats’:
+  
+      filter
+  
+  
+  载入程辑包：‘phyloseq’
+  
+  The following object is masked from ‘package:MicrobiotaProcess’:
+  
+      refseq
+  
+  ─ Attaching packages ──────────────────── tidyverse 1.3.1 ─
+  ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+  ✔ tibble  3.1.5     ✔ dplyr   1.0.7
+  ✔ tidyr   1.1.4     ✔ stringr 1.4.0
+  ✔ readr   2.0.2     ✔ forcats 0.5.1
+  ─ Conflicts ───────────────────── tidyverse_conflicts() ─
+  ✖ dplyr::filter() masks MicrobiotaProcess::filter(), stats::filter()
+  ✖ dplyr::lag()    masks stats::lag()
+  Warning message:
+  The treeqza is a tree file, it is parsing by read.tree function.
+  * It is better to parse it with the function of treeio
+  * then the treedata or phylo result all can be supported. 
+  The result was added to the internal attributes of the object
+  It can be extracted via object %>% mp_extract_internal_attr(name='SampleClust') !
+  Please make sure the mp_cal_abundance(..., action='add') has been run.
+  Error in UseMethod("unnest") : "unnest"没有适用于"NULL"目标对象的方法
+  Calls: %>% -> <Anonymous> -> <Anonymous>
+  停止执行
+
+Work dir:
+  /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/Ampliseq/work/8e/46ac35bbbaf1451dcc088dc5b1ae05
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+10月-12 15:33:57.860 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `Hierarchical` terminated with an error exit status (1)
+10月-12 15:33:57.894 [main] DEBUG nextflow.Session - Session await > all process finished
+10月-12 15:33:57.896 [main] DEBUG nextflow.Session - Session await > all barriers passed
+10月-12 15:33:57.910 [main] WARN  n.processor.TaskPollingMonitor - Killing pending tasks (6)
+10月-12 15:33:57.969 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=1; ignoredCount=0; cachedCount=4; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=6; succeedDuration=0ms; failedDuration=30.4s; cachedDuration=3h 44m 30s;loadCpus=0; loadMemory=0; peakRunning=7; peakCpus=7; peakMemory=0; ]
+10月-12 15:33:58.099 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+10月-12 15:33:58.131 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

@@ -1,0 +1,183 @@
+9月-30 14:10:24.341 [main] DEBUG nextflow.cli.Launcher - $> nextflow run blast.nf --query ref.pro.fa --dblist db.list
+9月-30 14:10:24.474 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.3
+9月-30 14:10:24.504 [main] INFO  nextflow.cli.CmdRun - Launching `blast.nf` [tender_lamarr] - revision: a2b4728514
+9月-30 14:10:24.603 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/mnt/ilustre/users/dna/.nextflow/plugins
+9月-30 14:10:24.605 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+9月-30 14:10:24.607 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+9月-30 14:10:24.616 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+9月-30 14:10:24.618 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+9月-30 14:10:24.622 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+9月-30 14:10:24.634 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+9月-30 14:10:24.693 [main] DEBUG nextflow.Session - Session uuid: daae68f2-d0f9-465b-b3ad-ec6aab1500cb
+9月-30 14:10:24.693 [main] DEBUG nextflow.Session - Run name: tender_lamarr
+9月-30 14:10:24.695 [main] DEBUG nextflow.Session - Executor pool size: 64
+9月-30 14:10:24.740 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.3 build 5560
+  Created: 21-07-2021 15:09 UTC (23:09 CDT)
+  System: Linux 4.18.0-240.22.1.el8_3.x86_64
+  Runtime: Groovy 3.0.7 on Java HotSpot(TM) 64-Bit Server VM 11.0.11+9-LTS-194
+  Encoding: UTF-8 (UTF-8)
+  Process: 924401@compute-5-95 [10.2.4.236]
+  CPUs: 64 - Mem: 125.2 GB (15.3 GB) - Swap: 4 GB (242.7 MB)
+9月-30 14:10:24.772 [main] DEBUG nextflow.Session - Work-dir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work [lustre]
+9月-30 14:10:24.773 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/bin
+9月-30 14:10:24.786 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+9月-30 14:10:24.801 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+9月-30 14:10:24.986 [main] DEBUG nextflow.Session - Session start invoked
+9月-30 14:10:25.942 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+9月-30 14:10:25.953 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: NR
+9月-30 14:10:26.120 [Actor Thread 1] DEBUG n.splitter.AbstractTextSplitter - Splitter `Fasta` collector path: nextflow.splitter.TextFileCollector$CachePath(/mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/43/dee31dc6dedfd6386cc5d99072e184/ref.pro.fa, null)
+9月-30 14:10:26.203 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+9月-30 14:10:26.204 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+9月-30 14:10:26.216 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+9月-30 14:10:26.224 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+9月-30 14:10:26.229 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+9月-30 14:10:26.333 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+9月-30 14:10:26.334 [main] DEBUG nextflow.Session - Session await
+9月-30 14:10:26.560 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403738; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/a8/48c479f0ac9b383b879e9b56239272
+9月-30 14:10:26.565 [Task submitter] INFO  nextflow.Session - [a8/48c479] Submitted process > NR (NR)
+9月-30 14:10:26.591 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403739; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/7c/1e62584bc54e874e7eb8637b12dfeb
+9月-30 14:10:26.591 [Task submitter] INFO  nextflow.Session - [7c/1e6258] Submitted process > NR (NR)
+9月-30 14:10:26.628 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403740; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/c2/24ec67b8efd21a63f12a453f4936ab
+9月-30 14:10:26.628 [Task submitter] INFO  nextflow.Session - [c2/24ec67] Submitted process > NR (NR)
+9月-30 14:10:26.649 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403741; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/4d/b2f67a1beb7209426f193bf1ca965c
+9月-30 14:10:26.650 [Task submitter] INFO  nextflow.Session - [4d/b2f67a] Submitted process > NR (NR)
+9月-30 14:10:26.671 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403742; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/24/a10526b96a323c50b80b3a0d898894
+9月-30 14:10:26.672 [Task submitter] INFO  nextflow.Session - [24/a10526] Submitted process > NR (NR)
+9月-30 14:10:26.692 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403743; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/19/3c56ad707b3bfbd368445f15063120
+9月-30 14:10:26.693 [Task submitter] INFO  nextflow.Session - [19/3c56ad] Submitted process > NR (NR)
+9月-30 14:10:26.713 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403744; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/66/6ea7a8aa953d66b09706b267821dcd
+9月-30 14:10:26.714 [Task submitter] INFO  nextflow.Session - [66/6ea7a8] Submitted process > NR (NR)
+9月-30 14:10:26.735 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403745; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/e7/d7a4a1ed42684dc94694da53a68567
+9月-30 14:10:26.736 [Task submitter] INFO  nextflow.Session - [e7/d7a4a1] Submitted process > NR (NR)
+9月-30 14:10:26.757 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403746; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/f2/41291a615be3eb981a1eb772f726f7
+9月-30 14:10:26.758 [Task submitter] INFO  nextflow.Session - [f2/41291a] Submitted process > NR (NR)
+9月-30 14:10:26.777 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403747; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/d6/b8ad47df1935a537579710ab866257
+9月-30 14:10:26.777 [Task submitter] INFO  nextflow.Session - [d6/b8ad47] Submitted process > NR (NR)
+9月-30 14:10:26.797 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403748; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/b7/e6b15e17a230449c916d73c5913089
+9月-30 14:10:26.797 [Task submitter] INFO  nextflow.Session - [b7/e6b15e] Submitted process > NR (NR)
+9月-30 14:10:26.816 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403749; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/cc/11bf9d27981b65ed57c7205dda3649
+9月-30 14:10:26.817 [Task submitter] INFO  nextflow.Session - [cc/11bf9d] Submitted process > NR (NR)
+9月-30 14:10:26.836 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403750; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/25/9786993a1b2e38f1a7f381e8658556
+9月-30 14:10:26.836 [Task submitter] INFO  nextflow.Session - [25/978699] Submitted process > NR (NR)
+9月-30 14:10:26.855 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403751; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/8a/6a2026f6861205a9ab3920d2dbc550
+9月-30 14:10:26.855 [Task submitter] INFO  nextflow.Session - [8a/6a2026] Submitted process > NR (NR)
+9月-30 14:10:26.874 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403752; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/f8/7f9c9e95693f4cb5a04f521e400b09
+9月-30 14:10:26.874 [Task submitter] INFO  nextflow.Session - [f8/7f9c9e] Submitted process > NR (NR)
+9月-30 14:10:26.894 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403753; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/b3/1bcceafc8bd17a3a0d0fc6a9fda00c
+9月-30 14:10:26.895 [Task submitter] INFO  nextflow.Session - [b3/1bccea] Submitted process > NR (NR)
+9月-30 14:10:26.914 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403754; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/91/e53f9b5424c9fd1bc1036e168572ee
+9月-30 14:10:26.914 [Task submitter] INFO  nextflow.Session - [91/e53f9b] Submitted process > NR (NR)
+9月-30 14:10:26.933 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403755; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/1d/03994c300535facdf6011da9e148da
+9月-30 14:10:26.933 [Task submitter] INFO  nextflow.Session - [1d/03994c] Submitted process > NR (NR)
+9月-30 14:10:26.951 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403756; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/f4/c4ec3b43d5799e7b282fce31340245
+9月-30 14:10:26.951 [Task submitter] INFO  nextflow.Session - [f4/c4ec3b] Submitted process > NR (NR)
+9月-30 14:10:26.970 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403757; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/44/fa17a61235ec7835f2f8a161967e4f
+9月-30 14:10:26.970 [Task submitter] INFO  nextflow.Session - [44/fa17a6] Submitted process > NR (NR)
+9月-30 14:10:26.989 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403758; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/0b/3004e7b0aa751cae6504f8aed61284
+9月-30 14:10:26.989 [Task submitter] INFO  nextflow.Session - [0b/3004e7] Submitted process > NR (NR)
+9月-30 14:10:27.007 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403759; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/dc/eb302c3ad270b256aa09ddd8001adb
+9月-30 14:10:27.008 [Task submitter] INFO  nextflow.Session - [dc/eb302c] Submitted process > NR (NR)
+9月-30 14:10:27.026 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403760; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/12/4fa48a948f584b1d1ef9c4d98440f7
+9月-30 14:10:27.027 [Task submitter] INFO  nextflow.Session - [12/4fa48a] Submitted process > NR (NR)
+9月-30 14:10:27.044 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403761; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/b2/66af563e23b5610da0834b4489557c
+9月-30 14:10:27.045 [Task submitter] INFO  nextflow.Session - [b2/66af56] Submitted process > NR (NR)
+9月-30 14:10:27.063 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403762; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/55/c317ed09925342d6c109cf3c22e44f
+9月-30 14:10:27.064 [Task submitter] INFO  nextflow.Session - [55/c317ed] Submitted process > NR (NR)
+9月-30 14:10:27.082 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403763; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/b7/ecd70a27af8d63eba33ea7012ada1d
+9月-30 14:10:27.083 [Task submitter] INFO  nextflow.Session - [b7/ecd70a] Submitted process > NR (NR)
+9月-30 14:10:27.102 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403764; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/e0/eb244a107f3e788659760c15d2c572
+9月-30 14:10:27.102 [Task submitter] INFO  nextflow.Session - [e0/eb244a] Submitted process > NR (NR)
+9月-30 14:10:27.121 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403765; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/5e/22fbbb6c59161c64c978cb3562bcd6
+9月-30 14:10:27.121 [Task submitter] INFO  nextflow.Session - [5e/22fbbb] Submitted process > NR (NR)
+9月-30 14:10:27.139 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process NR (NR) > jobId: 403766; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/a6/d7a2fcaf775e6121be1502e1639d44
+9月-30 14:10:27.139 [Task submitter] INFO  nextflow.Session - [a6/d7a2fc] Submitted process > NR (NR)
+9月-30 14:10:31.243 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403738; id: 10; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/a8/48c479f0ac9b383b879e9b56239272 started: 1632982231236; exited: 2021-09-30T06:10:28Z; ]
+9月-30 14:10:31.273 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'NR (NR)'
+
+Caused by:
+  Process `NR (NR)` terminated with an error exit status (1)
+
+Command executed:
+
+  blastp --db /mnt/ilustre/users/dna/database/nr/nr.09
+  --num_threads 16 --max-target-seqs 1 --out ref.pro.10.fa.nr.blast --evalue 1e-5 --query ref.pro.10.fa --outfmt 6
+
+Command exit status:
+  1
+
+Command output:
+  (empty)
+
+Command error:
+  USAGE
+    blastp [-h] [-help] [-import_search_strategy filename]
+      [-export_search_strategy filename] [-task task_name] [-db database_name]
+      [-dbsize num_letters] [-gilist filename] [-seqidlist filename]
+      [-negative_gilist filename] [-negative_seqidlist filename]
+      [-taxids taxids] [-negative_taxids taxids] [-taxidlist filename]
+      [-negative_taxidlist filename] [-ipglist filename]
+      [-negative_ipglist filename] [-entrez_query entrez_query]
+      [-db_soft_mask filtering_algorithm] [-db_hard_mask filtering_algorithm]
+      [-subject subject_input_file] [-subject_loc range] [-query input_file]
+      [-out output_file] [-evalue evalue] [-word_size int_value]
+      [-gapopen open_penalty] [-gapextend extend_penalty]
+      [-qcov_hsp_perc float_value] [-max_hsps int_value]
+      [-xdrop_ungap float_value] [-xdrop_gap float_value]
+      [-xdrop_gap_final float_value] [-searchsp int_value] [-seg SEG_options]
+      [-soft_masking soft_masking] [-matrix matrix_name]
+      [-threshold float_value] [-culling_limit int_value]
+      [-best_hit_overhang float_value] [-best_hit_score_edge float_value]
+      [-subject_besthit] [-window_size int_value] [-lcase_masking]
+      [-query_loc range] [-parse_deflines] [-outfmt format] [-show_gis]
+      [-num_descriptions int_value] [-num_alignments int_value]
+      [-line_length line_length] [-html] [-sorthits sort_hits]
+      [-sorthsps sort_hsps] [-max_target_seqs num_sequences]
+      [-num_threads int_value] [-mt_mode int_value] [-ungapped] [-remote]
+      [-comp_based_stats compo] [-use_sw_tback] [-version]
+  
+  DESCRIPTION
+     Protein-Protein BLAST 2.12.0+
+  
+  Use '-help' to print detailed descriptions of command line arguments
+  ========================================================================
+  
+  Error: Unknown argument: "-db"
+  Error:  (CArgException::eInvalidArg) Unknown argument: "-db"
+
+Work dir:
+  /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/a8/48c479f0ac9b383b879e9b56239272
+
+Tip: you can try to figure out what's wrong by changing to the process work dir and showing the script file named `.command.sh`
+9月-30 14:10:31.280 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `NR (NR)` terminated with an error exit status (1)
+9月-30 14:10:31.295 [main] DEBUG nextflow.Session - Session await > all process finished
+9月-30 14:10:31.296 [main] DEBUG nextflow.Session - Session await > all barriers passed
+9月-30 14:10:31.301 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403739; id: 6; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/7c/1e62584bc54e874e7eb8637b12dfeb started: 1632982231296; exited: 2021-09-30T06:10:28Z; ]
+9月-30 14:10:31.302 [main] WARN  n.processor.TaskPollingMonitor - Killing pending tasks (27)
+9月-30 14:10:31.308 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403740; id: 4; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/c2/24ec67b8efd21a63f12a453f4936ab started: 1632982231303; exited: 2021-09-30T06:10:28Z; ]
+9月-30 14:10:31.315 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403741; id: 2; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/4d/b2f67a1beb7209426f193bf1ca965c started: 1632982231310; exited: 2021-09-30T06:10:28Z; ]
+9月-30 14:10:31.322 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403742; id: 9; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/24/a10526b96a323c50b80b3a0d898894 started: 1632982231317; exited: 2021-09-30T06:10:28Z; ]
+9月-30 14:10:31.330 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403743; id: 1; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/19/3c56ad707b3bfbd368445f15063120 started: 1632982231324; exited: 2021-09-30T06:10:28Z; ]
+9月-30 14:10:31.330 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=5; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=23; runningCount=-26; retriesCount=0; abortedCount=27; succeedDuration=0ms; failedDuration=416ms; cachedDuration=0ms;loadCpus=-416; loadMemory=0; peakRunning=1; peakCpus=16; peakMemory=100 GB; ]
+9月-30 14:10:31.336 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403744; id: 3; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/66/6ea7a8aa953d66b09706b267821dcd started: 1632982231332; exited: 2021-09-30T06:10:28Z; ]
+9月-30 14:10:31.342 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403745; id: 5; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/e7/d7a4a1ed42684dc94694da53a68567 started: 1632982231338; exited: 2021-09-30T06:10:28Z; ]
+9月-30 14:10:31.348 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403746; id: 8; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/f2/41291a615be3eb981a1eb772f726f7 started: 1632982231344; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.355 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403747; id: 7; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/d6/b8ad47df1935a537579710ab866257 started: 1632982231349; exited: 2021-09-30T06:10:30Z; ]
+9月-30 14:10:31.361 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403748; id: 11; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/b7/e6b15e17a230449c916d73c5913089 started: 1632982231357; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.367 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403749; id: 12; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/cc/11bf9d27981b65ed57c7205dda3649 started: 1632982231362; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.373 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403750; id: 13; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/25/9786993a1b2e38f1a7f381e8658556 started: 1632982231369; exited: 2021-09-30T06:10:30Z; ]
+9月-30 14:10:31.379 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403751; id: 14; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/8a/6a2026f6861205a9ab3920d2dbc550 started: 1632982231375; exited: 2021-09-30T06:10:30Z; ]
+9月-30 14:10:31.386 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403752; id: 15; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/f8/7f9c9e95693f4cb5a04f521e400b09 started: 1632982231381; exited: 2021-09-30T06:10:30Z; ]
+9月-30 14:10:31.395 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403753; id: 16; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/b3/1bcceafc8bd17a3a0d0fc6a9fda00c started: 1632982231388; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.403 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403754; id: 17; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/91/e53f9b5424c9fd1bc1036e168572ee started: 1632982231399; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.435 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403758; id: 21; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/0b/3004e7b0aa751cae6504f8aed61284 started: 1632982231431; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.446 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403759; id: 22; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/dc/eb302c3ad270b256aa09ddd8001adb started: 1632982231437; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.452 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403760; id: 23; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/12/4fa48a948f584b1d1ef9c4d98440f7 started: 1632982231448; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.458 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403761; id: 24; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/b2/66af563e23b5610da0834b4489557c started: 1632982231454; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.464 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403762; id: 25; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/55/c317ed09925342d6c109cf3c22e44f started: 1632982231460; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.470 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403763; id: 26; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/b7/ecd70a27af8d63eba33ea7012ada1d started: 1632982231466; exited: 2021-09-30T06:10:29Z; ]
+9月-30 14:10:31.476 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403764; id: 27; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/e0/eb244a107f3e788659760c15d2c572 started: 1632982231472; exited: 2021-09-30T06:10:30Z; ]
+9月-30 14:10:31.483 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403765; id: 28; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/5e/22fbbb6c59161c64c978cb3562bcd6 started: 1632982231478; exited: 2021-09-30T06:10:30Z; ]
+9月-30 14:10:31.489 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 403766; id: 29; name: NR (NR); status: COMPLETED; exit: 1; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/blast/work/a6/d7a2fcaf775e6121be1502e1639d44 started: 1632982231485; exited: 2021-09-30T06:10:30Z; ]
+9月-30 14:10:31.489 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+9月-30 14:10:31.505 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

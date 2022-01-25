@@ -1,0 +1,131 @@
+11月-11 07:56:55.785 [main] DEBUG nextflow.cli.Launcher - $> nextflow run mRNA.nf --fqlist fastq.list --group group.list --ref GCF_000002035.6_GRCz11_genomic.fna --gff GCF_000002035.6_GRCz11_genomic.gff --group group.list --condition condition.list --go_annotation ../Annotation/demo/
+11月-11 07:56:56.050 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.3
+11月-11 07:56:56.112 [main] INFO  nextflow.cli.CmdRun - Launching `mRNA.nf` [romantic_cajal] - revision: f34e978595
+11月-11 07:56:56.257 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/mnt/ilustre/users/dna/.nextflow/plugins
+11月-11 07:56:56.260 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+11月-11 07:56:56.264 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+11月-11 07:56:56.276 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+11月-11 07:56:56.278 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+11月-11 07:56:56.283 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+11月-11 07:56:56.298 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+11月-11 07:56:56.375 [main] DEBUG nextflow.Session - Session uuid: 26f97720-bfb3-4162-b983-c9504ee4804d
+11月-11 07:56:56.375 [main] DEBUG nextflow.Session - Run name: romantic_cajal
+11月-11 07:56:56.377 [main] DEBUG nextflow.Session - Executor pool size: 64
+11月-11 07:56:56.518 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.3 build 5560
+  Created: 21-07-2021 15:09 UTC (23:09 CDT)
+  System: Linux 4.18.0-240.22.1.el8_3.x86_64
+  Runtime: Groovy 3.0.7 on Java HotSpot(TM) 64-Bit Server VM 11.0.11+9-LTS-194
+  Encoding: UTF-8 (UTF-8)
+  Process: 2819732@compute-5-95 [10.2.4.236]
+  CPUs: 64 - Mem: 125.2 GB (100.7 GB) - Swap: 4 GB (4 GB)
+11月-11 07:56:56.611 [main] DEBUG nextflow.Session - Work-dir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work [lustre]
+11月-11 07:56:56.660 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+11月-11 07:56:56.676 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+11月-11 07:56:56.869 [main] DEBUG nextflow.Session - Session start invoked
+11月-11 07:56:59.169 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+11月-11 07:56:59.182 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: bqsr, DEGene, snpEff, sampleAssemble, satuation, read_distribution, mkdup, mergefq, enrichKEGG, prermats, fastp, mapping, gvcftyper, refdict, geneBody_coverage, corPCA, mappingQC, mergeVcfs, snpFilterAnno, indelFilterAnno, enrichGO, bamsort, haplotyper, fastqc, mergeAssemble, reassemble, runrmats, DEtrans, prepDE, refindex, refFai, coverage_all
+11月-11 07:56:59.445 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.445 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.458 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+11月-11 07:56:59.467 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+11月-11 07:56:59.473 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+11月-11 07:56:59.593 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.593 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.616 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.616 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.629 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.629 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.655 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.655 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.667 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.668 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.685 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.685 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.715 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.716 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.731 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.731 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.742 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.742 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.769 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.770 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.779 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.779 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.793 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.793 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.799 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.799 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.805 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.806 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.814 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.814 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.823 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.823 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.828 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.829 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.835 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.835 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.842 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.843 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.849 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.850 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.856 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.856 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.862 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.862 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.872 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.872 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 07:56:59.883 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 07:56:59.883 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 08:00:44.510 [SIGTERM handler] DEBUG nextflow.Session - Session aborted -- Cause: SIGTERM
+11月-11 08:00:44.519 [SIGTERM handler] DEBUG nextflow.Session - Unexpected error dumping DGA status
+java.util.ConcurrentModificationException: null
+	at java.base/java.util.ArrayList$Itr.checkForComodification(ArrayList.java:1043)
+	at java.base/java.util.ArrayList$Itr.next(ArrayList.java:997)
+	at nextflow.dag.DAG.normalizeMissingVertices(DAG.groovy:294)
+	at nextflow.dag.DAG.normalize(DAG.groovy:337)
+	at nextflow.dag.DAG.dumpActiveNodes(DAG.groovy:347)
+	at nextflow.Session.dumpNetworkStatus(Session.groovy:475)
+	at nextflow.Session.abort(Session.groovy:725)
+	at nextflow.Session$_registerSignalHandlers_closure15.doCall(Session.groovy:434)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at org.codehaus.groovy.runtime.metaclass.ClosureMetaClass.invokeMethod(ClosureMetaClass.java:263)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1035)
+	at groovy.lang.Closure.call(Closure.java:412)
+	at org.codehaus.groovy.runtime.ConvertedClosure.invokeCustom(ConvertedClosure.java:50)
+	at org.codehaus.groovy.runtime.ConversionHandler.invoke(ConversionHandler.java:110)
+	at com.sun.proxy.$Proxy17.handle(Unknown Source)
+	at jdk.unsupported/sun.misc.Signal$InternalMiscHandler.handle(Signal.java:198)
+	at java.base/jdk.internal.misc.Signal$1.run(Signal.java:220)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+11月-11 08:00:44.522 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 08:00:44.522 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 08:00:44.529 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (13) > jobId: 612169; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/81/3423c8bdca5e4ceb9037d11d8402c0
+11月-11 08:00:44.533 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 08:00:44.534 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 08:00:44.537 [Task submitter] INFO  nextflow.Session - [81/3423c8] Submitted process > mergefq (13)
+11月-11 08:00:44.541 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 08:00:44.542 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 08:00:44.547 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 08:00:44.548 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 08:00:44.552 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 08:00:44.553 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 08:00:44.559 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 08:00:44.559 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 08:00:44.599 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-11 08:00:44.600 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-11 08:00:44.603 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+11月-11 08:00:44.604 [main] DEBUG nextflow.Session - Session await
+11月-11 08:00:44.604 [main] DEBUG nextflow.Session - Session await > all process finished
+11月-11 08:00:44.604 [main] DEBUG nextflow.Session - Session await > all barriers passed
+11月-11 08:00:44.614 [main] WARN  n.processor.TaskPollingMonitor - Killing pending tasks (1)
+11月-11 08:00:44.660 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=18; submittedCount=1; runningCount=-1; retriesCount=0; abortedCount=1; succeedDuration=0ms; failedDuration=0ms; cachedDuration=0ms;loadCpus=-1; loadMemory=0; peakRunning=0; peakCpus=0; peakMemory=0; ]
+11月-11 08:00:44.723 [main] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+11月-11 08:00:44.738 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+11月-11 08:00:44.782 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

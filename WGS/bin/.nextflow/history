@@ -1,0 +1,21 @@
+2021-08-23 16:34:12	2.4s	disturbed_poisson	ERR	88750ddfa9d27e8eb2440a9a0e8a48a7	35bad147-78bb-45aa-928f-312a7eb8a4de	nextflow blast.nf
+2021-08-23 16:47:23	4s	hopeful_morse	ERR	88750ddfa9d27e8eb2440a9a0e8a48a7	410bc38b-d607-4447-bc43-9c31bf5788ab	nextflow blast.nf --query sub.0.fa --db genome_chr.fa
+2021-08-23 16:48:54	3.7s	small_cantor	ERR	88750ddfa9d27e8eb2440a9a0e8a48a7	7944053f-0f97-49d1-9708-f404a524f1cb	nextflow blast.nf --query sub.0.fa --db genome_chr.fa
+2021-08-23 16:49:13	4.2s	desperate_brenner	ERR	88750ddfa9d27e8eb2440a9a0e8a48a7	822c194d-8d50-48ef-bf26-e0068eb75951	nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+2021-08-23 16:50:28	4.8s	distraught_swartz	ERR	2c1d31e2b70ace100b8879dbbe410504	25ed0374-94e8-43d2-ac11-b35644b21033	nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+2021-08-23 16:51:16	3.6s	trusting_shaw	ERR	2c1d31e2b70ace100b8879dbbe410504	ce1b2e53-1a94-49c1-87dc-1c30cb2311ef	nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+2021-08-23 16:51:24	4.8s	maniac_keller	ERR	2c1d31e2b70ace100b8879dbbe410504	e23cad6d-a214-4527-adde-e031216d1119	nextflow blast.nf --query ./sub.0.fa --db ./
+2021-08-23 16:53:25	5.4s	soggy_colden	ERR	2c1d31e2b70ace100b8879dbbe410504	7b160bd4-a6d5-4d61-b275-89c7be295d59	nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+2021-08-23 16:53:46	4.2s	spontaneous_carson	ERR	2c1d31e2b70ace100b8879dbbe410504	449ef401-aadc-46f9-84fa-81bb9a420a98	nextflow blast.nf --query ./sub.0.fa --db ./genome
+2021-08-23 16:54:58	3.9s	furious_majorana	ERR	ed41b9a7d05f428fd15d4e22ecd79cca	ba2c79c1-225d-482e-af8b-1b3bbe4f42f6	nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+2021-08-23 16:56:32	5.4s	deadly_dalembert	ERR	ed41b9a7d05f428fd15d4e22ecd79cca	b426fbe9-5519-4e17-bf7d-a162d388f71d	nextflow blast.nf --query ./sub.0.fa --db ./genome/genome_chr.fa
+2021-08-23 16:58:20	3.4s	cheesy_goldberg	ERR	8738852f9b3d1e11a41140d158822f61	9d890404-ac83-4079-b035-50c9f1bff679	nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+2021-08-23 16:58:38	13s	golden_poisson	ERR	8738852f9b3d1e11a41140d158822f61	359d9a7d-20cb-420e-ab2e-be6dfeec25ef	nextflow blast.nf --query ./sub.0.fa --db ./genome/genome_chr.fa
+2021-08-23 16:59:54	-	amazing_edison	-	19ea29f2be7784b6a8439b6f14aedd0d	64c17b8a-7050-4f3f-a6d3-9298a1cb8439	nextflow blast.nf --query ./sub.0.fa --db ./genome/genome_chr.fa
+2021-08-23 17:00:43	-	golden_torvalds	-	e7d3785c6ffe657de25e6bc0e380ea0d	a850d069-3f01-4d60-bd99-b2fd6c38c20d	nextflow blast.nf --query ./sub.0.fa --db ./genome/genome_chr.fa
+2021-08-23 17:02:11	-	reverent_agnesi	-	d59f563c4924aa81270239c4bff46dd3	c53fa9b7-5cf5-4ebf-82b1-589a13d76457	nextflow blast.nf --query ./sub.0.fa --db ./genome/genome_chr.fa
+2021-08-23 17:02:48	-	pedantic_knuth	-	39ad003f2b86f51bc74602c0005faa9b	732a2b58-6d54-4af2-9490-1ef8fdeae1c7	nextflow blast.nf --query ./sub.0.fa --db ./genome/genome_chr.fa
+2021-08-23 17:03:04	2.3s	angry_northcutt	ERR	8844051876d0f46953fc67a553f67703	39a23779-66aa-4b00-b451-3c94868ee2d6	nextflow blast.nf --query ./sub.0.fa --db ./genome/genome_chr.fa
+2021-08-23 17:06:08	2s	soggy_plateau	ERR	8844051876d0f46953fc67a553f67703	3102b12b-0cb3-4e14-b28c-85d28953cd64	nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+2021-08-23 17:09:59	6.7s	sad_wing	ERR	1b85722b59d2bf63b60ad4f3f6249b6a	9f0d1b90-fe35-423b-a5e1-eb96d67a4e27	nextflow blast.nf --query ./sub.0.fa --db ./genome_chr.fa
+2021-08-23 17:10:26	15m 12s	irreverent_golick	OK	1b85722b59d2bf63b60ad4f3f6249b6a	b0b2b936-5f27-44ba-b517-d4de28c81f96	nextflow blast.nf --query ./sub.0.fa --db ./genome/genome_chr.fa

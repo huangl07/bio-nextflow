@@ -1,0 +1,973 @@
+11月-10 13:50:50.974 [main] DEBUG nextflow.cli.Launcher - $> nextflow run mRNA.nf --fqlist fastq.list --group group.list --ref GCF_000002035.6_GRCz11_genomic.fna --gff GCF_000002035.6_GRCz11_genomic.gff --group group.list --condition condition.list --go_annotation ../Annotation/demo/
+11月-10 13:50:51.202 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 21.04.3
+11月-10 13:50:51.258 [main] INFO  nextflow.cli.CmdRun - Launching `mRNA.nf` [awesome_kimura] - revision: f34e978595
+11月-10 13:50:51.377 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; plugins-dir=/mnt/ilustre/users/dna/.nextflow/plugins
+11月-10 13:50:51.383 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+11月-10 13:50:51.386 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins local root: .nextflow/plr/empty
+11月-10 13:50:51.398 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+11月-10 13:50:51.399 [main] INFO  org.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+11月-10 13:50:51.404 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.4.1 in 'deployment' mode
+11月-10 13:50:51.419 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+11月-10 13:50:51.506 [main] DEBUG nextflow.Session - Session uuid: 94bfb693-9b60-4f96-abd9-1465db7b4201
+11月-10 13:50:51.506 [main] DEBUG nextflow.Session - Run name: awesome_kimura
+11月-10 13:50:51.508 [main] DEBUG nextflow.Session - Executor pool size: 64
+11月-10 13:50:51.616 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 21.04.3 build 5560
+  Created: 21-07-2021 15:09 UTC (23:09 CDT)
+  System: Linux 4.18.0-240.22.1.el8_3.x86_64
+  Runtime: Groovy 3.0.7 on Java HotSpot(TM) 64-Bit Server VM 11.0.11+9-LTS-194
+  Encoding: UTF-8 (UTF-8)
+  Process: 1134861@compute-5-95 [10.2.4.236]
+  CPUs: 64 - Mem: 125.2 GB (71.2 GB) - Swap: 4 GB (4 GB)
+11月-10 13:50:51.677 [main] DEBUG nextflow.Session - Work-dir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work [lustre]
+11月-10 13:50:51.713 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+11月-10 13:50:51.735 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+11月-10 13:50:51.967 [main] DEBUG nextflow.Session - Session start invoked
+11月-10 13:50:54.485 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+11月-10 13:50:54.498 [main] DEBUG nextflow.Session - Workflow process names [dsl1]: bqsr, DEGene, snpEff, sampleAssemble, satuation, read_distribution, mkdup, mergefq, enrichKEGG, prermats, fastp, mapping, gvcftyper, refdict, geneBody_coverage, corPCA, mappingQC, mergeVcfs, snpFilterAnno, indelFilterAnno, enrichGO, bamsort, haplotyper, fastqc, mergeAssemble, reassemble, runrmats, DEtrans, prepDE, refindex, refFai, coverage_all
+11月-10 13:50:54.825 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:54.825 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:54.842 [main] DEBUG nextflow.executor.Executor - [warm up] executor > slurm
+11月-10 13:50:54.853 [main] DEBUG n.processor.TaskPollingMonitor - Creating task monitor for executor 'slurm' > capacity: 100; pollInterval: 5s; dumpInterval: 5m 
+11月-10 13:50:54.860 [main] DEBUG n.executor.AbstractGridExecutor - Creating executor 'slurm' > queue-stat-interval: 1m
+11月-10 13:50:55.013 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.013 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.039 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.040 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.057 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.057 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.082 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.083 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.094 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.094 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.120 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.121 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.155 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.156 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.175 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.176 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.191 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.191 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.218 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.218 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.234 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.235 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.245 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.245 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.253 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.253 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.259 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.259 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.267 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.268 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.276 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.277 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.282 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.283 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.288 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.288 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.294 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.294 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.301 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.301 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.305 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.306 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.310 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.310 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.319 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.319 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.327 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.327 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.335 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process refindex (hisat2-index) > jobId: 599292; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741
+11月-10 13:50:55.336 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.337 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.341 [Task submitter] INFO  nextflow.Session - [77/e1b2cf] Submitted process > refindex (hisat2-index)
+11月-10 13:50:55.346 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.347 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.353 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.354 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.359 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.359 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.364 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.365 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.368 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process snpEff (snpEff) > jobId: 599293; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/be/c75037b9df68bbdd14a13d0b5d2771
+11月-10 13:50:55.368 [Task submitter] INFO  nextflow.Session - [be/c75037] Submitted process > snpEff (snpEff)
+11月-10 13:50:55.370 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.371 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.392 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (11) > jobId: 599294; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/75/bd276389a989282d4ec52899bfa1aa
+11月-10 13:50:55.393 [Task submitter] INFO  nextflow.Session - [75/bd2763] Submitted process > mergefq (11)
+11月-10 13:50:55.405 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: slurm
+11月-10 13:50:55.405 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'slurm'
+11月-10 13:50:55.409 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+11月-10 13:50:55.409 [main] DEBUG nextflow.Session - Session await
+11月-10 13:50:55.416 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (14) > jobId: 599295; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/54/1cd0c7a90cd0cfd0fa4d638d4cd95c
+11月-10 13:50:55.416 [Task submitter] INFO  nextflow.Session - [54/1cd0c7] Submitted process > mergefq (14)
+11月-10 13:50:55.439 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process refdict (refdict) > jobId: 599296; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/f6bc7db48c30cad2ce159a598858de
+11月-10 13:50:55.440 [Task submitter] INFO  nextflow.Session - [8c/f6bc7d] Submitted process > refdict (refdict)
+11月-10 13:50:55.462 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (9) > jobId: 599297; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/4b/43b684f7a4bba3b127b750facc72f4
+11月-10 13:50:55.463 [Task submitter] INFO  nextflow.Session - [4b/43b684] Submitted process > mergefq (9)
+11月-10 13:50:55.485 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (5) > jobId: 599298; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8b/31b834d4ddc12267c36bbff2265840
+11月-10 13:50:55.486 [Task submitter] INFO  nextflow.Session - [8b/31b834] Submitted process > mergefq (5)
+11月-10 13:50:55.509 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (4) > jobId: 599299; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/1c/32f9c6362eeacbd94a988d336216ef
+11月-10 13:50:55.510 [Task submitter] INFO  nextflow.Session - [1c/32f9c6] Submitted process > mergefq (4)
+11月-10 13:50:55.534 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (8) > jobId: 599300; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/72/bbc92c22c94483aa6ef81e3991c1d6
+11月-10 13:50:55.535 [Task submitter] INFO  nextflow.Session - [72/bbc92c] Submitted process > mergefq (8)
+11月-10 13:50:55.557 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process refFai (refFai) > jobId: 599301; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/44/c9ae1eff2d7082385426cb1d1a031a
+11月-10 13:50:55.558 [Task submitter] INFO  nextflow.Session - [44/c9ae1e] Submitted process > refFai (refFai)
+11月-10 13:50:55.580 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (15) > jobId: 599302; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/96/de005110da943d770116fe96ecd03a
+11月-10 13:50:55.580 [Task submitter] INFO  nextflow.Session - [96/de0051] Submitted process > mergefq (15)
+11月-10 13:50:55.602 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (1) > jobId: 599303; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/70/9dd4c0849cbfddd3cfd3ee653637e8
+11月-10 13:50:55.603 [Task submitter] INFO  nextflow.Session - [70/9dd4c0] Submitted process > mergefq (1)
+11月-10 13:50:55.625 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (7) > jobId: 599304; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/93/548e92758e5b30f13102e14060b816
+11月-10 13:50:55.626 [Task submitter] INFO  nextflow.Session - [93/548e92] Submitted process > mergefq (7)
+11月-10 13:50:55.647 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (3) > jobId: 599305; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/4e/b14caaef5e1803b44b77d898124d89
+11月-10 13:50:55.647 [Task submitter] INFO  nextflow.Session - [4e/b14caa] Submitted process > mergefq (3)
+11月-10 13:50:55.669 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (2) > jobId: 599306; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/63/eee96989113f7dde9e5025298849de
+11月-10 13:50:55.669 [Task submitter] INFO  nextflow.Session - [63/eee969] Submitted process > mergefq (2)
+11月-10 13:50:55.693 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (10) > jobId: 599307; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/54/cc8edf1b18ed6f76a4f6d1efe6fa30
+11月-10 13:50:55.694 [Task submitter] INFO  nextflow.Session - [54/cc8edf] Submitted process > mergefq (10)
+11月-10 13:50:55.714 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (6) > jobId: 599308; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/18/64a5e1797475dc4455c86ecfda6b2a
+11月-10 13:50:55.715 [Task submitter] INFO  nextflow.Session - [18/64a5e1] Submitted process > mergefq (6)
+11月-10 13:50:55.734 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (12) > jobId: 599309; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/6a/1c6165188a41b8b3024d71a8f8df5e
+11月-10 13:50:55.734 [Task submitter] INFO  nextflow.Session - [6a/1c6165] Submitted process > mergefq (12)
+11月-10 13:50:55.754 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mergefq (13) > jobId: 599310; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d4/d18376477a07577c3bdac7654f13db
+11月-10 13:50:55.754 [Task submitter] INFO  nextflow.Session - [d4/d18376] Submitted process > mergefq (13)
+11月-10 13:50:59.904 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599294; id: 11; name: mergefq (11); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/75/bd276389a989282d4ec52899bfa1aa started: 1636523459895; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:50:59.948 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599295; id: 14; name: mergefq (14); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/54/1cd0c7a90cd0cfd0fa4d638d4cd95c started: 1636523459943; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:50:59.955 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599311; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/4e/083f2ec2f84f7a557878f6917c91e4
+11月-10 13:50:59.955 [Task submitter] INFO  nextflow.Session - [4e/083f2e] Submitted process > fastp (fastp)
+11月-10 13:50:59.970 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599297; id: 9; name: mergefq (9); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/4b/43b684f7a4bba3b127b750facc72f4 started: 1636523459964; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:50:59.986 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599312; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c5/7984a0770ccd342f36a8e9a3a6db8d
+11月-10 13:50:59.986 [Task submitter] INFO  nextflow.Session - [c5/7984a0] Submitted process > fastp (fastp)
+11月-10 13:50:59.988 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599298; id: 8; name: mergefq (5); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8b/31b834d4ddc12267c36bbff2265840 started: 1636523459981; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.004 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599299; id: 6; name: mergefq (4); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/1c/32f9c6362eeacbd94a988d336216ef started: 1636523459999; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.006 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599313; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/65/8e25bd7d0dc2bde6cf0aa09018ab9d
+11月-10 13:51:00.007 [Task submitter] INFO  nextflow.Session - [65/8e25bd] Submitted process > fastp (fastp)
+11月-10 13:51:00.020 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599300; id: 5; name: mergefq (8); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/72/bbc92c22c94483aa6ef81e3991c1d6 started: 1636523460015; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.027 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599314; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/65/6f2185a2377c1cef08a106fb68ce5b
+11月-10 13:51:00.028 [Task submitter] INFO  nextflow.Session - [65/6f2185] Submitted process > fastp (fastp)
+11月-10 13:51:00.040 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599302; id: 15; name: mergefq (15); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/96/de005110da943d770116fe96ecd03a started: 1636523460034; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.048 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599315; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/f7/a88eef2b63413a4677c1e4b0854b3c
+11月-10 13:51:00.049 [Task submitter] INFO  nextflow.Session - [f7/a88eef] Submitted process > fastp (fastp)
+11月-10 13:51:00.056 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599303; id: 1; name: mergefq (1); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/70/9dd4c0849cbfddd3cfd3ee653637e8 started: 1636523460050; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.069 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599316; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d0/517f8e8cb08cc5e2a567da748469d2
+11月-10 13:51:00.070 [Task submitter] INFO  nextflow.Session - [d0/517f8e] Submitted process > fastp (fastp)
+11月-10 13:51:00.080 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599304; id: 3; name: mergefq (7); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/93/548e92758e5b30f13102e14060b816 started: 1636523460072; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.090 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599317; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c9/4b175989b9422d4c0f29559acd4843
+11月-10 13:51:00.090 [Task submitter] INFO  nextflow.Session - [c9/4b1759] Submitted process > fastp (fastp)
+11月-10 13:51:00.095 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599305; id: 7; name: mergefq (3); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/4e/b14caaef5e1803b44b77d898124d89 started: 1636523460091; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.111 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599318; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/03/227482cd0ea44b3cfb5b62b91f08e3
+11月-10 13:51:00.112 [Task submitter] INFO  nextflow.Session - [03/227482] Submitted process > fastp (fastp)
+11月-10 13:51:00.117 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599306; id: 2; name: mergefq (2); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/63/eee96989113f7dde9e5025298849de started: 1636523460106; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.132 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599319; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/f3/8d0f4a42f272423839d5c6c82ba860
+11月-10 13:51:00.132 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599307; id: 10; name: mergefq (10); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/54/cc8edf1b18ed6f76a4f6d1efe6fa30 started: 1636523460127; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.132 [Task submitter] INFO  nextflow.Session - [f3/8d0f4a] Submitted process > fastp (fastp)
+11月-10 13:51:00.148 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599308; id: 4; name: mergefq (6); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/18/64a5e1797475dc4455c86ecfda6b2a started: 1636523460142; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.152 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599320; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/2d/9eb9f4b0eec65bf7191f94ecf8f47c
+11月-10 13:51:00.153 [Task submitter] INFO  nextflow.Session - [2d/9eb9f4] Submitted process > fastp (fastp)
+11月-10 13:51:00.167 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599309; id: 12; name: mergefq (12); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/6a/1c6165188a41b8b3024d71a8f8df5e started: 1636523460159; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.173 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599321; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/7d/cfbc597eb23f6cc6967665a9104ce5
+11月-10 13:51:00.173 [Task submitter] INFO  nextflow.Session - [7d/cfbc59] Submitted process > fastp (fastp)
+11月-10 13:51:00.182 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599310; id: 13; name: mergefq (13); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d4/d18376477a07577c3bdac7654f13db started: 1636523460178; exited: 2021-11-10T05:50:57Z; ]
+11月-10 13:51:00.193 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599322; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c0/986fceaf5f96fb7ed10e9b8ef4c6ec
+11月-10 13:51:00.193 [Task submitter] INFO  nextflow.Session - [c0/986fce] Submitted process > fastp (fastp)
+11月-10 13:51:00.213 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599323; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/5e/c1d9771222166b5c5ea9fd09c6f6e7
+11月-10 13:51:00.213 [Task submitter] INFO  nextflow.Session - [5e/c1d977] Submitted process > fastp (fastp)
+11月-10 13:51:00.232 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599324; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/7a/64d078086e38a28364d659b6660f37
+11月-10 13:51:00.232 [Task submitter] INFO  nextflow.Session - [7a/64d078] Submitted process > fastp (fastp)
+11月-10 13:51:00.251 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastp (fastp) > jobId: 599325; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/fc/dd7576f4356b85d82c3fa74c29549c
+11月-10 13:51:00.252 [Task submitter] INFO  nextflow.Session - [fc/dd7576] Submitted process > fastp (fastp)
+11月-10 13:51:39.870 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599301; id: 16; name: refFai (refFai); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/44/c9ae1eff2d7082385426cb1d1a031a started: 1636523460032; exited: 2021-11-10T05:51:39Z; ]
+11月-10 13:53:24.876 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599312; id: 21; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c5/7984a0770ccd342f36a8e9a3a6db8d started: 1636523464867; exited: 2021-11-10T05:53:22Z; ]
+11月-10 13:53:24.931 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599328; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/07/23907730f1d2b5df786c4932818279
+11月-10 13:53:24.932 [Task submitter] INFO  nextflow.Session - [07/239077] Submitted process > fastqc (fastqc)
+11月-10 13:53:44.878 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599314; id: 23; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/65/6f2185a2377c1cef08a106fb68ce5b started: 1636523464871; exited: 2021-11-10T05:53:42Z; ]
+11月-10 13:53:44.934 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599329; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/90/4e62407ff0727c4b486afbfb5d6876
+11月-10 13:53:44.935 [Task submitter] INFO  nextflow.Session - [90/4e6240] Submitted process > fastqc (fastqc)
+11月-10 13:53:49.877 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599316; id: 25; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d0/517f8e8cb08cc5e2a567da748469d2 started: 1636523464874; exited: 2021-11-10T05:53:47Z; ]
+11月-10 13:53:49.928 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599330; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/ff/26e0fc470dee358d223ac7e3b5f137
+11月-10 13:53:49.929 [Task submitter] INFO  nextflow.Session - [ff/26e0fc] Submitted process > fastqc (fastqc)
+11月-10 13:53:59.880 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599311; id: 20; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/4e/083f2ec2f84f7a557878f6917c91e4 started: 1636523464865; exited: 2021-11-10T05:53:59Z; ]
+11月-10 13:53:59.923 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599315; id: 24; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/f7/a88eef2b63413a4677c1e4b0854b3c started: 1636523464872; exited: 2021-11-10T05:53:58Z; ]
+11月-10 13:53:59.935 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599331; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/f2/f08220e8d839033089144b7b4dfd97
+11月-10 13:53:59.935 [Task submitter] INFO  nextflow.Session - [f2/f08220] Submitted process > fastqc (fastqc)
+11月-10 13:54:00.020 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599332; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cc/fd27bcca31c93a3c59d8ae47876daa
+11月-10 13:54:00.021 [Task submitter] INFO  nextflow.Session - [cc/fd27bc] Submitted process > fastqc (fastqc)
+11月-10 13:54:04.891 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599313; id: 22; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/65/8e25bd7d0dc2bde6cf0aa09018ab9d started: 1636523464869; exited: 2021-11-10T05:54:02Z; ]
+11月-10 13:54:04.944 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599333; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/371d1ad16385c639de55a178202fbf
+11月-10 13:54:04.945 [Task submitter] INFO  nextflow.Session - [cb/371d1a] Submitted process > fastqc (fastqc)
+11月-10 13:55:19.882 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599293; id: 19; name: snpEff (snpEff); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/be/c75037b9df68bbdd14a13d0b5d2771 started: 1636523459893; exited: 2021-11-10T05:55:19Z; ]
+11月-10 13:55:59.897 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 17 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+~> TaskHandler[jobId: 599296; id: 17; name: refdict (refdict); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/f6bc7db48c30cad2ce159a598858de started: 1636523459962; exited: -; ]
+~> TaskHandler[jobId: 599317; id: 26; name: fastp (fastp); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c9/4b175989b9422d4c0f29559acd4843 started: 1636523499883; exited: 2021-11-10T05:55:56Z; ]
+~> TaskHandler[jobId: 599318; id: 27; name: fastp (fastp); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/03/227482cd0ea44b3cfb5b62b91f08e3 started: 1636523604911; exited: -; ]
+~> TaskHandler[jobId: 599319; id: 28; name: fastp (fastp); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/f3/8d0f4a42f272423839d5c6c82ba860 started: 1636523624913; exited: -; ]
+~> TaskHandler[jobId: 599320; id: 29; name: fastp (fastp); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/2d/9eb9f4b0eec65bf7191f94ecf8f47c started: 1636523629908; exited: -; ]
+~> TaskHandler[jobId: 599321; id: 30; name: fastp (fastp); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/7d/cfbc597eb23f6cc6967665a9104ce5 started: 1636523640001; exited: -; ]
+~> TaskHandler[jobId: 599322; id: 31; name: fastp (fastp); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c0/986fceaf5f96fb7ed10e9b8ef4c6ec started: 1636523640003; exited: -; ]
+~> TaskHandler[jobId: 599323; id: 32; name: fastp (fastp); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/5e/c1d9771222166b5c5ea9fd09c6f6e7 started: 1636523644924; exited: -; ]
+~> TaskHandler[jobId: 599324; id: 33; name: fastp (fastp); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/7a/64d078086e38a28364d659b6660f37 started: 1636523719892; exited: -; ]
+.. remaining tasks omitted.
+11月-10 13:55:59.906 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599317; id: 26; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c9/4b175989b9422d4c0f29559acd4843 started: 1636523499883; exited: 2021-11-10T05:55:56Z; ]
+11月-10 13:55:59.963 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599334; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/86/779318052082bbdc25e7d4fb2ea6b8
+11月-10 13:55:59.963 [Task submitter] INFO  nextflow.Session - [86/779318] Submitted process > fastqc (fastqc)
+11月-10 13:56:09.903 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599318; id: 27; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/03/227482cd0ea44b3cfb5b62b91f08e3 started: 1636523604911; exited: 2021-11-10T05:56:07Z; ]
+11月-10 13:56:09.958 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599355; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/0a/5b3d61b9e4962373dcd53652ed955e
+11月-10 13:56:09.958 [Task submitter] INFO  nextflow.Session - [0a/5b3d61] Submitted process > fastqc (fastqc)
+11月-10 13:56:29.907 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599319; id: 28; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/f3/8d0f4a42f272423839d5c6c82ba860 started: 1636523624913; exited: 2021-11-10T05:56:29Z; ]
+11月-10 13:56:29.940 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599322; id: 31; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c0/986fceaf5f96fb7ed10e9b8ef4c6ec started: 1636523640003; exited: 2021-11-10T05:56:29Z; ]
+11月-10 13:56:29.959 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599356; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/62/ba4c72d2897baa084b4b57e96cd5a8
+11月-10 13:56:29.960 [Task submitter] INFO  nextflow.Session - [62/ba4c72] Submitted process > fastqc (fastqc)
+11月-10 13:56:29.985 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599357; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/32/5ecfef053b18f874a186f57e67d05f
+11月-10 13:56:29.986 [Task submitter] INFO  nextflow.Session - [32/5ecfef] Submitted process > fastqc (fastqc)
+11月-10 13:56:49.907 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599320; id: 29; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/2d/9eb9f4b0eec65bf7191f94ecf8f47c started: 1636523629908; exited: 2021-11-10T05:56:47Z; ]
+11月-10 13:56:49.958 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599358; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/27/710903594ff6d0fb8f2a58dea0a7a5
+11月-10 13:56:49.958 [Task submitter] INFO  nextflow.Session - [27/710903] Submitted process > fastqc (fastqc)
+11月-10 13:56:54.905 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599321; id: 30; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/7d/cfbc597eb23f6cc6967665a9104ce5 started: 1636523640001; exited: 2021-11-10T05:56:50Z; ]
+11月-10 13:56:54.940 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599331; id: 38; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/f2/f08220e8d839033089144b7b4dfd97 started: 1636523809940; exited: 2021-11-10T05:56:49Z; ]
+11月-10 13:56:54.957 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599359; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/73/3e7335082f5a541563801da2b4cc89
+11月-10 13:56:54.958 [Task submitter] INFO  nextflow.Session - [73/3e7335] Submitted process > fastqc (fastqc)
+11月-10 13:56:55.003 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599332; id: 39; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cc/fd27bcca31c93a3c59d8ae47876daa started: 1636523814999; exited: 2021-11-10T05:56:51Z; ]
+11月-10 13:56:55.067 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599334; id: 41; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/86/779318052082bbdc25e7d4fb2ea6b8 started: 1636523815063; exited: 2021-11-10T05:56:53Z; ]
+11月-10 13:56:59.904 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599323; id: 32; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/5e/c1d9771222166b5c5ea9fd09c6f6e7 started: 1636523644924; exited: 2021-11-10T05:56:56Z; ]
+11月-10 13:56:59.949 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599360; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/1c/cbae0db0657df4b10dd10c5d198bb7
+11月-10 13:56:59.950 [Task submitter] INFO  nextflow.Session - [1c/cbae0d] Submitted process > fastqc (fastqc)
+11月-10 13:57:04.921 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599328; id: 35; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/07/23907730f1d2b5df786c4932818279 started: 1636523769938; exited: 2021-11-10T05:57:03Z; ]
+11月-10 13:57:29.906 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599330; id: 37; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/ff/26e0fc470dee358d223ac7e3b5f137 started: 1636523789971; exited: 2021-11-10T05:57:26Z; ]
+11月-10 13:57:49.907 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599333; id: 40; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/371d1ad16385c639de55a178202fbf started: 1636523815061; exited: 2021-11-10T05:57:47Z; ]
+11月-10 13:58:09.919 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599324; id: 33; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/7a/64d078086e38a28364d659b6660f37 started: 1636523719892; exited: 2021-11-10T05:58:05Z; ]
+11月-10 13:58:09.996 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599361; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/40/a083036deb1aeb701c2f729e231c4b
+11月-10 13:58:09.997 [Task submitter] INFO  nextflow.Session - [40/a08303] Submitted process > fastqc (fastqc)
+11月-10 13:58:19.912 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599329; id: 36; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/90/4e62407ff0727c4b486afbfb5d6876 started: 1636523789969; exited: 2021-11-10T05:58:18Z; ]
+11月-10 13:58:24.910 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599356; id: 43; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/62/ba4c72d2897baa084b4b57e96cd5a8 started: 1636523900057; exited: 2021-11-10T05:58:20Z; ]
+11月-10 13:58:24.976 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599357; id: 44; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/32/5ecfef053b18f874a186f57e67d05f started: 1636523904972; exited: 2021-11-10T05:58:22Z; ]
+11月-10 13:58:25.050 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599358; id: 45; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/27/710903594ff6d0fb8f2a58dea0a7a5 started: 1636523905044; exited: 2021-11-10T05:58:23Z; ]
+11月-10 13:58:29.912 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599359; id: 46; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/73/3e7335082f5a541563801da2b4cc89 started: 1636523905126; exited: 2021-11-10T05:58:25Z; ]
+11月-10 13:58:29.979 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599360; id: 47; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/1c/cbae0db0657df4b10dd10c5d198bb7 started: 1636523909975; exited: 2021-11-10T05:58:26Z; ]
+11月-10 13:58:30.047 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599361; id: 48; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/40/a083036deb1aeb701c2f729e231c4b started: 1636523910042; exited: 2021-11-10T05:58:28Z; ]
+11月-10 13:58:59.911 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599296; id: 17; name: refdict (refdict); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/f6bc7db48c30cad2ce159a598858de started: 1636523459962; exited: 2021-11-10T05:58:54Z; ]
+11月-10 13:59:04.927 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599355; id: 42; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/0a/5b3d61b9e4962373dcd53652ed955e started: 1636523889972; exited: 2021-11-10T05:59:02Z; ]
+11月-10 14:00:39.920 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599325; id: 34; name: fastp (fastp); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/fc/dd7576f4356b85d82c3fa74c29549c started: 1636523759942; exited: 2021-11-10T06:00:37Z; ]
+11月-10 14:00:40.003 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process fastqc (fastqc) > jobId: 599387; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/ee/6075175a62867a968ab57a437e832b
+11月-10 14:00:40.003 [Task submitter] INFO  nextflow.Session - [ee/607517] Submitted process > fastqc (fastqc)
+11月-10 14:00:59.915 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+~> TaskHandler[jobId: 599387; id: 49; name: fastqc (fastqc); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/ee/6075175a62867a968ab57a437e832b started: -; exited: -; ]
+11月-10 14:05:59.925 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 2 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+~> TaskHandler[jobId: 599387; id: 49; name: fastqc (fastqc); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/ee/6075175a62867a968ab57a437e832b started: -; exited: -; ]
+11月-10 14:10:04.942 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599387; id: 49; name: fastqc (fastqc); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/ee/6075175a62867a968ab57a437e832b started: 1636524555587; exited: 2021-11-10T06:10:02Z; ]
+11月-10 14:10:59.939 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+11月-10 14:15:59.950 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+11月-10 14:21:00.043 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+11月-10 14:26:00.103 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+11月-10 14:31:00.167 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+11月-10 14:36:00.264 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: RUNNING; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: -; ]
+11月-10 14:38:50.352 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[jobId: 599292; id: 18; name: refindex (hisat2-index); status: COMPLETED; exit: 0; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/77/e1b2cf6b28a3cb12e134566bf87741 started: 1636523459868; exited: 2021-11-10T06:38:46Z; ]
+11月-10 14:38:51.029 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599463; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb
+11月-10 14:38:51.030 [Task submitter] INFO  nextflow.Session - [8c/c7a054] Submitted process > mapping (mapping)
+11月-10 14:38:51.049 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599464; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9
+11月-10 14:38:51.049 [Task submitter] INFO  nextflow.Session - [b6/43f762] Submitted process > mapping (mapping)
+11月-10 14:38:51.071 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599465; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f
+11月-10 14:38:51.071 [Task submitter] INFO  nextflow.Session - [e4/cdedb3] Submitted process > mapping (mapping)
+11月-10 14:38:51.092 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599466; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7
+11月-10 14:38:51.092 [Task submitter] INFO  nextflow.Session - [cb/958d6a] Submitted process > mapping (mapping)
+11月-10 14:38:51.113 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599467; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c
+11月-10 14:38:51.113 [Task submitter] INFO  nextflow.Session - [c1/53d750] Submitted process > mapping (mapping)
+11月-10 14:38:51.133 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599468; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71
+11月-10 14:38:51.134 [Task submitter] INFO  nextflow.Session - [11/d100a1] Submitted process > mapping (mapping)
+11月-10 14:38:51.153 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599469; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3
+11月-10 14:38:51.154 [Task submitter] INFO  nextflow.Session - [20/0ab111] Submitted process > mapping (mapping)
+11月-10 14:38:51.173 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599470; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63
+11月-10 14:38:51.174 [Task submitter] INFO  nextflow.Session - [83/8c6877] Submitted process > mapping (mapping)
+11月-10 14:38:51.193 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599471; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1
+11月-10 14:38:51.193 [Task submitter] INFO  nextflow.Session - [d9/fdd7c9] Submitted process > mapping (mapping)
+11月-10 14:38:51.212 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599472; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1
+11月-10 14:38:51.213 [Task submitter] INFO  nextflow.Session - [38/1b3b33] Submitted process > mapping (mapping)
+11月-10 14:38:51.232 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599473; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/33/edf165cd3e7260ea8495f9e75c8f86
+11月-10 14:38:51.233 [Task submitter] INFO  nextflow.Session - [33/edf165] Submitted process > mapping (mapping)
+11月-10 14:38:51.252 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599474; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/6c/2a7c8c3c34e3461bb2284e7bb91731
+11月-10 14:38:51.252 [Task submitter] INFO  nextflow.Session - [6c/2a7c8c] Submitted process > mapping (mapping)
+11月-10 14:38:51.271 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599475; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/25/b6b5ebbf71f853a163229397f2ef08
+11月-10 14:38:51.271 [Task submitter] INFO  nextflow.Session - [25/b6b5eb] Submitted process > mapping (mapping)
+11月-10 14:38:51.291 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599476; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/f6/ce62fe9c2fde0c1e3596c2fc9fb32a
+11月-10 14:38:51.291 [Task submitter] INFO  nextflow.Session - [f6/ce62fe] Submitted process > mapping (mapping)
+11月-10 14:38:51.310 [Task submitter] DEBUG nextflow.executor.GridTaskHandler - [SLURM] submitted process mapping (mapping) > jobId: 599477; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/56/23dc0ada99ba24228370b7657d0cbe
+11月-10 14:38:51.310 [Task submitter] INFO  nextflow.Session - [56/23dc0a] Submitted process > mapping (mapping)
+11月-10 14:41:00.348 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 14:46:00.359 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 14:51:00.419 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 14:56:00.428 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:01:00.493 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:06:00.574 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:11:00.729 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:16:00.820 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:21:01.354 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:26:01.445 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:31:01.539 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:36:01.617 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:41:01.656 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:46:01.693 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:51:01.707 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 15:56:01.763 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:01:01.773 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:06:01.776 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:11:01.785 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:16:01.815 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:21:01.842 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:26:01.881 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:31:01.892 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:36:01.902 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:41:01.929 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:46:01.965 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:51:01.994 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 16:56:02.011 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:01:02.156 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:06:02.166 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:11:02.195 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:16:02.249 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:21:02.545 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:26:02.586 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:31:02.658 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:36:02.711 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:41:02.725 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:46:02.750 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:51:02.761 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 17:56:02.774 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 18:01:02.830 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 18:06:02.877 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor slurm > tasks to be completed: 15 -- submitted tasks are shown below
+~> TaskHandler[jobId: 599463; id: 60; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/8c/c7a054bb6729948d32e7a9a8478aeb started: -; exited: -; ]
+~> TaskHandler[jobId: 599464; id: 59; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/b6/43f7627f3976df1930845777e8e3d9 started: -; exited: -; ]
+~> TaskHandler[jobId: 599465; id: 54; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/e4/cdedb329974eb51c278c0d82c9f11f started: -; exited: -; ]
+~> TaskHandler[jobId: 599466; id: 62; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/cb/958d6a692ded11d91581f0f9cb96f7 started: -; exited: -; ]
+~> TaskHandler[jobId: 599467; id: 55; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/c1/53d75019dce507ce743c515cfc266c started: -; exited: -; ]
+~> TaskHandler[jobId: 599468; id: 61; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/11/d100a12349e4c00e8e3167f39dda71 started: -; exited: -; ]
+~> TaskHandler[jobId: 599469; id: 52; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/20/0ab1115bc18ad361a29af9514c51f3 started: -; exited: -; ]
+~> TaskHandler[jobId: 599470; id: 50; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/83/8c68777cf9abb2bce663cb63f7bb63 started: -; exited: -; ]
+~> TaskHandler[jobId: 599471; id: 53; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/d9/fdd7c98978cff26e8ba8b30d7ad1a1 started: -; exited: -; ]
+~> TaskHandler[jobId: 599472; id: 63; name: mapping (mapping); status: SUBMITTED; exit: -; error: -; workDir: /mnt/ilustre/users/dna/Pipeline/NextFlow/bio-nextflow/mRNA/work/38/1b3b333cce451d3e4cee4a378418d1 started: -; exited: -; ]
+.. remaining tasks omitted.
+11月-10 18:08:35.209 [SIGHUP handler] DEBUG nextflow.Session - Session aborted -- Cause: SIGHUP
+11月-10 18:08:35.326 [SIGHUP handler] DEBUG nextflow.Session - The following nodes are still active:
+[process] bamsort
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (cntrl) -     ; channel: $
+
+[process] sampleAssemble
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refgtf
+  port 2: (cntrl) -     ; channel: $
+
+[process] mergeAssemble
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: gtfs
+  port 1: (value) bound ; channel: refgtf
+  port 2: (cntrl) -     ; channel: $
+
+[process] reassemble
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) OPEN  ; channel: mergeGtf
+  port 2: (cntrl) -     ; channel: $
+
+[process] prepDE
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: finalgtfs
+  port 1: (cntrl) -     ; channel: $
+
+[process] mappingQC
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: stat
+  port 1: (cntrl) -     ; channel: $
+
+[process] geneBody_coverage
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refbed
+  port 2: (cntrl) -     ; channel: $
+
+[process] coverage_all
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: cover_file
+  port 1: (cntrl) -     ; channel: $
+
+[process] satuation
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refbed
+  port 2: (cntrl) -     ; channel: $
+
+[process] read_distribution
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: refbed
+  port 2: (cntrl) -     ; channel: $
+
+[process] DEGene
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: count_matrix
+  port 1: (value) bound ; channel: group
+  port 2: (value) bound ; channel: condition
+  port 3: (cntrl) -     ; channel: $
+
+[process] DEtrans
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: count_matrix
+  port 1: (value) bound ; channel: group
+  port 2: (value) bound ; channel: condition
+  port 3: (cntrl) -     ; channel: $
+
+[process] enrichGO
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: trans
+  port 1: (value) bound ; channel: go
+  port 2: (cntrl) -     ; channel: $
+
+[process] enrichKEGG
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: trans
+  port 1: (value) bound ; channel: kegg
+  port 2: (cntrl) -     ; channel: $
+
+[process] corPCA
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: gene_matrix
+  port 1: (value) OPEN  ; channel: trans_matrix
+  port 2: (value) bound ; channel: group
+  port 3: (cntrl) -     ; channel: $
+
+[process] mkdup
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref
+  port 2: (value) bound ; channel: fai
+  port 3: (cntrl) -     ; channel: $
+
+[process] bqsr
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref
+  port 2: (value) bound ; channel: dict
+  port 3: (value) bound ; channel: fai
+  port 4: (cntrl) -     ; channel: $
+
+[process] haplotyper
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: ref
+  port 2: (value) bound ; channel: dict
+  port 3: (value) bound ; channel: fai
+  port 4: (cntrl) -     ; channel: $
+
+[process] gvcftyper
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: gvcfs
+  port 1: (value) OPEN  ; channel: tbis
+  port 2: (value) bound ; channel: ref
+  port 3: (value) bound ; channel: dict
+  port 4: (value) bound ; channel: fai
+  port 5: (cntrl) -     ; channel: $
+
+[process] snpFilterAnno
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: vcf
+  port 1: (value) OPEN  ; channel: vcfindex
+  port 2: (value) bound ; channel: ref_path
+  port 3: (value) bound ; channel: ref_config
+  port 4: (cntrl) -     ; channel: $
+
+[process] indelFilterAnno
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: vcf
+  port 1: (value) OPEN  ; channel: vcfindex
+  port 2: (value) bound ; channel: ref_path
+  port 3: (value) bound ; channel: ref_config
+  port 4: (cntrl) -     ; channel: $
+
+[process] mergeVcfs
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: indel
+  port 1: (value) OPEN  ; channel: snp
+  port 2: (cntrl) -     ; channel: $
+
+[process] prermats
+  status=ACTIVE
+  port 0: (value) OPEN  ; channel: bams
+  port 1: (value) bound ; channel: group
+  port 2: (value) bound ; channel: condition
+  port 3: (cntrl) -     ; channel: $
+
+[process] runrmats
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: para
+  port 1: (value) OPEN  ; channel: gtf
+  port 2: (value) OPEN  ; channel: bamlist
+  port 3: (cntrl) -     ; channel: $
+
+11月-10 18:08:35.338 [main] DEBUG nextflow.Session - Session await > all process finished
+11月-10 18:08:35.339 [main] DEBUG nextflow.Session - Session await > all barriers passed
+11月-10 18:08:35.410 [Actor Thread 66] DEBUG nextflow.file.SortFileCollector - FileCollector temp dir not removed: null
+11月-10 18:08:35.414 [main] WARN  n.processor.TaskPollingMonitor - Killing pending tasks (15)
+11月-10 18:08:35.506 [main] DEBUG nextflow.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=49; failedCount=0; ignoredCount=0; cachedCount=0; pendingCount=0; submittedCount=15; runningCount=-15; retriesCount=0; abortedCount=15; succeedDuration=19h 7m 6s; failedDuration=0ms; cachedDuration=0ms;loadCpus=-120; loadMemory=0; peakRunning=10; peakCpus=81; peakMemory=0; ]
+11月-10 18:08:35.677 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+11月-10 18:08:35.852 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
