@@ -307,79 +307,126 @@ process depth_stat {
     script:
     """
         sambamba depth window -w 100000 -t 8 -o ${name}.stat $bam 
-        Rscript ${baseDir}/bin/genomeCoveragehorizontalArea.R --infile ${name}.stat  --idfile ${chrlist} --outfile ${name}.genome.coverage --group.col 1 --x.col 2 --y.col 4 --x.lab Sequence-Position --y.lab AverageDepth-log2 --skip 0 --unit 100kb --log2
+        Rscript ${baseDir}/bin/genomeCoveragehorizontalArea.R --infile ${name}.stat  --idfile ${chrlist} --outfile ${name}.genome.coverage --group.col 1 --x.col 2 --y.col 4 --x.lab Sequence-Position --y.lab AverageDepth-log2 --skip 0 --unit kb --log2
     """
+}
+if(params.method == "GATK"){
+    process bqsr{
+        publishDir "${params.outdir}/09.bqsr/" , pattern: "*"
+        tag "bqsr"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        input:
+            tuple val(name),bam,bai,mertric from realign_cram3
+            file(ref) from ref_file
+            file(dict) from ref_dict
+            file(fai) from ref_fai
+        output:
+            tuple val(name),"${name}.cram","${name}.cram.crai","${name}.table" into bqsr_table
+            file "*"
+        script:
+        """
+            ln -s ${ref} ref.fa
+            ln -s ${bam} ${name}.cram
+            ln -s ${bai} ${name}.cram.crai
+            sentieon driver -t 8 -r ref.fa  -i ${bam} --algo QualCal  ${name}.table
+        """
+    }
+    process haplotyper {
+        publishDir "${params.outdir}/09.haplotyper/" , pattern: "*"
+        tag "haplotyper"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        input:
+            tuple val(name),bam,bai,qtable from bqsr_table
+            val(ref) from ref_file
+            file(dict) from ref_dict
+            file(fai) from ref_fai
+        output:
+            file "${name}.gvcf.gz" into gvcf
+            file "${name}.gvcf.gz.tbi" into gvcf_tbi
+            file "*"
+        script:
+        """
+            ln -s ${ref} ref.fa
+            
+            sentieon driver -t 8 -r ref.fa -i ${bam} -q ${qtable} --algo Haplotyper --ploid ${params.ploid} --emit_mode GVCF ${name}.gvcf.gz        
+        """
+    }   
+    process gvcftyper {
+        publishDir "${params.outdir}/10.gvcftyper/" , pattern: "*"
+        tag "gvcftype"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        input:
+            file(gvcfs) from gvcf.collect()
+            file(tbis) from gvcf_tbi.collect()
+            file(ref) from ref_file
+            file(dict) from ref_dict
+            file(fai) from ref_fai
+        output:
+            file "pop.variant.vcf" into vcf
+            file "pop.variant.vcf.idx" into vcf_index
+            file "*"
+        script:
+            def gvcf_line = gvcfs.collect{ "-v $it" }.join(' ')
+        """
+            ln -s ${ref} ref.fa
+            sentieon driver -t 8 -r ref.fa --algo GVCFtyper ${gvcf_line}  pop.variant.vcf
+        """
+    }
+}else{
+    process DNAscope {
+        publishDir "${params.outdir}/09.DNAscope/" , pattern: "*"
+        tag "DNAscope"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        input:
+            tuple val(name),bam,bai,qtable from bqsr_table
+            val(ref) from ref_file
+            file(dict) from ref_dict
+            file(fai) from ref_fai
+        output:
+            file "${name}.vcf.gz" into vcf_list
+            file "${name}.vcf.gz.tbi" into gvcf_tbi
+            file "*"
+        script:
+        """
+            ln -s ${ref} ref.fa
+            sentieon driver -t 8 -r ref.fa -i ${bam} --algo DNAscope --ploid ${params.ploid}  ${name}.vcf.gz       
+        """
+    }
+    process Vcfmerge {
+        publishDir "${params.outdir}/10.Vcfmerge/" , pattern: "*"
+        tag "Vcfmerge"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        input:
+            file(gvcfs) from gvcf.collect()
+            file(tbis) from gvcf_tbi.collect()
+            file(ref) from ref_file
+            file(dict) from ref_dict
+            file(fai) from ref_fai
+        output:
+            file "pop.variant.vcf.gz" into vcf
+            file "pop.variant.vcf.gz.idx" into vcf_index
+            file "*"
+        script:
+            def vcfs = vcf_list.collect{ "$it" }.join(' ')
+        """
+            ln -s ${ref} ref.fa
+            bcftools merge -o pop.variant.vcf.gz -O z  --threads 8 --missing-to-ref $vcfs
+            bcftools index pop.variant.vcf.gz
+        """
+    }
 }
 
-process bqsr{
-    publishDir "${params.outdir}/09.bqsr/" , pattern: "*"
-    tag "bqsr"
-    queue "DNA"
-    cpus 8
-    executor "slurm"
-    input:
-        tuple val(name),bam,bai,mertric from realign_cram3
-        file(ref) from ref_file
-        file(dict) from ref_dict
-        file(fai) from ref_fai
-    output:
-        tuple val(name),"${name}.cram","${name}.cram.crai","${name}.table" into bqsr_table
-        file "*"
-    script:
-    """
-        ln -s ${ref} ref.fa
-        ln -s ${bam} ${name}.cram
-        ln -s ${bai} ${name}.cram.crai
-        sentieon driver -t 8 -r ref.fa  -i ${bam} --algo QualCal  ${name}.table
-    """
-}
-process haplotyper {
-    publishDir "${params.outdir}/09.haplotyper/" , pattern: "*"
-    tag "haplotyper"
-    queue "DNA"
-    cpus 8
-    executor "slurm"
-    input:
-        tuple val(name),bam,bai,qtable from bqsr_table
-        val(ref) from ref_file
-        file(dict) from ref_dict
-        file(fai) from ref_fai
-    output:
-        file "${name}.gvcf.gz" into gvcf
-        file "${name}.gvcf.gz.tbi" into gvcf_tbi
-        file "*"
-    script:
-    """
-        ln -s ${ref} ref.fa
-        
-        sentieon driver -t 8 -r ref.fa -i ${bam} -q ${qtable} --algo Haplotyper --ploid 2 --emit_mode GVCF ${name}.gvcf.gz        
-    """
-}
-
-
-process gvcftyper {
-    publishDir "${params.outdir}/10.gvcftyper/" , pattern: "*"
-    tag "gvcftype"
-    queue "DNA"
-    cpus 8
-    executor "slurm"
-    input:
-        file(gvcfs) from gvcf.collect()
-        file(tbis) from gvcf_tbi.collect()
-        file(ref) from ref_file
-        file(dict) from ref_dict
-        file(fai) from ref_fai
-    output:
-        file "pop.variant.vcf" into vcf
-        file "pop.variant.vcf.idx" into vcf_index
-        file "*"
-    script:
-        def gvcf_line = gvcfs.collect{ "-v $it" }.join(' ')
-    """
-        ln -s ${ref} ref.fa
-        sentieon driver -t 8 -r ref.fa --algo GVCFtyper ${gvcf_line}  pop.variant.vcf
-    """
-}
+ 
 if(params.sv){
     process bamPEforManta {
         publishDir "${params.outdir}/14.bamPE/" , pattern: "*"

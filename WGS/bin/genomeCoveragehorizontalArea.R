@@ -37,7 +37,7 @@ spec = matrix(c(
 	), byrow=TRUE, ncol=4);
 opt = getopt(spec);
 
-
+opt$length=1000;
 # define usage function
 print_usage <- function(spec=NULL){
 	cat(getopt(spec, usage=TRUE));
@@ -103,8 +103,9 @@ if ( is.null(opt$strip.size ) )		{ opt$strip.size = 8 }
 if ( is.null(opt$axis.x.size ) )	{ opt$axis.x.size = 8 }
 if ( is.null(opt$axis.y.size ) )	{ opt$axis.y.size = 5 }
 if ( is.null(opt$title.lab) )		{ opt$title.lab = NULL }
-if ( is.null(opt$unit) )		{ opt$unit = "kb" }
+if ( is.null(opt$unit) )		{ opt$unit = "kb";opt$length=1000; }
 if ( is.null(opt$group.col) )	{ opt$group.col=1 }
+
 
 
 
@@ -114,44 +115,11 @@ if ( is.null(opt$group.col) )	{ opt$group.col=1 }
 # reading data
 data <- read.table(opt$infile, skip=opt$skip,header=F)
 # check dim
-if (!is.null(opt$log2)){data$V3=log2(data$V3)}
+if (!is.null(opt$log2)){data[,opt$y.col]=log2(data[,opt$y.col])}
 
-data.dim <- dim(data)
-if ( is.null(data.dim) ){
-	cat("Final Error: the format of infile is error, dim(data) is NULL\n")
-	print_usage(spec)
-}
-# check col size
-if ( data.dim[2] < max(opt$x.col, opt$y.col, opt$group.col) ){
-	cat("Final Error: max(x.col, y.col, group.col) > the col of infile\n")
-	print_usage(spec)
-}
-# reading id
 id <- read.table(opt$idfile)
-id <- as.matrix(id[,1])
-# check dim
-id.dim <- dim(id)
-if ( is.null(id.dim) ){
-	cat("Final Error: the format of idfile is error, dim(data) is NULL\n")
-	q(status=1)
-}
-# check col size
-if ( id.dim[2] != 1 ){
-	cat("Final Error: the col of idfile != 1\n")
-	q(status=1)
-}
-# check and extract
-if( length(id[,1]) <= 1 ){
-	#cat("Final Error: the row of idfile <= 1\n")
-	#q(status=1)
-}
-if( sum(id[,1] %in% data[,opt$group.col]) != length(id[,1]) ){
-	cat("Final Error: id not exists in the infile\n")
-	q(status=1)
-}
-# create df
 data <- data[data[,opt$group.col] %in% id[,1],]
-df <- data.frame(x=data[,opt$x.col]-1, group=factor(data[,opt$group.col], levels=id[,1]), y=data[,opt$y.col])
+df <- data.frame(x=data[,opt$x.col]/opt$length, group=factor(data[,opt$group.col], levels=id[,1]), y=data[,opt$y.col])
 
 
 
