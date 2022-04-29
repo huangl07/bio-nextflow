@@ -35,7 +35,7 @@ process fastaGenerate{
     script:
     """
         gffread -J -W -y ref.pep.fa ${gff} -g ${ref}
-        gfftobed -m ${gff}-a transcript_id > ref.pep.bed
+        gfftobed -m ${gff} -a transcript_id > ref.pep.bed
     """
 }
 

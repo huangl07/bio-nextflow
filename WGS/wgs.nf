@@ -595,3 +595,20 @@ process mergeVcfs{
         gatk MergeVcfs  -I ${indel} -I ${snp} -O pop.final.vcf.gz 
     """    
 }
+process report{
+    publishDir "${params.outdir}/19.report/",pattern:"*"
+    tag "indelfilter"
+    queue "DNA"
+    cpus 8
+    executor "slurm"
+    input:
+        file vcf from final_vcf 
+        file cnv from cnvfiles
+        file sv from sv_vcf
+    output:
+        file "*" 
+    script:
+    """
+        perl ${baseDir}/bin/wgs.pl -dir $dir -output 
+    """    
+}
