@@ -36,6 +36,9 @@ if(is.null(opt$output)){print_usage(spec)}
         df=read.table(opt$binfile,head=T,sep="\t",row.names=1)
         mstdf=mstmap.data.frame(df,pop.type=opt$popt,dist.fun="kosambi",p.value=1)
 		rmstmap=mstmap(mstdf)
+		rmap=pull.map(rmstmap)
+		rdf=data.frame("id"=gsub("L1.","",names(unlist(rmap))),"pos"=unlist(rmap))
+		write.table(file=paste(opt$output,"mst.map",sep="."),rdf,row.names=FALSE,quote=FALSE,sep="\t")
 		print(summary.map(rmstmap))
 		mstdf=est.rf(mstdf)
         result=est.map(mstdf)
@@ -44,7 +47,7 @@ if(is.null(opt$output)){print_usage(spec)}
         write.table(file=opt$output,rdf,row.names=FALSE,quote=FALSE,sep="\t")
 		mstdf=replace.map(mstdf,result)
 		names(mstdf$geno)=opt$lg
-		write.cross(mstdf,format=c("csvr"),file=opt$lg)
+		write.cross(mstdf,format=c("csvr"),file=paste(opt$lg,"result",sep="."))
 
 escaptime=Sys.time()-times;
 print("Done!")

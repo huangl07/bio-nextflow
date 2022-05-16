@@ -43,8 +43,14 @@ rlist=lapply(chrlist,loess0)
 names(rlist)=chrlist
 df=do.call(rbind,rlist)
 colnames(data)[1]="chr"
-data$mdepth=(data$n1+data$n2+data$n3+data$n4)/2
+print("haha")
+if("n1" %in% colnames(data)){
+	data$mdepth=(data$n1+data$n2+data$n3+data$n4)/2
+}else{
+	data$mdepth=data$depth
+}
 result=left_join(data,df,by=c("chr","pos"))
+print(colnames(result))
 colnames(result)[1]="X.chr"
 result$pos1=result$pos
 result$pos2=result$pos

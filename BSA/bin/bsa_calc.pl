@@ -36,6 +36,10 @@ while(<In>){
 		$B2=$sampleID;
 	}
 }
+$B1||="-";
+$P1||="-";
+$P2||="-";
+$B2||="-";
 close In;
 $popt ||="F2";
 open In,$fIn;

@@ -113,8 +113,9 @@ if(ncol(data) == 4){
 	data$slidingI2[data$ncount < 10] =mean(data$slidingI2)
 	data$slidingI1[data$ncount < 10] =mean(data$slidingI1)
 	data$slidingD[data$ncount < 10] =mean(data$slidingD)
-	data$mdepth=ceiling(data$mdepth)
+	data$mdepth=ceiling(data$mdepth/2)
 	df=data.frame(X.chr=data$X.chr,pos1=data$pos1,pos2=data$pos2,slidingI1=data$slidingI1,slidingI2=data$slidingI2,mdepth=data$mdepth,slidingD=data$slidingD,slidingED=data$slidingED)
+	df$pos=(df$pos1+data$pos2)/2
 	df=df[!duplicated(df),]
 	write.table(file=paste(opt$outfile,"sliding.result",sep="."),df,quote=F,row.names=F)
 	write.table(file=paste(opt$outfile,"sliding.detail",sep="."),data,quote=F,row.names=F)

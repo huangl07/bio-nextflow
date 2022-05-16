@@ -6,6 +6,7 @@ use Getopt::Long;
 my ($fIn,$fOut);
 use Data::Dumper;
 use FindBin qw($Bin $Script);
+use SVG;
 use File::Basename qw(basename dirname);
 my $version="1.0.0";
 GetOptions(
@@ -14,37 +15,43 @@ GetOptions(
 	"o:s"=>\$fOut,
 			) or &USAGE;
 &USAGE unless ($fIn and $fOut);
-my @log=glob("$fIn/*.log");
-my %cv;
-
-foreach my $log( @log){
-	my $k=(split(/\./,basename($log)))[1];
-	open In,$log;
-	while(<In>){
-		chomp;
-		next if($_ eq ""||/^$/);
-		if(/CV error/){
-			my $cv=(split(/\s+/,$_))[-1];
-			$cv{$k}=$cv;
+open In,$fIn;
+my $id;
+my %group;
+while (<In>) {
+	chomp;
+	next if ($_ eq ""||/^$/);
+	if (/group/) {
+		$id=(split(/\s+/,$_))[-1];
+	}else{
+		my ($markerID,$pos)=split(/\s+/,$_);
+		$group{$id}{$pos}++;
+	}
+}
+close In;
+open Out,">$fOut";
+print  Out "#LGID\tNumber Marker\tNumber Uniq\tTotal Distance\tAvarage Distance\tGap>5cM(%)\tMax Gap\n";
+foreach my $lgid (sort keys %group) {
+	my @pos=sort {$a<=>$b} keys %{$group{$lgid}};
+	my $distance=$pos[-1];
+	my $nuniq=scalar @pos;
+	my $nloc=0;
+	my $gap=scalar @pos -1;
+	my $gap5=0;
+	my $maxGap=0;
+	for (my $i=0;$i<@pos;$i++) {
+		$nloc+=$group{$lgid}{$pos[$i]};
+		if ($i > 0 && abs($pos[$i]-$pos[$i-1]) >5) {
+			$gap5++;
+		}
+		if ($i > 0 && abs($pos[$i]-$pos[$i-1]) > $maxGap) {
+			$maxGap = abs($pos[$i]-$pos[$i-1]);
 		}
 	}
-	close In;
-}
-
-my @order= sort {$cv{$a} <=> $cv{$b}} keys %cv;
-my $best=$order[0];
-my $num1=$best-1;
-my $num2=$best+1;
-`cp $fIn/pop.$best.result $fOut/pop.best$best.result`;
-`cp $fIn/pop.$num1.result $fOut/pop.best-1.result` if(-f "$fIn/pop.$num1.result");
-`cp $fIn/pop.$num2.result $fOut/pop.best+1.result` if(-f "$fIn/pop.$num2.result");
-open Out,">$fOut/CV.list";
-foreach my $k(sort {$a<=>$b} keys %cv){
-	print Out $k,"\t",$cv{$k},"\n";
+	print Out join("\t",$lgid,$nloc,$nuniq,$distance,sprintf("%.2f",$distance/($nloc-1)),$gap5,$maxGap),"\n";
 }
 close Out;
-`Rscript ${Bin}/structure.R --best $fOut/pop.best$best.result --best1 $fOut/pop.best-1.result --best2 $fOut/pop.best+1.result --outfile $fOut/structure --bestk $best`;
-`Rscript ${Bin}/cverror.R --infile CV.list --outfile $fOut/CV`;
+
 #######################################################################################
 print STDOUT "\nDone. Total elapsed time : ",time()-$BEGIN_TIME,"s\n";
 #######################################################################################

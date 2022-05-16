@@ -82,7 +82,7 @@ process KEGG {
 }
 
 process KEGGanno {
-    publishDir "${params.outdir}/07.Resule", pattern:"*"
+    publishDir "${params.outdir}/07.Result", pattern:"*"
     queue "DNA"
     executor "slurm"
     input:

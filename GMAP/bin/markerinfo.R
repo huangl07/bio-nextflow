@@ -26,7 +26,7 @@ d<-read.table(opt$input,head=TRUE,comment.char="^")
 #d$pvalue=1-d$pvalue;
 d$pvalue[d$pvalue == 0]=min(d$pvalue[d$pvalue > 0] /10);
 d$pvalue=log(d$pvalue)/log(10) * -1;
-
+d$GroupID=as.numeric(gsub("\\D","",d$GroupID));
 ymax=ceiling(max(d$pvalue))+1;
 library(qqman)
 pdf(paste(opt$out,".seg.pdf",sep=""),height=900,width=1600)

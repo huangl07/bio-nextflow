@@ -13,51 +13,77 @@ my $version="1.0.0";
 # ------------------------------------------------------------------
 # GetOptions
 # ------------------------------------------------------------------
-my ($fIn,$dOut,$fLG,$fKey,$type,$Pos);
+my ($fIn,$dOut,$fLG,$fKey,$type);
 GetOptions(
 				"help|?" =>\&USAGE,
 				"i:s"=>\$fIn,
 				"l:s"=>\$fLG,
 				"d:s"=>\$dOut,
-
+				"t:s"=>\$type,
 				) or &USAGE;
 &USAGE unless ($fIn and $dOut and $fLG);
-mkdir $dOut if (!-d $dOut);
+mkdir $dOut if(!-d $dOut);
 $dOut=ABSOLUTE_DIR($dOut);
 open In,$fIn;
-my %indi;
-my $head=`head -n 1 $fIn`;
-chomp $head;
-while(<In>){
+my %info;
+my $head;
+my $nind;
+my %type;
+while (<In>) {
 	chomp;
-	next if ($_ eq ""||/^$/ ||/MarkerID/);
-	my ($id,@info)=split(/\s+/,$_);
-	my $info=join("\t",@info);
-	$info=~s/h/X/g;
-	my $scaid=(split(/\s+/,$id))[0];
-	push @{$indi{$scaid}},join("\t",$id,$info); 
+	next if ($_ eq ""||/^$/);
+	if (/^#/) {
+		$head=$_;
+		next;
+	}
+	my ($id,$type,$info)=split(/\s+/,$_,3);
+	$info{$id}=$info;
+	$type{$id}=$type;
+	my @ind=split(/\t/,$info);
+	$nind=scalar @ind;
 }
 close In;
 open In,$fLG;
+open List,">$dOut/lg.list";
+
 $/=">";
-open L,">$dOut/lg.list";
-while(<In>){
+while (<In>) {
 	chomp;
-	next if ($_ eq ""||/^$/ ||/MarkerID/);
-	my ($id,@info)=split(/\n/,$_);
-	my $lgid=(split(/\s+/,$id))[0];
-	my $l=join("\t",@info);
-	my @scas=split(/\s+/,$l);
-	print L "$lgid\t$dOut/$lgid.marker\n";
-	open Out,">$dOut/$lgid.marker";
-	print Out $head,"\n";
-	foreach my $sca(@scas){
-		print Out join("\n",@{$indi{$sca}}),"\n";
+	next if ($_ eq "" ||/^$/);
+	my ($id,$marker)=split(/\n/,$_);
+	$id=(split(/\s+/,$id))[0];
+	open Out,">$dOut/$id.pri.marker";
+	open Map,">$dOut/$id.pri.map";
+	print Map "group $id\n";
+	print List "$id\t$dOut/$id.pri.marker\n";
+	my @marker=split(/\s+/,$marker);
+	my %pos;
+	for (my $i=0;$i<@marker;$i++) {
+		$pos{$marker[$i]}=$i;
+		if ($marker[$i] =~ /\_/) {
+			$pos{$marker[$i]}=(split(/\_/,$marker[$i]))[-1];
+			if ($pos{$marker[$i]}=~/\-/) {
+				$pos{$marker[$i]}=(split(/\-/,$pos{$marker[$i]}))[0];
+			}
+
+		}
 	}
+	my @out;
+	my $nloc=scalar @marker;
+	foreach my $m (sort{$pos{$a}<=>$pos{$b}} keys %pos) {
+		if (!exists $info{$m}) {
+			next;
+		}
+		push @out,join(" ",$m,"<".$type{$m}.">","{--}",$info{$m});
+		print Map join(" ",$m,$pos{$m}),"\n";
+	}
+#	print Out $head,"\n";
+	print Out join("\n",@out),"\n";
 	close Out;
+	close Map;
 }
-close  In;
-close L;
+close In;
+close List;
 #######################################################################################
 print STDOUT "\nDone. Total elapsed time : ",time()-$BEGIN_TIME,"s\n";
 #######################################################################################
@@ -96,12 +122,12 @@ Program: $0
 Version: $version
 Contact: huangl <long.huang\@majorbio.com> 
 
-Options:
+Usage:  ��genotype�ļ�������Ⱥ�ָ�
+  Options:
   -help			USAGE,
-  -i	genotype file forced
+  -i	genotype file�� forced
   -l	linkage lg file
-  -d	output dir
-  -t	population type
+  -o	output dir
   
    
 USAGE

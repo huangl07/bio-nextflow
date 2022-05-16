@@ -36,6 +36,7 @@ argv <- commandArgs(trailingOnly=F)
 temp <- '--file='
 script.abspath <- sub(temp, "", argv[grep(temp, argv)])
 script.dirname <- dirname(script.abspath)
+print(script.dirname)
 sourceCpp(paste(script.dirname,"countSNPs.cpp",sep="/"))
 tricubeStat <- function(POS, Stat, windowSize = 2e6, ...)
 {
@@ -90,7 +91,9 @@ modeTrimGprime <- modeest::mlv(x = trimGprime, bw = 0.5, method = "hsm")
 muE <- log(medianTrimGprime)
 varE <- abs(muE - log(modeTrimGprime))
 data$Gpval <-1 - plnorm(q = data$Gprime,meanlog = muE,sdlog = sqrt(varE))
-data$threshold=0.95
+data$Gqval=p.adjust(data$Gpval)
+data$GprimeT=data$Gprime[which.min(abs(data$Gqval-0.01))]
+
 data=arrange(data,X.chr,pos)
 write.table(file=opt$outfile,data,quote=F,row.names=F)
 

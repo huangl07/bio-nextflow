@@ -1,8 +1,8 @@
 #!/usr/bin/env nextflow
 params.out = "demo"
 params.popt="F2"
-params.segment=0.05
-params.missing=0.5
+params.segment=0.5
+params.missing=0.3
 params.Pdep=10
 params.Odep=2
 params.nchro=1
@@ -24,6 +24,7 @@ def helpMessage() {
     --segment   <num>   segment 0.05
     --missing   <num>   missing 0.5
     --chr   <file>  chr.list
+    --chr_only
     --nchro <num>   chr number
     """.stripIndent()
 }
@@ -65,9 +66,15 @@ process markersplit{
     script:
 
     if(params.popt == "CP"){
-    """
-
-    """
+      if(params.chr){
+            """
+            perl ${baseDir}/bin/markersplitCP.pl -input ${marker} -fOut scaf.list -dOut split -chr ${chrfile}
+            """
+        }else{
+            """
+            perl ${baseDir}/bin/markersplitCP.pl -input ${marker} -fOut scaf.list -dOut split 
+            """
+        }
     }else{
         if(params.chr){
             """
@@ -94,28 +101,47 @@ process binmap{
         file "*.bin.marker" into binfile1,binfile2
         file "*"
     script:
-    if(file("${scaf[0]}").countLines() > 2){
         if(params.popt == "CP"){
-        """
-
-        """
+            """
+            ln -s ${scaf[0]} ${sca}.bin.marker
+            """
         }else{
-        """
-
-        snpbinner crosspoints -i ${scaf[0]} -o ${sca}.cross -r 0.002
-        snpbinner bins -i ${sca}.cross -o ${sca}.bins -l 1000
-        perl ${baseDir}/bin/convert2MSTmap.pl -input ${sca}.bins -output ${sca}.bin.marker -popt F2 --chr ${sca} --marker ${scaf[0]}
-
-        """
+            if(file("${scaf[0]}").countLines() > 2){
+            """
+            snpbinner crosspoints -i ${scaf[0]} -o ${sca}.cross -r 0.002
+            snpbinner bins -i ${sca}.cross -o ${sca}.bins -l 1000
+            perl ${baseDir}/bin/convert2MSTmap.pl -input ${sca}.bins -output ${sca}.bin.marker -popt F2 --chr ${sca} --marker ${scaf[0]}
+            """
+            }else{
+            """
+            less -S ${scaf[0]}|sed 's/\t/-/'|sed 's/h/X/g' > ${sca}.bin.marker
+            """
+            }
         }
-    }else{
+}
+
+
+
+if(params.chr_only){
+   println "haha"
+   process group_by_chr{
+        publishDir "${params.out}/06.premapping", pattern:"*"
+        queue "DNA"
+        executor "slurm"
+        input:
+            file bins from binfile1.collect()
+        output:
+            file "*.lg" into grouping_file
+            file "*"
+        script:
         """
-        less -S ${scaf[0]}|sed 's/\t/-/'|sed 's/h/X/g' > ${sca}.bin.marker
+        cat *.marker > total.markers
+        perl ${baseDir}/bin/linkage_by_ref.pl  -i total.markers -o  total.lg    
         """
     }
-}
-compare_worksh.splitText(by:1).set{compare_para}
-
+}else{
+    compare_worksh.splitText(by:1).into{compare_para;}
+    println "test"
 process mlodcalc{
     publishDir "${params.out}/04.calc", pattern:"*"
     queue "DNA"
@@ -127,19 +153,10 @@ process mlodcalc{
         file "*.mlod" into mlod_file
         file "*"
     script:
-
-    if(params.popt == "CP"){
     """
-
+    perl  ${baseDir}/bin/calculateMLOD.pl  -popt F2 ${para} 
     """
-    }else{
-    """
-        perl  ${baseDir}/bin/calculateMLOD.pl  -popt F2 ${para} 
-    """
-    }
 }
-
-
 process grouping{
     publishDir "${params.out}/05.group", pattern:"*"
     queue "DNA"
@@ -151,20 +168,23 @@ process grouping{
         file "*.lg" into grouping_file
         file "*"
     script:
-    if(params.chr){
-        """
-        cat *.mlod > Total.mLOD
-        python3  ${baseDir}/bin/count_mlod.py -input Total.mLOD -output linkage.mlod.csv
-        perl ${baseDir}/bin/linkage_by_ref.pl  -i linkage.mlod.csv -o lg.lg -t 5 -c ${chrfile}
-        """
-    }else{
-        """
-        cat *.mlod > Total.mLOD
-        python3  ${baseDir}/bin/count_mlod.py -input Total.mLOD -output linkage.mlod.csv 
-        perl ${baseDir}/bin/linkage_by_mlod.pl  -i linkage.mlod.csv -k lg -d ./ -n ${params.nchro} -minGroup 1 -b 3 -e 20 
-        """
+        if(params.chr){
+            """
+            cat *.mlod > Total.mLOD
+            python3  ${baseDir}/bin/count_mlod.py -input Total.mLOD -output linkage.mlod.csv
+            perl ${baseDir}/bin/linkage_by_ref-mlod.pl  -i linkage.mlod.csv -o lg.lg -t 5 -c ${chrfile}
+            """
+        }else{
+            """
+            cat *.mlod > Total.mLOD
+            python3  ${baseDir}/bin/count_mlod.py -input Total.mLOD -output linkage.mlod.csv 
+            perl ${baseDir}/bin/linkage_by_mlod.pl  -i linkage.mlod.csv -k lg -d ./ -n ${params.nchro} -minGroup 1 -b 3 -e 20 
+            """
+        }
     }
+
 }
+
 
 
 process premapping{
@@ -181,7 +201,8 @@ process premapping{
     script:
     if(params.popt == "CP"){
         """
-      
+            cat *.marker > total.markers
+            perl ${baseDir}/bin/splitbyLG-CP.pl  -l ${lg} -i total.markers -d linkagegroups/
         """
     }else{
         """
@@ -198,19 +219,37 @@ process mapping{
     executor "slurm"
     input:
         tuple lg,marker from lg_list
-        file lg_markers from lgmarkers1
     output:
-        file "${lg}.map" into map_result
-        file "${lg}.csv" into csv_result
+        file "*.result.map" into map_result
+        file "*.result.csv" into csv_result
         file "*"
     script:
     if(params.popt == "CP"){
-        """
-      
-        """
+        if(params.chr){
+            """      
+            crosslink_group --inp=${marker[0]} --outbase=${lg}. --knn=30 --matpat_lod=20 --matpat_weights=01P07 --min_lod=6 --redundancy_lod=20    
+            ln -s  `wc -l ${lg}.*.loc|sort -nr|head -n2|tail -n 1|awk '{print \$2}'` ${lg}.draw.loc
+            cut -f 1 -d " " ${lg}.draw.loc|perl -ne 'chomp;@a=split(/-/,\$_);print \$_,"\\t",\$a[1],"\\n";' > ref.map
+            perl ${baseDir}/bin/smooth-CP.pl -l ${lg}.draw.loc -k ${lg} -d ./ -m ref.map   -ami 0.8
+            crosslink_group --inp=${lg}.correct.loc --outbase=${lg}.correct. --knn=45 --map=${lg}.correct.
+            ln -s  `wc -l ${lg}.correct.*.loc|sort -nr|head -n2|tail -n 1|awk '{print \$2}'` ${lg}.result.csv
+            ln -s  `wc -l ${lg}.correct.*.map|sort -nr|head -n2|tail -n 1|awk '{print \$2}'` ${lg}.result.map            
+            """
+        }else{
+            """
+            crosslink_group --inp=${marker[0]} --outbase=${lg}. --knn=30 --matpat_lod=20 --matpat_weights=01P07 --min_lod=6 --redundancy_lod=20
+            ln -s `wc -l ${lg}.*.loc|sort -nr|head -n2|tail -n 1|awk '{print \$2}'` ${lg}.draw.loc
+            crosslink_map --inp=${lg}.draw.loc --map=${lg}.primary.map --out=${lg}.result.csv --ga_gibbs_cycles=10 --ga_iters=300000  --ga_max_hop=1.0 --ga_max_mvseg=1.0 --ga_max_mvdist=1.0 --ga_max_seg=1.0 --gibbs_samples=500  --gibbs_burnin=20 --gibbs_min_prob_1=0.1 --gibbs_min_prob_2=1
+            perl ${baseDir}/bin/smooth-CP.pl -l ${lg}.result.csv -k ${lg} -d ./ -m ${lg}.primary.map -win 30 -ami 0.8
+            crosslink_group --inp=${lg}.correct.loc --outbase=${lg}.correct. 
+            crosslink_map --inp=${lg}.correct.000.loc --map=${lg}.correct.000.map --ga_gibbs_cycles=10 --ga_iters=300000  --ga_max_hop=1.0 --ga_max_mvseg=1.0 --ga_max_mvdist=1.0 --ga_max_seg=1.0 --gibbs_samples=500  --gibbs_burnin=20 --gibbs_min_prob_1=0.1 --gibbs_min_prob_2=1
+            ln -s  `wc -l ${lg}.correct.*.loc|sort -nr|head -n2|tail -n 1|awk '{print \$2}'` ${lg}.result.csv
+            ln -s  `wc -l ${lg}.correct.*.map|sort -nr|head -n2|tail -n 1|awk '{print \$2}'` ${lg}.result.map 
+            """
+        }
     }else{
         """
-         Rscript ${baseDir}/bin/Asmap.R  --binfile ${marker[0]} --output ${lg}.map --popt ${params.popt} --lg ${lg}
+         Rscript ${baseDir}/bin/Asmap.R  --binfile ${marker[0]} --output ${lg}.result.map --popt ${params.popt} --lg ${lg}
         """
     }
 }
@@ -228,13 +267,23 @@ process mapEvaluate{
     script:
     if(params.popt == "CP"){
         """
-      
+            cat *.result.csv > total.result.csvs
+            perl ${baseDir}/bin/marker2onemap.pl -i total.result.csvs -o total.result.onemap
+            perl ${baseDir}/bin/marker2phase.pl -i total.result.csvs -o total.result.phaseq
+            perl ${baseDir}/bin/map-gather.pl -i ./ -o ./
+            perl ${baseDir}/bin/mapEstimate.pl -i total.sexAver.maps -o total.mapstat
+            perl ${baseDir}/bin/drawAligmentRalationMap.pl -m total.sexAver.maps -o ./ -k total.phy
+            perl ${baseDir}/bin/markerinfo.pl -map total.maps -input total.result.csvs --pop ${params.popt} --out total
+            Rscript ${baseDir}/bin/plotmaps.R --mark total.sexAver.maps --out total.map
+	        Rscript ${baseDir}/bin/drawbinCP-sexAver.R --mark total.sexAver.phase  --out total.sexAver.bin;
+
         """
     }else{
         """
          cat *.map > total.maps
          cat *.marker|sort -r|uniq > total.markers
          cat *.csv|sort -r|uniq > total.csvs
+         perl ${baseDir}/bin/mapEstimate.pl -i total.maps -o total.mapstat
         perl ${baseDir}/bin/markerinfo.pl -map total.maps -input total.markers --pop ${params.popt} --out total
         Rscript ${baseDir}/bin/drawmap.R --mark total.csvs  --out ./ --pop ${params.popt}
         Rscript ${baseDir}/bin/plotmaps.R --mark total.csvs --out total.map
@@ -243,3 +292,4 @@ process mapEvaluate{
         """
     }
 }
+

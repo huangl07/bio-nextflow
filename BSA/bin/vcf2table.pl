@@ -32,7 +32,7 @@ open In,$group;
 while(<In>){
 	chomp;
 	next if ($_ eq ""||/^$/);
-	my ($sampleID,$group,$low,$high)=split(/\s+/,$_);
+	my ($sampleID,$group,$high,$low)=split(/\s+/,$_);
 	if($group eq "P1"){
 		$P1=$sampleID;
 		$Pldep=$low;
@@ -52,11 +52,12 @@ while(<In>){
 	}
 }
 close In;
-if($B1 eq "-" && $B2 eq "-"){
+if(!defined $B1 && !defined $B2){
 	die "error group file die $B1 $B2";
-}elsif($B2 eq "-"){
+}elsif(!defined $B2){
 	die "$B2";
 }
+
 
 if ($fIn =~ /\.gz$/){
 	open In,"gzip -dc $fIn|";
@@ -73,10 +74,10 @@ while (<In>) {
 		my ($chrom,$pos,$id,$ref,$alt,$qual,$filter,$info,$format,@info)=split(/\t/,$_);
 		push @Sample,@info;
 		my @out;
-		push @out,join("\t","$P1.GT","$P1.AD","$P1.DP") if ($P1 ne "-");
-		push @out,join("\t","$P2.GT","$P2.AD","$P2.DP") if ($P2 ne "-");
-		push @out,join("\t","$B1.GT","$B1.AD","$B1.DP") if ($B1 ne "-");
-		push @out,join("\t","$B2.GT","$B2.AD","$B2.DP") if ($B2 ne "-");
+		push @out,join("\t","$P1.GT","$P1.AD","$P1.DP") if (defined $P1 && $P1 ne "-");
+		push @out,join("\t","$P2.GT","$P2.AD","$P2.DP") if (defined $P2 && $P2 ne "-");
+		push @out,join("\t","$B1.GT","$B1.AD","$B1.DP") if (defined $B1 && $B1 ne "-");
+		push @out,join("\t","$B2.GT","$B2.AD","$B2.DP") if (defined $B2 && $B2 ne "-");
 		print Out join("\t","CHROM\tPOS\tRef\tAlt\tVtype",@out,"Ann"),"\n";
 	}else{
 		my (%samples,$vtype,@ann,$baseinfo,$allenum);
@@ -85,7 +86,7 @@ while (<In>) {
 			$stat{vtype}++;
 			next;
 		}
-		if ($B1 ne "-" && ($samples{$B1}{GT} eq "NN" || $samples{$B1}{DP} <= $Bldep|| $samples{$B1}{DP} >= $Bhdep)){
+		if (defined $B1 && ($samples{$B1}{GT} eq "NN" || $samples{$B1}{DP} <= $Bldep|| $samples{$B1}{DP} >= $Bhdep)){
 			$stat{B1missingOrdepth}++;
 			next;
 		}

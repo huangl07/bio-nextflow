@@ -17,23 +17,57 @@ my $day=$Times[3];
 # ------------------------------------------------------------------
 # GetOptions
 # ------------------------------------------------------------------
-my ($marker,$fOut,$thread,$chr);
+my ($mlod,$fOut,$thread,$chr);
 GetOptions(
 				"help|?" =>\&USAGE,
-				"i:s"=>\$marker,
+				"i:s"=>\$mlod,
 				"o:s"=>\$fOut,
+				"t:s"=>\$thread,
+				"c:s"=>\$chr
 				) or &USAGE;
-&USAGE unless ( $fOut and $marker );
-open In,$marker;
+&USAGE unless ($mlod and $fOut and $thread );
+open In,$chr;
 my %chr;
 while(<In>){
 	chomp;
-	next if ($_ eq ""||/^$/ ||/^#/ ||/MarkerID/);
-    my ($id,@info)=split(/\s+/,$_);
-    my @a=split(/\-/,$_,2);
-    push @{$chr{$a[0]}},$id;
+	next if ($_ eq ""||/^$/);
+	my @a=split;
+	push @{$chr{$a[0]}},$a[0];
 }
 close In;
+my %LG;
+open In,$mlod;
+while(<In>){
+	chomp;
+	next if ($_ eq ""||/^$/ || /MLOD/);
+	my ($m1,$m2,$lod)=split(/\,/,$_);
+	my $sca=$m1;
+	my $chr=$m2;
+	if(exists $chr{$sca}){
+		$sca=$m2;
+		$chr=$m1;
+	}
+	if(!exists $LG{$sca} ||$LG{$sca}{max}<$lod){
+		$LG{$sca}{max}=$lod;
+		$LG{$sca}{chr}=$chr;
+		$LG{$sca}{num}=1;
+	}elsif($LG{$sca}{max} == $lod){
+		$LG{$sca}{max}=$lod;
+		$LG{$sca}{chr}=$chr.",".$LG{$sca}{chr};
+		$LG{$sca}{num}++;
+	}
+}
+close In;
+open Out,">$fOut.stat";
+foreach my $sca(sort keys %LG){
+	if($LG{$sca}{num} == 1 && ${LG{$sca}{max} > $thread}){
+		push @{$chr{$LG{$sca}{chr}}},$sca;
+		print Out join("\t",$sca,$LG{$sca}{max},$LG{$sca}{num},$LG{$sca}{chr},"passed"),"\n";
+	}else{
+		print Out join("\t",$sca,$LG{$sca}{max},$LG{$sca}{num},$LG{$sca}{chr},"failed"),"\n";
+	}
+}
+close Out;
 open Out,">$fOut";
 foreach my $chr(sort keys %chr){
 	print Out ">$chr\n";
@@ -73,7 +107,7 @@ sub USAGE {#
 	Version:$version	[$month:$day:$year:]
 	Contact:Huang Long <huangl\@biomarker.com.cn>
 	Options:
-				"i:s"=>\$marker,
+				"i:s"=>\$mlod,
 				"o:s"=>\$fOut,
 				"t:s"=>\$thread,
 				"c:s"=>\$chr

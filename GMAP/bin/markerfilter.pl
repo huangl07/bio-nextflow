@@ -131,6 +131,7 @@ while (<In>) {
 	my $flag;
 	my $order;
 	my($p)=&SegregationX2($type,\@info,\$flag,\$order);
+		$p=1-$p if($p ne "-");
 	print Out "$id\t$type\t",scalar @info,"\t",$miss,"\t",$order,"\t",$flag,"\n";
 	if ($miss / scalar @info > $mis) {
 		$stat{miss}++;
@@ -147,7 +148,8 @@ while (<In>) {
 		print Type "$id\t$type\t",join("\t",@info),"\n";
 		next;
 	}
-	if ($p < $seg) {
+
+	if ($p > $seg) {
 		$stat{seg}++;
 		print Seg "$id\t$type\t",join("\t",@info),"\n";
 		next;

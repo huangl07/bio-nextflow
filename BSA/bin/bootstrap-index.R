@@ -10,6 +10,7 @@ spec = matrix(c(
 	'bootstrap','t',0,'character',
 	'popstruc','p',0,'character',
 	'qvalue','q',0,'character',
+    'mutmap','m',0,'character',
 	'help','h',0,'logical'
 	), byrow=TRUE, ncol=4);
 opt = getopt(spec);
@@ -40,6 +41,7 @@ if ( is.null( opt$bootstrap)){ opt$bootstrap=1000}
 library(dplyr)
  opt$bootstrap=as.numeric(opt$bootstrap)
 opt$qvalue=1-as.numeric(opt$qvalue)
+opt$abs=F
 simulateAlleleFreq <- function(n, pop = "F2") {
     if (pop == "F2") {
         mean(sample(
@@ -191,7 +193,7 @@ simulateConfInt <- function(popStruc = "F2",
 
 
 opt$bulksize=as.numeric(opt$bulksize)
-if(opt$popstruc=="F1"){opt$abs=1}
+if(opt$popstruc=="F1"){opt$abs=T}
 data<-read.table(opt$infile,head=TRUE,comment.char="^")
 if (!("slidingI1" %in% colnames(data))){opt$mutmap=T}
 depth=as.numeric(levels(as.factor(ceiling(data$mdepth))))

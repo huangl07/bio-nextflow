@@ -38,14 +38,10 @@ my %sca;
 while(<In>){
     chomp;
     next if ($_ eq ""||/^$/);
-    if(/^#MarkerID/ ||/MarkerID/){
+    if(/^#MarkerID/){
         (undef,undef,@Indi)=split(/\s+/,$_);
-        $head=join("\t","chr","pos",@Indi);
+        $head=join("\t","#makerID","type",@Indi);
     }else{
-        s/aa/a/g;
-        s/bb/b/g;
-        s/ab/h/g;
-        s/--/-/g;
         my ($id,$type,@indi)=split(/\s+/,$_);
         my ($chr,$pos)=split(/\-/,$id);
         if (!exists $sca{$chr}){
@@ -56,7 +52,7 @@ while(<In>){
             print Out $chr,"\t","$dOut/$chr.marker\n";
             print {$filehand{$chr}} $head,"\n";
         }else{
-            print {$filehand{$chr}} join("\t",$chr,$pos,join("\t",@indi)),"\n"; 
+            print {$filehand{$chr}} join("\t",$id,$type,join("\t",@indi)),"\n"; 
         }
     }
 }

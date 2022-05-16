@@ -55,8 +55,9 @@ while (<IN>) {
 	chomp;
 	s/\r//g;
 	next if (/^$/ || /^;/ || /^\#/) ;
-	if (/^group\s+(\d+)/) {
+	if (/^group\s+(\w+)/) {
 		$group=$1;
+		$group=~s/\D+//g;
 		$order=0;
 	}else{
 		my ($marker,$cm,undef)=split(/\s+/,$_);

@@ -2,6 +2,8 @@
 params.outdir = "demo"
 params.help = false
 params.method="GATK"
+params.miss=0.3
+params.maf=0.05
 def helpMessage() {
    
     log.info"""
@@ -12,6 +14,8 @@ def helpMessage() {
     --vcf       <file>  input vcf file
     --outdir    <dir>   output dir
     --group     <file>  input group file    
+    --miss  <num>   miss
+    --maf   <num>   maf
     """.stripIndent()
 }
 
@@ -34,11 +38,11 @@ process vcffilter{
         file vcf from vcf_file
     output:
         file "*"
-        file "pop.filtered.vcf" into filter_vcf1,filter_vcf2,filter_vcf3
+        file "pop.filtered.vcf" into filter_vcf1,filter_vcf2,filter_vcf3,filter_vcf4,filter_vcf5
     script:
         
     """
-        bcftools filter --threads 8  -i "F_Missing <=0.2 && MAF > 0.05" ${vcf}  > pop.filtered.vcf
+        bcftools filter --threads 8  -i "F_Missing <=${params.miss} && MAF > ${params.maf}" ${vcf}  > pop.filtered.vcf
     """
 }
 process vcf2tree{
@@ -62,9 +66,9 @@ process vcf2tree{
 process modeltest{
     publishDir "${params.outdir}/03.modeltest", pattern:"*"
     queue "DNA"
-    cpus 8
+    cpus 16
     executor "slurm"
-    memory "100G"
+    memory "150G"
     input:
         file phylip from phylip_file1
     output:
@@ -73,7 +77,7 @@ process modeltest{
     script:
         
     """
-        modeltest-ng  -p 8 -d nt -i ${phylip}  -o pop.model.test
+        modeltest-ng  -p 16 -d nt -i ${phylip}  -o pop.model.test
       
     """
 }
@@ -89,7 +93,7 @@ process iqtree2{
     output:
         file "*"
     script:
-    if(params.group)
+    if(params.group){
         """
         less -S ${model_file}|grep iqtree|uniq|sed 's/>//g'|sed 's/iqtree/iqtree2 -st DNA -B 1000 -nt 8 -redo/g' > iqtree2.sh
         sh iqtree2.sh
@@ -122,7 +126,6 @@ process vcf2bed{
 }
 
 
-num=Channel.from(2..20)
 
 process admixture{
     publishDir "${params.outdir}/05.admixture",pattern:"*"
@@ -131,7 +134,7 @@ process admixture{
     executor "slurm"
     input:
         file plink from plink_files1.collect()
-        val x from num
+        each x from 1..20
     output:
         file "pop.*" into admixs
         file "*"
@@ -164,10 +167,10 @@ process pca{
     input:
          file vcf from filter_vcf3
     output:
-        file "pop.*" into plink_files
+        file "pop.*" 
     script:
 
-     if(params.group)
+     if(params.group){
         """
         plink --vcf ${vcf} --pca --out pop --allow-extra-chr 
         Rscript ${baseDir}/bin/pca.R --infile pop.eigenvec --outfile pop.pca --varfile pop.eigenval --group ${group_file}
@@ -178,6 +181,52 @@ process pca{
         Rscript ${baseDir}/bin/pca.R --infile pop.eigenvec --outfile pop.pca --varfile pop.eigenval
         """
     }
-        
-    
+}
+process LDdecay{
+    publishDir "${params.outdir}/07.LDdecay", pattern:"*"
+    queue "DNA"
+    cpus 8
+    executor "slurm"
+    memory "30G"
+    input:
+         file vcf from filter_vcf4
+    output:
+        file "*"  
+    script:
+
+     if(params.group){
+        """
+        perl ${baseDir}/bin/popld.pl -vcf ${vcf} -g ${group_file} -o ./
+        """
+    }else{
+        """
+        PopLDdecay --InVCF ${vcf} --OutStat pop --MAF 0.05 --Miss 0.3
+        Rscript ${baseDir}/bin/ld-decay.R --infile pop.stat.gz --outfile pop.ld
+        """
+    }
+}
+
+    process primater{
+    publishDir "${params.outdir}/08.parameter", pattern:"*"
+    queue "DNA"
+    cpus 8
+    executor "slurm"
+    memory "100G"
+    input:
+         file vcf from filter_vcf5
+         file plink from plink_file2.collect()
+
+    output:
+        file "*" 
+    script:
+       if(params.group){
+        """
+        populations -V ${vcf} -M ${group_file} --fstats -O ./ -t 8
+        """
+        }else{
+        """
+        cut -f 1 pop.fam -d " "|perl -ne 'chomp;print \$_,"\\tg1\\n";' > group.list
+        populations -V ${vcf} -M group.list -O ./ -t 8
+        """
+    }       
 }

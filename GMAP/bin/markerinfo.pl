@@ -55,7 +55,7 @@ while (<In>) {
 	last if(/^;/ || /individual names/);
 	my ($id,$type,$phase,@info);
 	if ($popt eq "CP") {
-		 ($id,$type,$phase,@info) =split(/\t/,$_);
+		 ($id,$type,$phase,@info) =split(/\s+/,$_);
 		 $type=~s/\>//g;
 		 $type=~s/\<//g;
 	}else{

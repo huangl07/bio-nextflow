@@ -58,15 +58,18 @@ dfpos = dfpos %>% filter(CHR %in% chr$V1)
 #Gprime=pos$Gprime,G=pos$G,ED=pos$ED,EDprime=pos$EDprime,Gfdr=pos$Gfdr,EDfdr=pos$EDfdr)
 	lev<-NULL
 	lev$CHR<-levels(as.factor(dfpos$CHR))
-	lev$order<-gsub("chr","",lev$CHR)
-	lev$order<-gsub("sca","1000",lev$order)
+	lev$order<-gsub("\\D","",lev$CHR)
 	lev$order=as.numeric(lev$order)
+	
 	dfpos=merge(dfpos,lev,by="CHR")
 	dfpos=arrange(dfpos,order,BP)
+
 	dpos <- dfpos %>% group_by(order) %>% summarise(chr_len=max(BP)) %>% mutate(tot=cumsum(chr_len)-chr_len) %>% select(-chr_len) %>%
 	  left_join(dfpos, ., by=c("order"="order")) %>%
 	  arrange(order, BP) %>%
 	  mutate( BPcum=BP+tot)
+	  	print("haha")
+
 		axisdf <- dpos %>% group_by(CHR) %>% summarize(center=(as.numeric(max(BPcum)) + as.numeric(min(BPcum))) / 2 )
 		p1 <- ggplot(dpos) +geom_point(aes(x=BPcum, y=Delta,color=as.factor(order)))
 			if(!is.null(opt$lcol)){
