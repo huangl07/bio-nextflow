@@ -4,6 +4,7 @@ params.help = false
 params.method="GATK"
 params.miss=0.3
 params.maf=0.05
+params.win=10000
 def helpMessage() {
    
     log.info"""
@@ -16,6 +17,7 @@ def helpMessage() {
     --group     <file>  input group file    
     --miss  <num>   miss
     --maf   <num>   maf
+    --win   <num>   window size
     """.stripIndent()
 }
 
@@ -25,9 +27,8 @@ if (params.help){
 }
 
 vcf_file = files(params.vcf)
-if(params.group){
-    group_file = file(params.group)
-}
+group_file = files(params.group)
+
 process vcffilter{
     publishDir "${params.outdir}/01.filter", pattern:"*"
     queue "DNA"
@@ -38,10 +39,70 @@ process vcffilter{
         file vcf from vcf_file
     output:
         file "*"
-        file "pop.filtered.vcf" into filter_vcf1,filter_vcf2,filter_vcf3,filter_vcf4,filter_vcf5
+        file "pop.filtered.vcf.gz" into filter_vcf1,filter_vcf2
     script:
         
     """
-        bcftools filter --threads 8  -i "F_Missing <=${params.miss} && MAF > ${params.maf}" ${vcf}  > pop.filtered.vcf
+        bcftools filter --threads 8  -O z -i "F_Missing <=${params.miss} && MAF > ${params.maf}" ${vcf}  > pop.filtered.vcf.gz
+    """
+}
+
+
+process group_preparie{
+    publishDir "${params.outdir}/02.group", pattern:"*"
+    queue "DNA"
+    cpus 8
+    executor "slurm"
+    memory "30G"
+    input:
+        file group from group_file
+    output:
+        file "group.list" into grouplist1,grouplist2
+        file "*"
+    script:
+    """
+        perl ${baseDir}/bin/group.pl -i ${group} -o ./
+    """
+}
+
+grouplist1.splitCsv(header:false,sep:'\t').groupTuple().set{group1}
+grouplist2.splitCsv(header:false,sep:'\t').groupTuple().set{group2}
+
+group1.view()
+
+process tajimaD{
+    publishDir "${params.outdir}/03.tajimaD", pattern:"*"
+    queue "DNA"
+    cpus 8
+    executor "slurm"
+    memory "30G"
+    input:
+        file vcf from filter_vcf1
+        tuple gid,gfile from group2
+    output:
+        file "*"
+    script:
+    """
+       vcftools --gzvcf ${vcf} --remove-indels --keep ${gfile[0]} --out ${gid} --TajimaD ${params.win}
+    """
+}
+
+process pixy{
+    publishDir "${params.outdir}/04.pixD", pattern:"*"
+    queue "DNA"
+    cpus 8
+    executor "slurm"
+    memory "30G"
+    input:
+        file vcf from filter_vcf2
+    output:
+        file "*"
+    script:
+    """
+        pixy --stats pi fst dxy \
+        --vcf ${vcf} \
+        --populations ${params.group}\
+        --window_size 10000 \
+        --n_cores 8
     """
 }

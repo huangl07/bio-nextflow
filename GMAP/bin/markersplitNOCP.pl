@@ -48,7 +48,7 @@ while(<In>){
         s/--/-/g;
         my ($id,$type,@indi)=split(/\s+/,$_);
         my ($chr,$pos)=split(/\-/,$id);
-        if (!exists $sca{$chr}){
+        if (!exists $sca{$chr} && !exists $chr{$chr}){
             $sca{$chr}=1;
         }
         if(!exists $filehand{$chr}){

@@ -60,7 +60,7 @@ process markersplit{
         file chrfile from chr
     output:
         file "scaf.list" into scaflist
-        file "split/compare.sh" into compare_worksh
+        file "split/compare.sh" into compare_worksh,compare
         path "split"
         file "*"
     script:
@@ -121,8 +121,7 @@ process binmap{
 }
 
 
-
-if(params.chr_only){
+if(compare.splitText(by:1).count().val < 1){
    println "haha"
    process group_by_chr{
         publishDir "${params.out}/06.premapping", pattern:"*"
@@ -140,49 +139,48 @@ if(params.chr_only){
         """
     }
 }else{
-    compare_worksh.splitText(by:1).into{compare_para;}
+    compare_worksh.splitText(by:1).set{compare_para}
     println "test"
-process mlodcalc{
-    publishDir "${params.out}/04.calc", pattern:"*"
-    queue "DNA"
-    executor "slurm"
-    input:
-        val para from compare_para
-        file binfile from binfile1.collect()
-    output:
-        file "*.mlod" into mlod_file
-        file "*"
-    script:
-    """
-    perl  ${baseDir}/bin/calculateMLOD.pl  -popt F2 ${para} 
-    """
-}
-process grouping{
-    publishDir "${params.out}/05.group", pattern:"*"
-    queue "DNA"
-    executor "slurm"
-    input:
-        file mlod from mlod_file.collect()
-        file chrfile from chr
-    output:
-        file "*.lg" into grouping_file
-        file "*"
-    script:
-        if(params.chr){
-            """
-            cat *.mlod > Total.mLOD
-            python3  ${baseDir}/bin/count_mlod.py -input Total.mLOD -output linkage.mlod.csv
-            perl ${baseDir}/bin/linkage_by_ref-mlod.pl  -i linkage.mlod.csv -o lg.lg -t 5 -c ${chrfile}
-            """
-        }else{
-            """
-            cat *.mlod > Total.mLOD
-            python3  ${baseDir}/bin/count_mlod.py -input Total.mLOD -output linkage.mlod.csv 
-            perl ${baseDir}/bin/linkage_by_mlod.pl  -i linkage.mlod.csv -k lg -d ./ -n ${params.nchro} -minGroup 1 -b 3 -e 20 
-            """
-        }
+    process mlodcalc{
+        publishDir "${params.out}/04.calc", pattern:"*"
+        queue "DNA"
+        executor "slurm"
+        input:
+            val para from compare_para
+            file binfile from binfile1.collect()
+        output:
+            file "*.mlod" into mlod_file
+            file "*"
+        script:
+        """
+        perl  ${baseDir}/bin/calculateMLOD.pl  -popt F2 ${para} 
+        """
     }
-
+    process grouping{
+        publishDir "${params.out}/05.group", pattern:"*"
+        queue "DNA"
+        executor "slurm"
+        input:
+            file mlod from mlod_file.collect()
+            file chrfile from chr
+        output:
+            file "*.lg" into grouping_file
+            file "*"
+        script:
+            if(params.chr){
+                """
+                cat *.mlod > Total.mLOD
+                python3  ${baseDir}/bin/count_mlod.py -input Total.mLOD -output linkage.mlod.csv
+                perl ${baseDir}/bin/linkage_by_ref-mlod.pl  -i linkage.mlod.csv -o lg.lg -t 5 -c ${chrfile}
+                """
+            }else{
+                """
+                cat *.mlod > Total.mLOD
+                python3  ${baseDir}/bin/count_mlod.py -input Total.mLOD -output linkage.mlod.csv 
+                perl ${baseDir}/bin/linkage_by_mlod.pl  -i linkage.mlod.csv -k lg -d ./ -n ${params.nchro} -minGroup 1 -b 3 -e 20 
+                """
+            }
+    }
 }
 
 
