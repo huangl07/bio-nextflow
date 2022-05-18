@@ -4,6 +4,7 @@ params.help = false
 params.method="GATK"
 params.miss=0.3
 params.maf=0.05
+params.dep=5
 def helpMessage() {
    
     log.info"""
@@ -16,6 +17,7 @@ def helpMessage() {
     --group     <file>  input group file    
     --miss  <num>   miss
     --maf   <num>   maf
+    --dep   <num>   dep
     """.stripIndent()
 }
 
@@ -42,7 +44,7 @@ process vcffilter{
     script:
         
     """
-        bcftools filter --threads 8  -i "F_Missing <=${params.miss} && MAF > ${params.maf}" ${vcf}  > pop.filtered.vcf
+        bcftools filter --threads 8 -i "F_Missing <=${params.miss} && MAF > ${params.maf} && FORMAT/DP < ${params.dep}" ${vcf}  > pop.filtered.vcf
     """
 }
 process vcf2tree{
@@ -172,39 +174,90 @@ process pca{
 
      if(params.group){
         """
-        plink --vcf ${vcf} --pca --out pop --allow-extra-chr 
+        plink --vcf ${vcf} --pca --out pop --allow-extra-chr --double-id
         Rscript ${baseDir}/bin/pca.R --infile pop.eigenvec --outfile pop.pca --varfile pop.eigenval --group ${group_file}
         """
     }else{
         """
-        plink --vcf ${vcf} --pca --out pop --allow-extra-chr 
+        plink --vcf ${vcf} --pca --out pop --allow-extra-chr --double-id
         Rscript ${baseDir}/bin/pca.R --infile pop.eigenvec --outfile pop.pca --varfile pop.eigenval
         """
     }
 }
-process LDdecay{
-    publishDir "${params.outdir}/07.LDdecay", pattern:"*"
-    queue "DNA"
-    cpus 8
-    executor "slurm"
-    memory "30G"
-    input:
-         file vcf from filter_vcf4
-    output:
-        file "*"  
-    script:
-
-     if(params.group){
+if(params.group){
+    process group_preparie{
+        publishDir "${params.outdir}/02.group", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "30G"
+        input:
+            file group from group_file
+        output:
+            file "group.list" into grouplist1,grouplist2
+            file "*"
+        script:
         """
-        perl ${baseDir}/bin/popld.pl -vcf ${vcf} -g ${group_file} -o ./
-        """
-    }else{
-        """
-        PopLDdecay --InVCF ${vcf} --OutStat pop --MAF 0.05 --Miss 0.3
-        Rscript ${baseDir}/bin/ld-decay.R --infile pop.stat.gz --outfile pop.ld
+            perl ${baseDir}/bin/group.pl -i ${group} -o ./
         """
     }
+    grouplist1.splitCsv(header:false,sep:'\t').groupTuple().set{group1}
+    process LDdecay{
+        publishDir "${params.outdir}/07.LDdecay", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "30G"
+        input:
+            file vcf from filter_vcf4
+            tuple gid,gfile from group1
+        output:
+            file "*"  
+            file "${gid}.stat.gz" into ld_result
+        script:
+
+        """
+        PopLDdecay --InVCF ${vcf} --OutStat ${gid} --MAF ${params.maf} --Miss ${params.miss} -SubPop ${gfile[0]}
+        """
+    }
+
+    process LDdraw{
+        publishDir "${params.outdir}/07.LDdecay", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "30G"
+        input:
+            file $stat from ld_result.collect()
+        output:
+            file "*"  
+        script:
+
+        """
+        ls *.stat.gz|perl -ne 'chomp;\$a=\$_;\$a=~s/\\.stat\\.gz//g;print \$a,"\\t",\$_,"\\n"' > pop.list
+        Rscript ${baseDir}/bin/ld-decay.R --list pop.list --outfile pop
+        """
+    }
+}else{
+
+    process LDdecaynogroup{
+        publishDir "${params.outdir}/07.LDdecay", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "30G"
+        input:
+            file vcf from filter_vcf4
+        output:
+            file "*"  
+        script:
+            """
+            PopLDdecay --InVCF ${vcf} --OutStat pop --MAF 0.05 --Miss 0.3
+            Rscript ${baseDir}/bin/ld-decay.R --infile pop.stat.gz --outfile pop.ld
+            """
+    }
 }
+
 
     process primater{
     publishDir "${params.outdir}/08.parameter", pattern:"*"
@@ -229,4 +282,13 @@ process LDdecay{
         populations -V ${vcf} -M group.list -O ./ -t 8
         """
     }       
+}
+
+
+workflow.onComplete {
+    println "Pipeline completed!"
+    println "Started at  $workflow.start" 
+    println "Finished at $workflow.complete"
+    println "Time elapsed: $workflow.duration"
+    println "Execution status: ${ workflow.success ? 'OK' : 'failed' }"
 }

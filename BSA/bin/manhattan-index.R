@@ -69,7 +69,7 @@ dfpos = dfpos %>% filter(CHR %in% chr$V1)
 	  arrange(order, BP) %>%
 	  mutate( BPcum=BP+tot)
 	  	print("haha")
-
+        
 		axisdf <- dpos %>% group_by(CHR) %>% summarize(center=(as.numeric(max(BPcum)) + as.numeric(min(BPcum))) / 2 )
 		p1 <- ggplot(dpos) +geom_point(aes(x=BPcum, y=Delta,color=as.factor(order)))
 			if(!is.null(opt$lcol)){
@@ -80,7 +80,7 @@ dfpos = dfpos %>% filter(CHR %in% chr$V1)
 			}
 
 			if(!is.null(opt$threshold)){
-				quantile= quantile(dfpos$Delta,opt$threshold)
+				quantile= quantile(dfpos$Delta,opt$threshold,na.rm=T)
 				p1=p1+geom_hline(yintercept =quantile,linetype="dashed",col="red")
 			}
 		    p1=p1 +
@@ -104,7 +104,7 @@ dfpos = dfpos %>% filter(CHR %in% chr$V1)
 			p1=p1+geom_line(mapping = aes(x=BP,y=CI),color="red")
 		}
 		if(!is.null(opt$threshold)){
-			quantile= quantile(dfpos$Delta,opt$threshold)
+			quantile= quantile(dfpos$Delta,opt$threshold,na.rm=T)
 			p1=p1+geom_hline(yintercept =quantile,linetype="dashed",col="red")
 		}
 		 p1=p1+

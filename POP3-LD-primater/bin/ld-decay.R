@@ -51,8 +51,8 @@ if(is.null(opt$list)){
 	newLD<-newLD[order(newLD$distance),]
 	newLD$distance<-newLD$distance/1000
 	p=ggplot(newLD)+geom_line(aes(x=distance,y=fpoints))+xlab("Distance(kb)")+ylab("r^2")+ggtitle(label="LD decay",subtitle=paste("decay05",decay05,sep=":"))+theme_bw()+theme(plot.title = element_text(hjust = 0.5))
-	ggsave(file=paste(opt$outfile,"png",sep="."),p)
-	ggsave(file=paste(opt$outfile,"pdf",sep="."),p)
+	ggsave(file=paste(opt$outfile,"png",sep="."),p,width=16,height=9)
+	ggsave(file=paste(opt$outfile,"pdf",sep="."),p,width=16,height=9)
 }else{
 	ldfile=read.table(file=opt$list);
 	read<-function(i){
@@ -72,13 +72,13 @@ if(is.null(opt$list)){
 		newLD$id=ldfile[i,1]
 		newLD
 	}
-	df=lapply(1:ncol(ldfile),read)
+	df=lapply(1:nrow(ldfile),read)
 	dfs=do.call(rbind,df)
 	ldstat=dfs %>% group_by(id) %>% summarise(decay05=distance[which.min(abs(fpoints-max(fpoints)/2))],decay01=distance[which.min(abs(fpoints-0.1))])
 	write.table(ldstat,file="ldstat.xls",sep="\t",quote=F)
 	p=ggplot(dfs)+geom_line(aes(x=distance,y=fpoints,col=id))+xlab("Distance(kb)")+ylab("r^2")+ggtitle("LD decay")+theme_bw()+theme(plot.title = element_text(hjust = 0.5))
-	ggsave(file=paste(opt$outfile,"png",sep="."),p)
-	ggsave(file=paste(opt$outfile,"pdf",sep="."),p)
+	ggsave(file=paste(opt$outfile,"png",sep="."),p,width=16,height=9)
+	ggsave(file=paste(opt$outfile,"pdf",sep="."),p,width=16,height=9)
 }
 escaptime=Sys.time()-times;
 print("Done!")

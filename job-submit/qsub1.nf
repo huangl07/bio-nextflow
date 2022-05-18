@@ -4,7 +4,7 @@ params.help = false
 params.cpu = 1 
 params.mem = "3G"
 params.mode = "split"
-params.excutor = "slurm"
+params.excutor = "local"
 params.queue = "DNA"
 params.outdir="./"
 def helpMessage() {

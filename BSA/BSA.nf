@@ -168,14 +168,16 @@ process params.grade{
     executor "slurm"
     input:
         file vcf from vcf
+        file group from group_file
     output:
         file "*"
         tuple "ridit","pop.ridit.region" into region
+        file "pop.table" into table_file
     script:
     """
         perl ${baseDir}/bin/vcf2table_multi.pl --vcf ${vcf} --out pop.table --group ${group} -popt ${params.popt} -vtype ALL
-        Rscript ${baseDir}/bin/ridit.R --index pop.table pop.table --out pop --window ${params.winsize} --pvalue ${params.pvalue} --group ${params.group}
-        Rscript ${baseDir}/bin/manhattan-index.R --result pop.denoise.result --pcol logP --qcol 1 --xlab chromosome --ylab "loess" --output loess --chr ${chr}
+        Rscript ${baseDir}/bin/ridit.R --index pop.table --out pop --window ${params.winsize} --pvalue ${params.pvalue} --group ${params.group}
+        Rscript ${baseDir}/bin/manhattan-index.R --result pop.denoise.result --pcol logP --qcol 0.999 --xlab chromosome --ylab "loess" --output loess --chr ${chr}
         Rscript ${baseDir}/bin/region.R --infile pop.denoise.result --ccol X.chr --pos pos --loess loess --CI 1 --outfile pop.ridit.region --number 10 
     """
 }
@@ -220,6 +222,7 @@ process params.enrich{
     output:
         file "*"
     script:
+    if(region.countLines() == 0){
     """
         mkdir ${method}
         cd ${method}
@@ -231,4 +234,5 @@ process params.enrich{
         perl ${baseDir}/bin/extract_region.gene.eff.pl -gff ../${gff} -region ${region} -table ../${table} -out ${method}
         Rscript ${params.scripts}/merge_annotation.R --regionfile ${region} --genefile genes_abstract.list --gofile ../${GO_anno} --keggfile ../${KEGG_file} --outfile region_gene.txt
     """
+    }
 }

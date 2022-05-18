@@ -53,7 +53,7 @@ pop_bootstrap_result <- fread(opt$infile) %>%
   tibble() 
   if(!is.null(opt$quantile)){
       opt$CI="CI"
-      pop_bootstrap_result$CI=quantile(pop_bootstrap_result[[opt$loess]],as.numeric(opt$quantile))
+      pop_bootstrap_result$CI=quantile(pop_bootstrap_result[[opt$loess]],as.numeric(opt$quantile),na.rm=T)
   }
 setnames(pop_bootstrap_result, c(opt$ccol,opt$pos,opt$loess,opt$CI), c("chr", "pos", "loess", "CI")) #重命名
 

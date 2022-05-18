@@ -3,37 +3,73 @@ use strict;
 use warnings;
 my $BEGIN_TIME=time();
 use Getopt::Long;
-my ($fIn,$fOut);
+my ($fIn,$fOut,$map);
 use Data::Dumper;
 use FindBin qw($Bin $Script);
 use File::Basename qw(basename dirname);
 my $version="1.0.0";
 GetOptions(
 	"help|?" =>\&USAGE,
-    "input:s"=>\$fIn,
+        "input:s"=>\$fIn,
+        "m:s"=>\$map,
 	"output:s"=>\$fOut,
 			) or &USAGE;
 &USAGE unless ($fIn and $fOut);
+open In,$map;
+my %info;
+my $lgID;
+while (<In>) {
+        chomp;
+	next if ($_ eq ""||/^$/ || /^;/ );
+        if(/group/){
+                $lgID=(split(/\s+/,$_))[-1];
+                next;
+        }
+	my ($id,$pos)=split(/\s+/,$_);
+	$info{$id}{lgID}=$lgID;
+	$info{$id}{pos}=$pos;
+}
+close In;
 open In,$fIn;
 open Out,">$fOut";
+open Draw,">$fOut.draw";
+
 while(<In>){
     chomp;
     next if ($_ eq ""||/^$/);
+    s/kh/hk/g;
+    s/pn/np/g;
+    s/ml/lm/g;
     my ($marker,$type,$phase,@geno)=split(/\s+/,$_);
+    next if(!exists $info{$marker});
     $phase=~s/{|}//g;
     $type=~s/<|>//g;
     $phase=~s/1/2/g;
     $phase=~s/0/1/g;
+
     my @out;
+    my @out1;
+    my @out2;
+    if(!defined $info{$marker}{lgID}){print $marker;die;}
+    if(!defined $info{$marker}{pos}){print $marker;die;}
+    push @out1,join(",",$marker,$info{$marker}{lgID},$info{$marker}{pos});
+    push @out2,join(",",$marker,$info{$marker}{lgID},$info{$marker}{pos});
     for(my $i=0;$i<@geno;$i++){
+ 
         my $haplosource=determineHaploSource($type,$phase,$geno[$i]);
+        my @hap=split("",$haplosource);
+        if(scalar @hap  != 2){print "$geno[$i]\t$haplosource\n","\n";die;}
         push @out,$haplosource;
+        push @out1,$hap[0];
+        push @out2,$hap[1];
     }
     print Out join("\t",$marker,"<$type>","{$phase}",@out),"\n";
+    print Draw join(",",@out1),"\n";
+    print Draw join(",",@out2),"\n";
 }
 close In;
 close Out;
-
+close Draw;
 #######################################################################################
 print STDOUT "\nDone. Total elapsed time : ",time()-$BEGIN_TIME,"s\n";
 #######################################################################################

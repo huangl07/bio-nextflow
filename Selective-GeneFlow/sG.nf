@@ -5,6 +5,7 @@ params.method="GATK"
 params.miss=0.3
 params.maf=0.05
 params.win=10000
+params.dep=7
 def helpMessage() {
    
     log.info"""
@@ -38,12 +39,14 @@ process vcffilter{
     input:
         file vcf from vcf_file
     output:
-        file "*"
         file "pop.filtered.vcf.gz" into filter_vcf1,filter_vcf2
+        file "pop.filtered.vcf.gz.tbi" into index1,index2
+        file "*"
     script:
         
     """
-        bcftools filter --threads 8  -O z -i "F_Missing <=${params.miss} && MAF > ${params.maf}" ${vcf}  > pop.filtered.vcf.gz
+        bcftools filter --threads 8  -O z -i "F_Missing <=${params.miss} && MAF > ${params.maf} && FORMAT/DP < ${params.dep}" ${vcf}  > pop.filtered.vcf.gz
+        tabix pop.filtered.vcf.gz
     """
 }
 
@@ -68,7 +71,6 @@ process group_preparie{
 grouplist1.splitCsv(header:false,sep:'\t').groupTuple().set{group1}
 grouplist2.splitCsv(header:false,sep:'\t').groupTuple().set{group2}
 
-group1.view()
 
 process tajimaD{
     publishDir "${params.outdir}/03.tajimaD", pattern:"*"
@@ -79,6 +81,7 @@ process tajimaD{
     input:
         file vcf from filter_vcf1
         tuple gid,gfile from group2
+        file index from index1
     output:
         file "*"
     script:
@@ -95,14 +98,17 @@ process pixy{
     memory "30G"
     input:
         file vcf from filter_vcf2
+        file index from index2
+        file group from group_file
     output:
         file "*"
     script:
     """
         pixy --stats pi fst dxy \
         --vcf ${vcf} \
-        --populations ${params.group}\
+        --populations ${group}\
         --window_size 10000 \
-        --n_cores 8
+        --n_cores 8 \
+        --bypass_invariant_check yes
     """
 }

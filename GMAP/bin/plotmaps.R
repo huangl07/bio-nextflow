@@ -172,6 +172,8 @@ Options:
 ")
 q(status=1);
 }
+times<-Sys.time()
+
 if (!is.null(opt$help) ) { usage() }
 if (is.null(opt$out) ) { usage() }
 m<-read.mp(opt$mark)
@@ -185,3 +187,6 @@ outpng=paste(opt$out,".png",sep="")
 png(outpng,width=w,height=w,units="in",res=300)
 plotlink(m)
 dev.off()
+escaptime=Sys.time()-times;
+print("Done!")
+print(escaptime)

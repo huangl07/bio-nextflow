@@ -72,7 +72,7 @@ pop_table_info$fdr <- p_adjust
 ###输出结果
 output_table <- pop_table_info %>% 
   select(CHROM, POS, Ref, Alt, Vtype, p, fdr)
-write.table(output_table, file = opt$out, sep = "\t", quote=FALSE, row.names=FALSE)
+write.table(output_table, file = paste(opt$out,"detail.result",sep="."), sep = "\t", quote=FALSE, row.names=FALSE)
 
 ###denoise
 data=output_table
@@ -94,6 +94,7 @@ colnames(df)[1:2]=c("CHROM","POS")
 df=left_join(df,output_table,by=c("CHROM","POS"))
 df$logP=log10(df$loess) * -1
 ###输出结果2
+colnames(df)[1:2]=c("X.chr","pos")
 write.table(df, file = paste(opt$out,"denoise.result",sep="."), sep = "\t", quote=FALSE, row.names=FALSE)
 
 escaptime <- Sys.time()-times

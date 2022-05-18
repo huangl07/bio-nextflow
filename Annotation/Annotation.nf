@@ -91,6 +91,7 @@ process KEGGanno {
         file "KEGG.kobas.result" 
     script:
     """
+    cp ~dna/.kobasrc ~/.kobasrc
     cat ${kegg_blast} > total.blast
     annotate.py -i total.blast -t blastout:tab -s ko -o KEGG.kobas.result -q /mnt/ilustre/users/dna/database/kobas/sqlite3/
     """
