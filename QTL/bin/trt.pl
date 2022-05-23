@@ -25,10 +25,15 @@ if($popt eq "CP" || $popt eq "F1"){
         next if ($_ eq ""||/^$/);
         if(/sampleID/){
             (undef,@trt)=split(/\s+/,$_);
+            for(my $i=1;$i<@trt;$i++){
+               push @{$trt{$trt[$i]}},join(" ","sampleID",$trt[$i])
+            }
+            next;
         }
         $nind++;
         my @line=split(/\s+/,$_);
         for(my $i=1;$i<@line;$i++){
+            if($line[$i] =~ /[^0-9\.]/){$line[$i] = "*"}
             push @{$trt{$trt[$i-1]}},join(" ",$line[0],$line[$i])
         }
     }
@@ -59,6 +64,7 @@ if($popt eq "CP" || $popt eq "F1"){
         push @indi,$line[0];
         $nind++;
         for(my $i=1;$i<@line;$i++){
+            if($line[$i] =~ /[^0~9\.]*/){$line[$i] = "*"}
             push @{$trt{$trt[$i-1]}},$line[$i];
         }
     }

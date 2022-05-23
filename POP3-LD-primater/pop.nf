@@ -44,7 +44,7 @@ process vcffilter{
     script:
         
     """
-        bcftools filter --threads 8 -i "F_Missing <=${params.miss} && MAF > ${params.maf} && FORMAT/DP < ${params.dep}" ${vcf}  > pop.filtered.vcf
+        bcftools filter --threads 8 -i "F_Missing <=${params.miss} && MAF > ${params.maf} && MIN(FORMAT/DP) > ${params.dep}" ${vcf}  > pop.filtered.vcf
     """
 }
 process vcf2tree{

@@ -2,7 +2,7 @@
 library(getopt)
 options(bitmapType='cairo')
 opt = getopt(matrix(c(
-'trt','m',1,'character',
+'trt','i',1,'character',
 'out','o',2,'character',
 'help','h',0,'logical'
 ),byrow=TRUE, ncol=4));
@@ -23,6 +23,7 @@ if (is.null(opt$trt) ) { usage() }
 library(dplyr)
 library(reshape2)
 txt<-read.table(opt$trt,sep="\t",head=T)
+colnames(txt)[1]="sampleID"
 id=colnames(txt)[1];
 df=melt(txt)
 stat=df %>% group_by(variable) %>% summarise(nlevels=nlevels(as.factor(value)))
@@ -32,9 +33,8 @@ bname=stat$variable[stat$nlevels == 2]
 print(qname)
 print(bname)
 write.table(txt[,c(id,as.character(qname))],file=paste(opt$out,"qtl.txt",sep="."),quote=FALSE,sep=" ",row.name=F)
-if(len(bname) > 0){
 write.table(txt[,c(id,as.character(bname))],file=paste(opt$out,"btl.txt",sep="."),quote=FALSE,sep=" ",row.name=F)
-}
+
 
 escaptime=Sys.time()-times;
 print("Done!")

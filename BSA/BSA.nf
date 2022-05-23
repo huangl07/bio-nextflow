@@ -168,17 +168,17 @@ process params.grade{
     executor "slurm"
     input:
         file vcf from vcf
-        file group from group_file
+        file group from group
     output:
         file "*"
-        tuple "ridit","pop.ridit.region" into region
+        tuple val("ridit"),"pop.ridit.region" into region
         file "pop.table" into table_file
     script:
     """
         perl ${baseDir}/bin/vcf2table_multi.pl --vcf ${vcf} --out pop.table --group ${group} -popt ${params.popt} -vtype ALL
         Rscript ${baseDir}/bin/ridit.R --index pop.table --out pop --window ${params.winsize} --pvalue ${params.pvalue} --group ${params.group}
-        Rscript ${baseDir}/bin/manhattan-index.R --result pop.denoise.result --pcol logP --qcol 0.999 --xlab chromosome --ylab "loess" --output loess --chr ${chr}
-        Rscript ${baseDir}/bin/region.R --infile pop.denoise.result --ccol X.chr --pos pos --loess loess --CI 1 --outfile pop.ridit.region --number 10 
+        Rscript ${baseDir}/bin/manhattan-index.R --result pop.denoise.result --pcol logP --threshold 0.999 --xlab chromosome --ylab "loess" --output loess --chr ${chr}
+        Rscript ${baseDir}/bin/region.R --infile pop.denoise.result --ccol X.chr --pos pos --loess loess --quantile 0.999 --outfile pop.ridit.region --number 10 
     """
 }
 }

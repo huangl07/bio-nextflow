@@ -11,12 +11,10 @@ my $version="1.0.0";
 GetOptions(
 	"help|?" =>\&USAGE,
 	"l:s"=>\$loc,
-	"m:s"=>\$trt,
 	"o:s"=>\$fOut,
 			) or &USAGE;
-&USAGE unless ($loc and $map and $fOut);
+&USAGE unless ($loc and $fOut);
 
-close In;
 open In,$loc;
 open Out,">$fOut";
 my @out;
@@ -31,8 +29,8 @@ while (<In>) {
     push @out,$_;
 }
 close In;
-print Out "popt=CP\nnind=$nind\n$nloc=$nloc\nname=pop\n";
-print Out join("\n",@out)
+print Out "popt=CP\nnind=$nind\nnloc=$nloc\nname=pop\n";
+print Out join("\n",@out);
 close Out;
 #######################################################################################
 print STDOUT "\nDone. Total elapsed time : ",time()-$BEGIN_TIME,"s\n";

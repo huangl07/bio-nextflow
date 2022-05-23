@@ -25,14 +25,21 @@ while(<In>){
     next if($_ eq ""||/^$/);
     my ($id,$gid)=split(/\s+/,$_);
     if(!exists $filehand{$gid}){
-        print List "$gid\t$fOut/$gid.list\n";
-        open $filehand{$gid},">$fOut/$gid.list";
+        print List "$gid\t$fOut/$gid.txt\n";
+        open $filehand{$gid},">$fOut/$gid.txt";
     }
     print {$filehand{$gid}} $id,"\n";
 }
 close In;
 close List;
-
+open Out2,">$fOut/xpclr.list";
+my @id=sort keys %filehand;
+for(my $i=0;$i<@id;$i++){
+    for(my $j=$i+1;$j<@id;$j++){
+        print Out2 "$fOut/$id[$i].txt","\t","$fOut/$id[$j].txt\t$id[$i]\_$id[$j]","\n";
+    }
+}
+close Out2;
 #######################################################################################
 print STDOUT "\nDone. Total elapsed time : ",time()-$BEGIN_TIME,"s\n";
 #######################################################################################
