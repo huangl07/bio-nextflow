@@ -1,15 +1,3 @@
-timeline {
-    enabled = true
-}
+# bioinformatic pipeline base on nextflow
 
-report {
-    enabled = true
-}
-
-trace {
-    enabled = true
-}
-
-dag {
-     enabled = true
-}
+learning and coding everyday
