@@ -595,3 +595,6 @@ process mergeVcfs{
         gatk MergeVcfs  -I ${indel} -I ${snp} -O pop.final.vcf.gz 
     """    
 }
+
+
+

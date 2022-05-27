@@ -13,16 +13,18 @@ my $version="1.0.0";
 # ------------------------------------------------------------------
 # GetOptions
 # ------------------------------------------------------------------
-my ($fIn,$dOut,$fLG,$fKey,$type,$Pos);
+my ($fIn,$dOut,$fLG,$fKey,$type,$Pos,$chr);
 GetOptions(
 				"help|?" =>\&USAGE,
 				"i:s"=>\$fIn,
 				"l:s"=>\$fLG,
 				"d:s"=>\$dOut,
-
+                "chr:s"=>\$chr,
 				) or &USAGE;
 &USAGE unless ($fIn and $dOut and $fLG);
 mkdir $dOut if (!-d $dOut);
+my $split="-";
+if($chr){$split=" ";}
 $dOut=ABSOLUTE_DIR($dOut);
 open In,$fIn;
 my %indi;
@@ -34,7 +36,7 @@ while(<In>){
 	my ($id,@info)=split(/\s+/,$_);
 	my $info=join("\t",@info);
 	$info=~s/h/X/g;
-	my $scaid=(split(/\s+/,$id))[0];
+	my $scaid=(split(/$split/,$id))[0];
 	push @{$indi{$scaid}},join("\t",$id,$info); 
 }
 close In;
@@ -52,6 +54,10 @@ while(<In>){
 	open Out,">$dOut/$lgid.marker";
 	print Out $head,"\n";
 	foreach my $sca(@scas){
+        if(!defined $indi{$sca}){
+            print $sca,"\n";
+            die;
+        }
 		print Out join("\n",@{$indi{$sca}}),"\n";
 	}
 	close Out;

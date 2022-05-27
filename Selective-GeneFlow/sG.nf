@@ -41,7 +41,7 @@ process vcffilter{
     input:
         file vcf from vcf_file
     output:
-        file "pop.filtered.vcf.gz" into filter_vcf1,filter_vcf2,filter_vcf3
+        file "pop.filtered.vcf.gz" into filter_vcf1,filter_vcf2,filter_vcf3,filter_vcf4
         file "pop.filtered.vcf.gz.tbi" into vcf_index
         file "chr.list" into chr_list
     script:
@@ -66,10 +66,12 @@ process group_preparie{
     output:
         file "group.list" into grouplist1
         file "xpclr.list" into grouplist2
+        file "treemix.list" into grouplist3
     script:
     """
         perl ${baseDir}/bin/group.pl -i ${group} -o ./
-    """
+        perl ${baseDir}/bin/remakegrolist.pl -in ${group} -out  treemix.list
+     """
 }
 grouplist1.splitCsv(header:false,sep:'\t').map{row-> tuple(row[0],file(row[1]))}.combine(filter_vcf1).set{groups}
 
@@ -111,7 +113,7 @@ process pixy{
         --bypass_invariant_check yes
     """
 }
-
+//不知道为什么必须要这么写
 grouplist2.splitCsv(header:false,sep:'\t').combine(filter_vcf3).set{groups3}
 //.map{row-> tuple(file(row[0]),file(row[1]),row(3))}.combine(filter_vcf3).into{groups1;groups2;groups3}
 chr_list.splitCsv().combine(groups3).set{xpclr_group}
@@ -123,12 +125,69 @@ process xpclr{
    executor "slurm"
    memory "30G"
    input:
-       tuple chr,g1,g2,name,vcf from xpclr_group
+        tuple chr,g1,g2,name,vcf from xpclr_group
       // each chr from chrs
    output:
        file "*"
    script:
    """
    xpclr --input ${vcf}  --samplesA ${g1} --samplesB ${g2}  --out ./${name}-${chr}.xpclr  --chr ${chr}  --size 100000
+   """
+}
+
+
+process prepairformix{
+   publishDir "${params.outdir}/06.vcf2treemix", pattern:"*"
+   queue "DNA"
+   cpus 8
+   executor "slurm"
+   memory "30G"
+   input:
+       file vcf from filter_vcf4
+       file list from grouplist3
+      // each chr from chrs
+   output:
+       file "treemix/pop.tmix.gz" into treemix
+       file "*"
+   script:
+   """
+    mkdir treemix
+    bgzip -d ${vcf}
+    python ${baseDir}/bin/vcf2treemix.py -vcf pop.filtered.vcf -pop treemix.list -out treemix/
+    gzip treemix/pop.tmix
+   """
+}
+Channel.fromList([1,2,3,4,5]).combine(treemix).combine([1,2,3,4,5]).set{treemix1}
+
+process treemix{
+   publishDir "${params.outdir}/07.treemix", pattern:"*"
+   queue "DNA"
+   cpus 8
+   executor "slurm"
+   memory "30G"
+   input:
+      tuple m,file(treemix),n from treemix1
+   output:
+       file "pop.*" into mix_result
+       file "*"
+   script:
+   """
+    treemix -i ${treemix} -m ${m}  -o pop.${m}.${n} -k 1000 -bootstrap -global
+   """
+}
+
+process optm{
+   publishDir "${params.outdir}/07.treemix", pattern:"*"
+   queue "DNA"
+   cpus 8
+   executor "slurm"
+   memory "30G"
+   input:
+      file "*" from mix_result.collect()
+   output:
+       file "*"
+   script:
+   """
+    Rscript  ${baseDir}/bin/treemix.R --input ./ --output treemix
    """
 }

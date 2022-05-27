@@ -40,7 +40,7 @@ process vcffilter{
         file vcf from vcf_file
     output:
         file "*"
-        file "pop.filtered.vcf" into filter_vcf1,filter_vcf2,filter_vcf3,filter_vcf4,filter_vcf5
+        file "pop.filtered.vcf" into filter_vcf1,filter_vcf2,filter_vcf3,filter_vcf4,filter_vcf5,filter_vcf6,filter_vcf7,filter_vcf8
     script:
         
     """
@@ -259,7 +259,7 @@ if(params.group){
 }
 
 
-    process primater{
+    process parameter{
     publishDir "${params.outdir}/08.parameter", pattern:"*"
     queue "DNA"
     cpus 8
@@ -267,23 +267,74 @@ if(params.group){
     memory "100G"
     input:
          file vcf from filter_vcf5
-         file plink from plink_file2.collect()
+            file group from group_file
 
     output:
         file "*" 
     script:
        if(params.group){
         """
-        populations -V ${vcf} -M ${group_file} --fstats -O ./ -t 8
+        populations -V ${vcf} -M ${group} --fstats -O ./ -t 8
+        perl ${baseDir}/bin/pic.pl -i ${vcf} -g ${group} -o pic
+        Rscript ${baseDir}/bin/diversity.R --vcf ${vcf} --group ${group} --out ./ --pic pic.stat
         """
         }else{
         """
         cut -f 1 pop.fam -d " "|perl -ne 'chomp;print \$_,"\\tg1\\n";' > group.list
         populations -V ${vcf} -M group.list -O ./ -t 8
         """
-    }       
-}
+        }       
+    }
+    process Amova{
+        publishDir "${params.outdir}/09.Amova", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "100G"
+        input:
+            file vcf from filter_vcf6
+            file group from group_file
 
+        output:
+            file "*" 
+        script:
+            if(params.group){
+                """
+                Rscript ${baseDir}/bin/Amova.R --vcf ${vcf} --group ${group} -o pop 
+                """
+            }
+    }
+ 
+    process ibc{
+        publishDir "${params.outdir}/10.ibc", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "100G"
+        input:
+            file vcf from filter_vcf7
+        output:
+            file "*" 
+        script:
+        """
+        plink --vcf ${vcf} --het --ibs-matrix --double-id --out pop --allow-extra-chr
+        """    
+    }
+    process ibd{
+        publishDir "${params.outdir}/11.idb", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "100G"
+        input:
+            file vcf from filter_vcf8
+        output:
+            file "*" 
+        script:
+        """
+        java -jar $prefix/java-jar/beagle.27Jan18.7e1.jar gt=${vcf}  out=pop ibd=true impute=false
+        """    
+    }
 
 workflow.onComplete {
     println "Pipeline completed!"

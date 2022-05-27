@@ -120,9 +120,10 @@ process binmap{
         }
 }
 
-
-if(compare.splitText(by:1).count().val < 1){
+onlychr=0
+if(compare.splitText(by:1).toList().size().val < 1){
    println "haha"
+   onlychr=1
    process group_by_chr{
         publishDir "${params.out}/06.premapping", pattern:"*"
         queue "DNA"
@@ -138,6 +139,7 @@ if(compare.splitText(by:1).count().val < 1){
         perl ${baseDir}/bin/linkage_by_ref.pl  -i total.markers -o  total.lg    
         """
     }
+
 }else{
     compare_worksh.splitText(by:1).set{compare_para}
     println "test"
@@ -183,32 +185,39 @@ if(compare.splitText(by:1).count().val < 1){
     }
 }
 
-
-
-process premapping{
-    publishDir "${params.out}/06.premapping", pattern:"*"
-    queue "DNA"
-    executor "slurm"
-    input:
-        file lg from grouping_file
-        file bins from binfile2.collect()
-    output:
-        file "linkagegroups/lg.list" into lglist
-        file "linkagegroups/*.marker" into lgmarkers1,lgmakrers2
-        file "*"
-    script:
-    if(params.popt == "CP"){
-        """
+    process premapping{
+        publishDir "${params.out}/06.premapping", pattern:"*"
+        queue "DNA"
+        executor "slurm"
+        input:
+            file lg from grouping_file
+            file bins from binfile2.collect()
+        output:
+            file "linkagegroups/lg.list" into lglist
+            file "linkagegroups/*.marker" into lgmarkers1,lgmakrers2
+            file "*"
+        script:
+        if(params.popt == "CP"){
+            """
+                cat *.marker > total.markers
+                perl ${baseDir}/bin/splitbyLG-CP.pl  -l ${lg} -i total.markers -d linkagegroups/
+            """
+        }else{
+            if(onlychr > 0){
+            """
             cat *.marker > total.markers
-            perl ${baseDir}/bin/splitbyLG-CP.pl  -l ${lg} -i total.markers -d linkagegroups/
-        """
-    }else{
-        """
-        cat *.marker > total.markers
-        perl ${baseDir}/bin/splitbyLG-NOCP.pl  -l ${lg} -i total.markers -d linkagegroups/
-        """
+            perl ${baseDir}/bin/splitbyLG-NOCP.pl  -l ${lg} -i total.markers -d linkagegroups/ --chr 1
+            """
+            }else{
+            """
+            cat *.marker > total.markers
+            perl ${baseDir}/bin/splitbyLG-NOCP.pl  -l ${lg} -i total.markers -d linkagegroups/ 
+            """
+            }
+        }
     }
-}
+
+
 lglist.splitCsv(header:false,sep:'\t').groupTuple().set{lg_list}
 
 process mapping{
@@ -280,7 +289,10 @@ process mapEvaluate{
         """
          cat *.map > total.maps
          cat *.marker|sort -r|uniq > total.markers
-         cat *.csv|sort -r|uniq > total.csvs
+         less -S chr01.result.csv|grep Genotype > tmp.head
+         cat *.csv|sort|uniq|grep -v Genotype > tmp.csvs
+         cat tmp.head tmp.csvs > total.csvs
+         rm tmp.*
          perl ${baseDir}/bin/mapEstimate.pl -i total.maps -o total.mapstat
         perl ${baseDir}/bin/markerinfo.pl -map total.maps -input total.markers --pop ${params.popt} --out total
         Rscript ${baseDir}/bin/drawmap.R --mark total.csvs  --out ./ --pop ${params.popt}
