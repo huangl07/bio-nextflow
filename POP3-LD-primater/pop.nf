@@ -40,13 +40,67 @@ process vcffilter{
         file vcf from vcf_file
     output:
         file "*"
-        file "pop.filtered.vcf" into filter_vcf1,filter_vcf2,filter_vcf3,filter_vcf4,filter_vcf5,filter_vcf6,filter_vcf7,filter_vcf8
+        file "pop.filtered.vcf" into filter_vcf1,filter_vcf2,filter_vcf3,filter_vcf4,filter_vcf5,filter_vcf6,filter_vcf7,filter_vcf8,filter_vcf9
     script:
         
     """
         bcftools filter --threads 8 -i "F_Missing <=${params.miss} && MAF > ${params.maf} && MIN(FORMAT/DP) > ${params.dep}" ${vcf}  > pop.filtered.vcf
     """
 }
+if(params.group){
+    process group{
+        publishDir "${params.outdir}/12.group-split", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "30G"
+        input:
+            file group from group_file
+        output:
+            file "*"
+            file "id.list" into group_split
+        script:
+        """
+            less -S ${group}|perl -ne '{@a=split;push @{\$stat{\$a[1]}},\$a[0]}END{foreach \$id(keys %stat){open Out,">\$id.list";print Out join("\n",@{\$stat{\$id}});close Out;print \$id,"\t",`readlink -f \$id.list`}}'  > id.list
+        """
+    }
+    group_split.splitCsv(header:false,sep:"\t").combine(filter_vcf9).set{nneinput}
+    process effpopulation1{
+        publishDir "${params.outdir}/13.Ne", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "30G"
+        input:
+            tuple gid,group,vcf from nneinput
+        output:
+            file "*"
+        script:
+        """ 
+            bcftools view  -S ${group} -O v  ${vcf} --threads 8 > ${gid}.vcf
+            plink --vcf ${gid}.vcf --recode --out ${gid} --double-id  --allow-extra-chr 
+            SNeP1.1 -threads 8 -ped ${gid}.ped
+        """
+    }
+}else{
+        process effpopulation2{
+        publishDir "${params.outdir}/13.Ne", pattern:"*"
+        queue "DNA"
+        cpus 8
+        executor "slurm"
+        memory "30G"
+        input:
+            file vcf from filter_vcf9
+        output:
+            file "*"
+        script:
+        """
+            plink --vcf ${vcf} --recode --out pop --double-id  --allow-extra-chr
+            SNeP1.1 -threads 8 -ped pop
+        """
+        }
+    }
+
 process vcf2tree{
     publishDir "${params.outdir}/02.vcf2tree", pattern:"*"
     queue "DNA"
@@ -275,8 +329,9 @@ if(params.group){
        if(params.group){
         """
         populations -V ${vcf} -M ${group} --fstats -O ./ -t 8
+        less -S  pop.filtered.p.sumstats_summary.tsv|perl -ne 'chomp;s/#//g;last if(/variant and fixed/);print \$_,"\n" if(!/Variant/);' > stack.list
         perl ${baseDir}/bin/pic.pl -i ${vcf} -g ${group} -o pic
-        Rscript ${baseDir}/bin/diversity.R --vcf ${vcf} --group ${group} --out ./ --pic pic.stat
+        Rscript ${baseDir}/bin/diversity.R --vcf ${vcf} --group ${group} --out ./ --pic pic.stat --stack stack.list
         """
         }else{
         """

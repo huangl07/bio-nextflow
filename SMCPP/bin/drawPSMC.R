@@ -108,7 +108,7 @@ plotPsmc.allPops<-function(keywords, label, legend.names,
 
 times<-Sys.time()
 ldfile<-read.table(opt$infile,head=TRUE)
-colnames(ldfile)=c("popid","ldfile")
+colnames(ldfile)=c("popid","file")
 files=ldfile$file
 popid=ldfile$popid
 col<-rainbow(length(popid))
@@ -116,7 +116,6 @@ pop.id<-popid
 psmcdata<-data.frame()
 for (i in 1:length(popid)){
 	data<-psmc.result(file=as.character(files[i]))
-	print(data)
 	data$Ne<-log10(data$Ne)
 	data$YearsAgo<-log10(data$YearsAgo)
 	data[sapply(data,is.infinite)]<-NA;

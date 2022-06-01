@@ -14,9 +14,7 @@ def helpMessage() {
     --outdir  <dir>   output dir
     --popt  <str>   population type
 
-    --gff   <file>  gff file
-    --GOanno    <file>  GOanno
-    --KEGGanno  <file>  KEGGanno
+
     """.stripIndent()
 }
 

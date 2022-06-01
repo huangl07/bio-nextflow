@@ -7,6 +7,7 @@ spec<-matrix(c(
     'help','h',0,"logical",
     'vcf','b',1,"character",
     'group','g',1,'character',
+    'stack','stack',1,'character',
     'pic','p',1,'character',
     'out','o',1,'character'
 ),byrow=TRUE,ncol=4);
@@ -19,6 +20,7 @@ Usage example:
 Usage:
     --vcf input vcf file
     --group input group file
+    --stack input stack file
     --out output dir
     --pic   input pic result
     --help        usage
@@ -73,6 +75,14 @@ if(!is.null(opt$pic)){
     colnames(pic)=c("Pop","PIC")
     ndf=left_join(ndf,pic,by="Pop")
 }
+df1=read.talbe(opt$stack,sep="\t",head=T)
+colnames(df1)[1]="Pop";
+left_join(ndf,df1,by="Pop")
+ndf$Ne=diversity$pi * 4 /1e-8
+
+
+
+
 write.table(ndf,file=paste(opt$out,"diversity.csv",sep="/"),row.names=F,sep=",")
 
 escaptime=Sys.time()-times;
