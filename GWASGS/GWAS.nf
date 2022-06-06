@@ -79,8 +79,8 @@ process trtprepair{
         perl ${baseDir}/bin/trt.pl -i ${trt} -o ./
     """
 }
-trt_list1.splitCsv(header:false,sep:'\t').combine(filter_vcf1).into{gwas}
-trt_list2.splitCsv(header:false,sep:'\t').combine(hmp_files).into{gs}
+trt_list1.splitCsv(header:false,sep:'\t').combine(filter_vcf1).set{gwas}
+trt_list2.splitCsv(header:false,sep:'\t').combine(hmp_files).set{gs}
 process GWAS{
     publishDir "${params.outdir}/03.GWAS", pattern:"*"
     queue "DNA"
@@ -100,7 +100,7 @@ process GWAS{
 }
 
 process GS{
-    publishDir "${params.outdir}/03.GWAS", pattern:"*"
+    publishDir "${params.outdir}/03.GS", pattern:"*"
     queue "DNA"
     cpus 8
     executor "slurm"

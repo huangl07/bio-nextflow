@@ -276,8 +276,9 @@ process mapEvaluate{
         """
             cat *.result.csv > total.result.csvs
             perl ${baseDir}/bin/marker2onemap.pl -i total.result.csvs -o total.result.onemap
-            perl ${baseDir}/bin/marker2phase.pl -i total.result.csvs -o total.result.phase
+            
             perl ${baseDir}/bin/map-gather.pl -i ./ -o ./
+            perl ${baseDir}/bin/marker2phase.pl -i total.result.csvs -o total.result.phase -m total.sexAver.map
             perl ${baseDir}/bin/mapEstimate.pl -i total.sexAver.map -o total.mapstat
             perl ${baseDir}/bin/drawAligmentRalationMap.pl -m total.sexAver.map -o ./ -k total.phy
             perl ${baseDir}/bin/markerinfo.pl -map total.sexAver.map -input total.result.csvs --pop ${params.popt} --out total
