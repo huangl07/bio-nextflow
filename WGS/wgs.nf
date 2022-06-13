@@ -46,7 +46,7 @@ process mergefq{
     queue "DNA"
     executor "slurm"
     input:
-        tuple val(name),read1,read2,type from reads_count
+        tuple val(name),read1,read2 from reads_count
     output:
         tuple val(name),"${name}.R1.fastq.gz","${name}.R2.fastq.gz" into reads
         file "${name}*.fastq.gz"

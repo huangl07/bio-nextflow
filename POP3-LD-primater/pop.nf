@@ -224,12 +224,14 @@ process pca{
          file vcf from filter_vcf3
     output:
         file "pop.*" 
+        file "*"
     script:
 
      if(params.group){
         """
         plink --vcf ${vcf} --pca --out pop --allow-extra-chr --double-id
         Rscript ${baseDir}/bin/pca.R --infile pop.eigenvec --outfile pop.pca --varfile pop.eigenval --group ${group_file}
+        Rscript ${baseDir}/bin/Cluster_pca.R --infile pop.eigenvec --gfile ${group_file} --out ./
         """
     }else{
         """

@@ -567,63 +567,62 @@ process lafse{
     ggsave(file="LEfSe.pdf",p2)
     """
 }
-//process diversity{
-//    publishDir "${params.outdir}/06.Diversity", pattern:"*"
-//    queue "DNA"
-//    executor "slurm"
-//    beforeScript 'source /mnt/ilustre/users/dna/.bash_conda'
-//    conda '/mnt/ilustre/users/dna/miniconda3/envs/qiime2-2021.8'
-//   input:
-//       file table from tableqza2
-//       file tree from rooted_tree
-//       file group from group_list
-//   output:
-//       file "*"
-//   script:
-//   
-//   """
-//   qiime diversity core-metrics-phylogenetic \
-//       --i-phylogeny ${tree} \
-//       --i-table ${table}\
-//       --p-sampling-depth 1103 \
-//       --output-dir core-metrics-results \
-//       --m-metadata-file ${group}
-//   qiime diversity alpha-group-significance \
-//       --i-alpha-diversity core-metrics-results/faith_pd_vector.qza \
-//       --m-metadata-file ${group} \
-//       --o-visualization core-metrics-results/faith-pd-group-significance.qzv
-//   qiime diversity alpha-group-significance \
-//       --i-alpha-diversity core-metrics-results/evenness_vector.qza \
-//       --m-metadata-file ${group} \
-//       --o-visualization core-metrics-results/evenness-group-significance.qzv
-//   qiime diversity beta-group-significance \
-//       --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
-//       --m-metadata-file ${group} \
-//       --m-metadata-column body-site \
-//       --o-visualization core-metrics-results/unweighted-unifrac-body-site-significance.qzv \
-//       --p-pairwise
-//   qiime diversity beta-group-significance \
-//       --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
-//       --m-metadata-file ${group} \
-//       --m-metadata-column subject \
-//       --o-visualization core-metrics-results/unweighted-unifrac-subject-group-significance.qzv \
-//       --p-pairwise
-//   qiime emperor plot \
-//       --i-pcoa core-metrics-results/unweighted_unifrac_pcoa_results.qza \
-//       --m-metadata-file ${group} \
-//       --p-custom-axes days-since-experiment-start \
-//       --o-visualization core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
-//   qiime emperor plot \
-//       --i-pcoa core-metrics-results/bray_curtis_pcoa_results.qza \
-//       --m-metadata-file ${group} \
-//       --p-custom-axes days-since-experiment-start \
-//       --o-visualization core-metrics-results/bray-curtis-emperor-days-since-experiment-start.qzv
-//   qiime diversity alpha-rarefaction \
-//           --i-phylogeny ${tree} \
-//           --i-table ${table}\
-//           --p-max-depth 4000 \
-//           --m-metadata-file sample-metadata.tsv \
-//           --o-visualization alpha-rarefaction.qzv
-//   """
-//
-//
+process diversity{
+    publishDir "${params.outdir}/06.Diversity", pattern:"*"
+    queue "DNA"
+    executor "slurm"
+    beforeScript 'source /mnt/ilustre/users/dna/.bash_conda'
+    conda '/mnt/ilustre/users/dna/miniconda3/envs/qiime2-2021.8'
+   input:
+       file table from tableqza2
+       file tree from rooted_tree
+       file group from group_list
+   output:
+       file "*"
+   script:
+   
+   """
+   qiime diversity core-metrics-phylogenetic \
+       --i-phylogeny ${tree} \
+       --i-table ${table}\
+       --p-sampling-depth 1103 \
+       --output-dir core-metrics-results \
+       --m-metadata-file ${group}
+   qiime diversity alpha-group-significance \
+       --i-alpha-diversity core-metrics-results/faith_pd_vector.qza \
+       --m-metadata-file ${group} \
+       --o-visualization core-metrics-results/faith-pd-group-significance.qzv
+   qiime diversity alpha-group-significance \
+       --i-alpha-diversity core-metrics-results/evenness_vector.qza \
+       --m-metadata-file ${group} \
+       --o-visualization core-metrics-results/evenness-group-significance.qzv
+   qiime diversity beta-group-significance \
+       --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+       --m-metadata-file ${group} \
+       --m-metadata-column body-site \
+       --o-visualization core-metrics-results/unweighted-unifrac-body-site-significance.qzv \
+       --p-pairwise
+   qiime diversity beta-group-significance \
+       --i-distance-matrix core-metrics-results/unweighted_unifrac_distance_matrix.qza \
+       --m-metadata-file ${group} \
+       --m-metadata-column subject \
+       --o-visualization core-metrics-results/unweighted-unifrac-subject-group-significance.qzv \
+       --p-pairwise
+   qiime emperor plot \
+       --i-pcoa core-metrics-results/unweighted_unifrac_pcoa_results.qza \
+       --m-metadata-file ${group} \
+       --p-custom-axes days-since-experiment-start \
+       --o-visualization core-metrics-results/unweighted-unifrac-emperor-days-since-experiment-start.qzv
+   qiime emperor plot \
+       --i-pcoa core-metrics-results/bray_curtis_pcoa_results.qza \
+       --m-metadata-file ${group} \
+       --p-custom-axes days-since-experiment-start \
+       --o-visualization core-metrics-results/bray-curtis-emperor-days-since-experiment-start.qzv
+   qiime diversity alpha-rarefaction \
+           --i-phylogeny ${tree} \
+           --i-table ${table}\
+           --p-max-depth 4000 \
+           --m-metadata-file sample-metadata.tsv \
+           --o-visualization alpha-rarefaction.qzv
+   """
+}

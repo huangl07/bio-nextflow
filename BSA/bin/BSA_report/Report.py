@@ -50,7 +50,7 @@ rmd_dir=pipeline+'/rmd/'
 rmd_list=[]
 rmd_list.append(rmd_dir+'title.rmd')
 rmd_list.append(rmd_dir+'workflow.rmd')
-for each in range(1,6):
+for each in range(1,7):
     if str(each) not in exclude:
         rmd_list.append(rmd_dir+str(each)+'*.rmd')
 rmd_list.append(rmd_dir+'appendix.rmd')
@@ -127,6 +127,16 @@ if '5' not in exclude:
     Step1Sh.write('cp  %s/%s.filter/BSA/02.index-slid/pop.index.index.png   %s/file/\n\n' %(result_dir,str(order),report_dir))
     Step1Sh.write('cp  %s/%s.filter/BSA/03.Gprime/Gprime.index.png   %s/file/\n\n' %(result_dir,str(order),report_dir))
     Step1Sh.write('cp  %s/%s.filter/BSA/04.loess/loess.index.png   %s/file/\n\n' %(result_dir,str(order),report_dir))
+
+if '6' not in exclude:
+    order=18
+    Step1Sh.write('cp  %s/pop.ED.region   %s/file/pop.ED.region.xls\n\n' %(result_dir,report_dir))
+    Step1Sh.write('cp  %s/%s.filter/*/05.enrich/ED/GO_result/ED_GOenrichment.png   %s/file/ED_go_enrich.png\n\n' %(result_dir,str(order),report_dir))
+    Step1Sh.write('cp  %s/%s.filter/*/05.enrich/ED/KEGG_result/ED_KEGGenrichment.png   %s/file/ED_kegg_enrich.png\n\n' %(result_dir,str(order),report_dir))
+    Step1Sh.write('cp  %s/%s.filter/*/05.enrich/Gprime/GO_result/Gprime_GOenrichment.png   %s/file/Gprime_go_enrich.png\n\n' %(result_dir,str(order),report_dir))
+    Step1Sh.write('cp  %s/%s.filter/*/05.enrich/Gprime/KEGG_result/Gprime_KEGGenrichment.png   %s/file/Gprime_kegg_enrich.png\n\n' %(result_dir,str(order),report_dir))
+    Step1Sh.write('cp  %s/%s.filter/*/05.enrich/index/GO_result/index_GOenrichment.png   %s/file/index_go_enrich.png\n\n' %(result_dir,str(order),report_dir))
+    Step1Sh.write('cp  %s/%s.filter/*/05.enrich/index/KEGG_result/index_KEGGenrichment.png   %s/file/index_kegg_enrich.png\n\n' %(result_dir,str(order),report_dir))
     
 
 Step1Sh.write('cd %s/file \n\n'%(report_dir))
